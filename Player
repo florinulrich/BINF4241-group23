@@ -1,4 +1,4 @@
-public class Players{
+public class Player{
 
     public static void main() {
     }
