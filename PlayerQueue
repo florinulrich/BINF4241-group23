@@ -1,1 +1,4 @@
-public class PlayerQueue {}
+public class PlayerQueue {
+
+  protected Player[] players
+}
