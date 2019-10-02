@@ -1,4 +1,9 @@
 public class PlayerQueue {
 
-  protected Player[] players
+  protected Player[] players;
+  
+  public Player remove() {}
+  //returns next player
+  
+  public void add(player
 }
