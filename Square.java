@@ -1,5 +1,5 @@
 
 public class Square {
   
-  public void leave 
+  public void leave(Player player) {}
 }
