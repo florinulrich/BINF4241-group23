@@ -1,5 +1,14 @@
 public class BoardGame{
 
+    protected void movePlayer(number_of_squares){
+    // moves player a number of square on the board
+    pass
+    }
+
+    protected void findSquare(){
+    // returns the square on which the player is on
+    }
+
     public static void main() {
     }
 
