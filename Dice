@@ -1,0 +1,7 @@
+
+public class Dice {
+
+    protected int rollDice(){
+        return int x = 0; // x number between 1 and 6
+    }
+}
