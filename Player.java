@@ -1,6 +1,6 @@
 public class Player{
 
-    protected void moveFwd(number_of_squares){
+    protected void moveFwd(Integer numberOfSquares){
         // moves the player on the board forward
 
     }

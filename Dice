@@ -1,6 +1,12 @@
+import java.util.Random;
+
 public class Dice {
 
-    protected int rollDice(){
-        // returns random number from 1 to 6
+    public Dice() {}
+
+    static int roll(){
+        Random random = new Random();
+        int number = random.nextInt(7);
+        return number;
     }
 }

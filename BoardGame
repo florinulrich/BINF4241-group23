@@ -1,15 +1,14 @@
 public class BoardGame {
 
-    protected void movePlayer(number_of_squares){
+    protected void movePlayer(Integer numberOfSquares){
     // moves player a number of square on the board
-    pass
     }
 
-    protected void findSquare(){
+    protected void findSquare(Integer squareNumber){
     // returns the square on which the player is on
     }
 
-    public static void main() {
+    public static void main(String[] args) {
     }
 
 }
