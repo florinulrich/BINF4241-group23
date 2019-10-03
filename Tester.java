@@ -2,8 +2,7 @@ public class Tester {
 
     public static void main(String[] args) {
 
-        int numberRolled = 5;
-        Dice newDice = new Dice();
+        int numberRolled = Dice.roll();
         System.out.println(numberRolled);
     }
 }
