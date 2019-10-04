@@ -6,10 +6,12 @@ public class Square implements ISquare {
   private boolean isOccupied = false;
   private Game myGame;
   private boolean isLastSquare = false;
+  private int position;
 
   //Initializer
-  public Square(Game parentGame) {
+  Square(Game parentGame, int position) {
     this.myGame = parentGame;
+    this.position = position;
   }
 
   //Methods
@@ -20,7 +22,7 @@ public class Square implements ISquare {
   @Override
   public ISquare moveAndLand(int numberOfSteps) {
 
-    ISquare newSquare = myGame.findSquare(numberOfSteps);
+    ISquare newSquare = myGame.findSquare(numberOfSteps, position);
     newSquare = newSquare.landHereOrGoHome();
 
     return newSquare;

@@ -1,16 +1,22 @@
 public class Player{
 
     //Variables
-    ISquare currentSquare;
+    private ISquare currentSquare;
+    private String name;
 
-    protected void moveFwd(int numberOfSquares){
+    public Player(String playerName, ISquare startingSquare) {
+        this.name = playerName;
+        this.currentSquare = startingSquare;
+    }
+
+    void moveFwd(int numberOfSquares){
 
         currentSquare.leave(this);
         ISquare newSquare = currentSquare.moveAndLand(numberOfSquares);
         newSquare.enter(this);
     }
 
-    protected ISquare square() {
+    ISquare square() {
 
         return currentSquare;
     }

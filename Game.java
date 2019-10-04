@@ -3,14 +3,14 @@ import java.util.ArrayList;
 public class Game {
 
     //Variables
-    private PlayerQueue players;
-    private ArrayList<ISquare> squares;
+    private PlayerQueue players = new PlayerQueue();
+    private ArrayList<ISquare> squares = new ArrayList<>();
 
     //Initializer
     public Game(int numberOfSquares) {
 
         for (int i = 0; i < numberOfSquares; i++) {
-            squares.add(new Square(this));
+            squares.add(new Square(this, i));
         }
 
         //Set up last square
@@ -29,12 +29,12 @@ public class Game {
        }
     }
 
-    protected ISquare findSquare(int squareNumber){
-    // returns landing Square (object)
+    ISquare findSquare(int numberOfSteps, int squarePosition){
 
+        return squares.get(squarePosition+numberOfSteps);
     }
 
-    public ISquare firstSquare() {
+    ISquare firstSquare() {
         return squares.get(0);
     }
 
