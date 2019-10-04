@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Game {
 
     //Variables
-    private PlayerQueue players = new PlayerQueue();
+    PlayerQueue players = new PlayerQueue();
     private ArrayList<ISquare> squares = new ArrayList<>();
 
     //Initializer

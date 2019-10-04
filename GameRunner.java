@@ -13,6 +13,7 @@ public class GameRunner{
 
         getSetupInputs();
         //System.out.println("Players: " + numberOfPlayers + " Names: " + playerNames + " BoardSize: " + boardSize);
+        setUpGame();
     }
 
     private static void getSetupInputs() {
@@ -42,6 +43,20 @@ public class GameRunner{
         if ((numberOfPlayers > 4) || (numberOfPlayers < 2)) {
             askForPlayerNumber(input);
         }
+    }
+
+    private static void setUpGame() {
+        Game gameBoard = new Game(boardSize);
+
+        for (Object playerName: playerNames) {
+
+            String playerNameString = (String) playerName;
+
+            Player newPlayer = new Player(playerNameString, gameBoard.firstSquare());
+            gameBoard.players.add(newPlayer);
+
+        }
+
     }
 
 }
