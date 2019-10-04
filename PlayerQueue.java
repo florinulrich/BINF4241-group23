@@ -11,7 +11,7 @@ class PlayerQueue {
         return this.players.remove();
     }
 
-    private void add(Player player){
+    public void add(Player player){
         // add player to queue
         this.players.add(player);
     }
