@@ -12,4 +12,6 @@ public class Tester {
         ISquare landedSquare = game.findSquare(4,4);
         if (landedSquare.isLastSquare()) {throw new Exception("Middle element is set as last");}
     }
+
+    private static void testGameRunnerClass() {}
 }
