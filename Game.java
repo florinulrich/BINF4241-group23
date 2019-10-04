@@ -1,7 +1,16 @@
 public class Game {
 
-    PlayerQueue players;
+    //Variables
+    private PlayerQueue players;
+    private ISquare[] squares;
 
+    //Initializer
+    public Game(int numberOfSquares) {
+
+        squares =
+    }
+
+    //Methods
     protected void movePlayer(int numberOfSquares){
     // moves player a number of squares on the board
        Player currentPlayer = players.remove();
@@ -13,9 +22,13 @@ public class Game {
        }
     }
 
-    protected void findSquare(int squareNumber){
+    protected ISquare findSquare(int squareNumber){
     // returns landing Square (object)
 
+    }
+
+    public ISquare firstSquare() {
+        return squares[0];
     }
 
 }
