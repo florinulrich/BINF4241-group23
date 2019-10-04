@@ -6,7 +6,7 @@ public class Square implements ISquare {
   private boolean isOccupied = false;
   private Game myGame;
   private boolean isLastSquare = false;
-  private int position;
+  int position;
 
   //Initializer
   Square(Game parentGame, int position) {
