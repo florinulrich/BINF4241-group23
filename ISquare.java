@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public interface ISquare {
 
     public void leave(Player playerName);
@@ -14,5 +16,7 @@ public interface ISquare {
 
     public int getPosition();
 
-    public Player getPlayerOnSquare();
+    public ArrayList<Player> getPlayerOnSquare();
+
+    public void addPlayer(Player player);
 }

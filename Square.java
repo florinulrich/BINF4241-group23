@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 
 public class Square implements ISquare {
 
@@ -7,7 +9,7 @@ public class Square implements ISquare {
   private Game myGame;
   private boolean isLastSquare = false;
   private int position;
-  private Player playerOnSquare;
+  private ArrayList<Player> playerOnSquare = new ArrayList<>();
 
   //Initializer
   Square(Game parentGame, int position) {
@@ -17,8 +19,10 @@ public class Square implements ISquare {
 
   //Methods
   public void leave(Player player) {
-    this.isOccupied = false;
-    playerOnSquare = null;
+    playerOnSquare.remove(player);
+    if (playerOnSquare.isEmpty()) {
+      isOccupied = false;
+    }
   }
 
   @Override
@@ -32,7 +36,7 @@ public class Square implements ISquare {
 
   @Override
   public ISquare landHereOrGoHome() {
-    if (this.isOccupied()) {
+    if (this.isOccupied() && this.position != 0) {
       //return Game start square
       return myGame.firstSquare();
 
@@ -53,9 +57,8 @@ public class Square implements ISquare {
   public void enter(Player playerName) {
 
     this.isOccupied = true;
-    playerOnSquare = playerName;
+    playerOnSquare.add(playerName);
     playerName.setCurrentSquare(this);
-    this.playerOnSquare = playerName;
   }
 
   @Override
@@ -73,7 +76,12 @@ public class Square implements ISquare {
     return this.position;
   }
   @Override
-  public Player getPlayerOnSquare() {
+  public ArrayList<Player> getPlayerOnSquare() {
     return playerOnSquare;
+  }
+
+  @Override
+  public void addPlayer(Player player) {
+    playerOnSquare.add(player);
   }
 }

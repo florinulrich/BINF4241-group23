@@ -59,13 +59,21 @@ public class Game {
         for (ISquare square: squares) {
 
             String playerNames = "";
-            if (square.getPlayerOnSquare() != null) {
-                playerNames = playerNames + "<" + square.getPlayerOnSquare().getName() + ">";
+            if (!square.getPlayerOnSquare().isEmpty()) {
+                for (Player player: square.getPlayerOnSquare()) {
+                    playerNames += "<" + player.getName() + ">";
+                }
+
             }
             outputLine = outputLine + ("[" + (square.getPosition()+1) + playerNames + "]");
         }
 
         System.out.println(outputLine);
+    }
+
+    void addNewPlayer(Player newPlayer) {
+        squares.get(0).addPlayer(newPlayer);
+        players.add(newPlayer);
     }
 
 }

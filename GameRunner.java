@@ -22,22 +22,22 @@ public class GameRunner{
 
 
         //ask for the names of the players:
-        System.out.print("State the names of the players: \n");
+        System.out.print("Player names >>> \n");
         playerNames = new LinkedList();
         for (int i = 1; i <= numberOfPlayers; i++){
-            System.out.print("Player " + i + "\n");
+            System.out.print("Player " + i + ">>>");
             String name = input.next();
             playerNames.add(name);
         }
 
         //ask for size of board:
-        System.out.print("How large is the game board?: ");
+        System.out.print("Board size >>> ");
         boardSize = input.nextInt();
     }
 
     private static void askForPlayerNumber(Scanner input) {
         //ask for the number of players:
-        System.out.print("How many players?: ");
+        System.out.print("How many players >>> ");
         numberOfPlayers = input.nextInt();
         // must be between 2 and 4
         if ((numberOfPlayers > 4) || (numberOfPlayers < 2)) {
@@ -53,11 +53,12 @@ public class GameRunner{
             String playerNameString = (String) playerName;
 
             Player newPlayer = new Player(playerNameString, gameBoard.firstSquare());
-            gameBoard.players.add(newPlayer);
+            gameBoard.addNewPlayer(newPlayer);
 
         }
 
         //Print initial State
+        gameBoard.printSquares();
 
         while (!gameBoard.gameOver()) {
 
