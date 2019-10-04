@@ -5,6 +5,7 @@ public class Square implements ISquare {
   //Variables
   private boolean isOccupied = false;
   private Game myGame;
+  private boolean isLastSquare = false;
 
   //Initializer
   public Square(Game parentGame) {
@@ -51,7 +52,12 @@ public class Square implements ISquare {
 
   @Override
   public boolean isLastSquare() {
-    return false;
+    return isLastSquare;
+  }
+
+  @Override
+  public void setAsLastSquare() {
+    this.isLastSquare = true;
   }
 
 }

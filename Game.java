@@ -1,13 +1,20 @@
+import java.util.ArrayList;
+
 public class Game {
 
     //Variables
     private PlayerQueue players;
-    private ISquare[] squares;
+    private ArrayList<ISquare> squares;
 
     //Initializer
     public Game(int numberOfSquares) {
 
-        squares =
+        for (int i = 0; i < numberOfSquares; i++) {
+            squares.add(new Square(this));
+        }
+
+        //Set up last square
+        squares.get((squares.size()-1)).setAsLastSquare();
     }
 
     //Methods
@@ -18,7 +25,7 @@ public class Game {
        players.add(currentPlayer);
        ISquare landedSquare = currentPlayer.square();
        if (landedSquare.isLastSquare()) {
-           return; // Game stops, shows winning player
+           this.gameOver();
        }
     }
 
@@ -28,7 +35,11 @@ public class Game {
     }
 
     public ISquare firstSquare() {
-        return squares[0];
+        return squares.get(0);
+    }
+
+    private void gameOver() {
+        //In some way finishes game
     }
 
 }

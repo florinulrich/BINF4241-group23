@@ -9,4 +9,6 @@ public interface ISquare {
     public void enter(Player playerName);
 
     public boolean isLastSquare();
+
+    public void setAsLastSquare();
 }
