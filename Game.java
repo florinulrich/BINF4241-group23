@@ -5,6 +5,7 @@ public class Game {
     //Variables
     PlayerQueue players = new PlayerQueue();
     private ArrayList<ISquare> squares = new ArrayList<>();
+    private boolean gameOver = false;
 
     //Initializer
     public Game(int numberOfSquares) {
@@ -25,7 +26,7 @@ public class Game {
        players.add(currentPlayer);
        ISquare landedSquare = currentPlayer.square();
        if (landedSquare.isLastSquare()) {
-           this.gameOver();
+           gameOver = true;
        }
     }
 
@@ -38,8 +39,19 @@ public class Game {
         return squares.get(0);
     }
 
-    private void gameOver() {
-        //In some way finishes game
+    boolean gameOver() {
+        return this.gameOver;
+    }
+
+    void printSquares() {
+        String outputLine = "";
+
+        //First Part
+
+        //Second Part
+        for (ISquare square: squares) {
+            outputLine = outputLine + ("[" + square.getPosition() + "]");
+        }
     }
 
 }

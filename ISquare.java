@@ -11,4 +11,6 @@ public interface ISquare {
     public boolean isLastSquare();
 
     public void setAsLastSquare();
+
+    public int getPosition();
 }

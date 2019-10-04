@@ -6,7 +6,8 @@ public class Square implements ISquare {
   private boolean isOccupied = false;
   private Game myGame;
   private boolean isLastSquare = false;
-  int position;
+  private int position;
+  private Player playerOnSquare;
 
   //Initializer
   Square(Game parentGame, int position) {
@@ -17,6 +18,7 @@ public class Square implements ISquare {
   //Methods
   public void leave(Player player) {
     this.isOccupied = false;
+    playerOnSquare = null;
   }
 
   @Override
@@ -50,6 +52,7 @@ public class Square implements ISquare {
   public void enter(Player playerName) {
 
     this.isOccupied = true;
+    playerOnSquare = playerName;
   }
 
   @Override
@@ -60,6 +63,11 @@ public class Square implements ISquare {
   @Override
   public void setAsLastSquare() {
     this.isLastSquare = true;
+  }
+
+  @Override
+  public int getPosition() {
+    return this.position;
   }
 
 }

@@ -57,6 +57,17 @@ public class GameRunner{
 
         }
 
+        //Print initial State
+
+        while (!gameBoard.gameOver()) {
+
+            int numberToMove = Dice.roll();
+
+            gameBoard.movePlayer(numberToMove);
+            gameBoard.printSquares();
+        }
+
+        //Print final State and winner
     }
 
 }

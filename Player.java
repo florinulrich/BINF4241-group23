@@ -21,5 +21,8 @@ public class Player{
         return currentSquare;
     }
 
+    String getName() {
+        return name;
+    }
 
 }
