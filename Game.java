@@ -8,7 +8,7 @@ public class Game {
     private boolean gameOver = false;
 
     //Initializer
-    public Game(int numberOfSquares) {
+    Game(int numberOfSquares) {
 
         for (int i = 0; i < numberOfSquares; i++) {
             squares.add(new Square(this, i));
@@ -30,9 +30,12 @@ public class Game {
        }
     }
 
-    ISquare findSquare(int numberOfSteps, int squarePosition){
+    ISquare findSquare(int numberOfSteps, int squarePosition) {
 
-        return squares.get(squarePosition+numberOfSteps);
+        //System.out.println(numberOfSteps);
+        //System.out.println(squares.get(squarePosition + numberOfSteps).getPosition());
+
+        return squares.get(squarePosition + numberOfSteps);
     }
 
     ISquare firstSquare() {

@@ -25,4 +25,8 @@ public class Player{
         return name;
     }
 
+    void setCurrentSquare(ISquare square) {
+        currentSquare = square;
+    }
+
 }

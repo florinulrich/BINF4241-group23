@@ -61,7 +61,7 @@ public class GameRunner{
 
         while (!gameBoard.gameOver()) {
 
-            int numberToMove = Dice.roll();
+            int numberToMove = 1;
 
             gameBoard.movePlayer(numberToMove);
             gameBoard.printSquares();

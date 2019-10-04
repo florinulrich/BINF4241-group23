@@ -32,9 +32,10 @@ public class Square implements ISquare {
 
   @Override
   public ISquare landHereOrGoHome() {
-    if (isOccupied()) {
+    if (this.isOccupied()) {
       //return Game start square
       return myGame.firstSquare();
+
     }
     else {
       return this;
@@ -53,6 +54,7 @@ public class Square implements ISquare {
 
     this.isOccupied = true;
     playerOnSquare = playerName;
+    playerName.setCurrentSquare(this);
   }
 
   @Override
