@@ -11,9 +11,10 @@ public class Square implements ISquare {
   }
 
   @Override
-  public void moveAndLand(int numberOfSteps) {
+  public ISquare moveAndLand(int numberOfSteps) {
 
     //findSquare(numberOfSteps)
+    return //newSquare
   }
 
   @Override

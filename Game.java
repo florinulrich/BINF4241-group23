@@ -12,7 +12,4 @@ public class Game {
     // returns the square on which the player is on
     }
 
-    public static void main(String[] args) {
-    }
-
 }
