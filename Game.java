@@ -32,10 +32,14 @@ public class Game {
 
     ISquare findSquare(int numberOfSteps, int squarePosition) {
 
-        //System.out.println(numberOfSteps);
-        //System.out.println(squares.get(squarePosition + numberOfSteps).getPosition());
+        int newPosition = squarePosition + numberOfSteps;
 
-        return squares.get(squarePosition + numberOfSteps);
+        if (newPosition > squares.size()-1) {
+            int stepsBack = newPosition % (squares.size()-1);
+            newPosition = squares.size()-1-stepsBack;
+        }
+
+        return squares.get(newPosition);
     }
 
     ISquare firstSquare() {
@@ -53,8 +57,15 @@ public class Game {
 
         //Second Part
         for (ISquare square: squares) {
-            outputLine = outputLine + ("[" + square.getPosition() + "]");
+
+            String playerNames = "";
+            if (square.getPlayerOnSquare() != null) {
+                playerNames = playerNames + "<" + square.getPlayerOnSquare().getName() + ">";
+            }
+            outputLine = outputLine + ("[" + (square.getPosition()+1) + playerNames + "]");
         }
+
+        System.out.println(outputLine);
     }
 
 }

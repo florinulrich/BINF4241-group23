@@ -55,6 +55,7 @@ public class Square implements ISquare {
     this.isOccupied = true;
     playerOnSquare = playerName;
     playerName.setCurrentSquare(this);
+    this.playerOnSquare = playerName;
   }
 
   @Override
@@ -71,5 +72,8 @@ public class Square implements ISquare {
   public int getPosition() {
     return this.position;
   }
-
+  @Override
+  public Player getPlayerOnSquare() {
+    return playerOnSquare;
+  }
 }

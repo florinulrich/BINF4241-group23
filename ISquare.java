@@ -13,4 +13,6 @@ public interface ISquare {
     public void setAsLastSquare();
 
     public int getPosition();
+
+    public Player getPlayerOnSquare();
 }
