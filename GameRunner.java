@@ -17,10 +17,8 @@ public class GameRunner{
 
     private static void getSetupInputs() {
         Scanner input = new Scanner(System.in);
+        askForPlayerNumber(input);
 
-        //ask for the number of players:
-        System.out.print("How many players?: ");
-        numberOfPlayers = input.nextInt(); // must be between 2 and 4
 
         //ask for the names of the players:
         System.out.print("State the names of the players: \n");
@@ -34,6 +32,16 @@ public class GameRunner{
         //ask for size of board:
         System.out.print("How large is the game board?: ");
         boardSize = input.nextInt();
+    }
+
+    private static void askForPlayerNumber(Scanner input) {
+        //ask for the number of players:
+        System.out.print("How many players?: ");
+        numberOfPlayers = input.nextInt();
+        // must be between 2 and 4
+        if ((numberOfPlayers > 4) || (numberOfPlayers < 2)) {
+            askForPlayerNumber(input);
+        }
     }
 
 }
