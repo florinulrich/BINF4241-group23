@@ -65,12 +65,12 @@ public class GameRunner{
             int numberToMove = Dice.roll();
 
             gameBoard.movePlayer(numberToMove);
-            gameBoard.printSquares();
+            gameBoard.printSquares(numberToMove);
         }
 
         //Print final State and winner
         String Winner = "Default";
-        System.out.println(Winner +"wins!");
+        System.out.println(Winner +" wins!");
     }
 
 }
