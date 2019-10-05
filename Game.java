@@ -79,4 +79,11 @@ public class Game {
         return squares.get(squares.size()-1).getPlayerOnSquare().get(0);
     }
 
+    public ArrayList<ISquare> getSquares() {
+        return squares;
+    }
+
+    public void setSquares(ArrayList<ISquare> squares) {
+        this.squares = squares;
+    }
 }

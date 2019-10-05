@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -57,12 +58,15 @@ public class GameRunner{
 
         }
 
+        Game gameWithSnakesAndLadders = addSnakesAndLadders(gameBoard);
+        gameBoard = gameWithSnakesAndLadders;
+
         //Print initial State
         gameBoard.printSquares(0);
 
         while (!gameBoard.gameOver()) {
 
-            int numberToMove = Dice.roll();
+            int numberToMove = 1;
 
             gameBoard.movePlayer(numberToMove);
             gameBoard.printSquares(numberToMove);
@@ -73,8 +77,26 @@ public class GameRunner{
         System.out.println(Winner +" wins!");
     }
 
-    private void testSnakeAndLadders() {
+    private static Game addSnakesAndLadders(Game game) {
 
+        ArrayList<ISquare> squares = game.getSquares();
+
+        //Get the length of squares. Ladders and snakes are NOT allowed on first and last
+        int squaresLength = squares.size();
+
+        for (int i = 0; i < squaresLength; i++) {
+
+            if (i%3 == 0) {
+                if (i > 0 && i < boardSize-4) {
+                    squares.remove(i);
+                    ISquare newLadder = new SnakeOrLadder(game, i+1, SnakeOrLadder.SquareType.LADDER, squares.get(i+4));
+                    squares.add(i, newLadder);
+                }
+            }
+        }
+
+
+        return game;
     }
 
 }

@@ -10,16 +10,17 @@ public class SnakeOrLadder implements ISquare {
 
     private ISquare finalSquare;
 
-    private enum SquareType {
+    public enum SquareType {
         LADDER,
         SNAKE
     }
 
     //Initializer
-    SnakeOrLadder(Game parentGame, int position, SquareType setSquareType) {
+    SnakeOrLadder(Game parentGame, int position, SquareType setSquareType, ISquare targetSquare) {
         this.myGame = parentGame;
         this.position = position;
         this.squareType = setSquareType;
+        this.finalSquare = targetSquare;
     }
 
     //Methods
@@ -73,9 +74,9 @@ public class SnakeOrLadder implements ISquare {
     public String printSquareString() {
 
         switch (this.squareType) {
-            case LADDER: return "[" + this.position + "->" + this.finalSquare + "]";
+            case LADDER: return "[" + this.position + "->" + this.finalSquare.getPosition() + "]";
 
-            case SNAKE: return "[" + this.finalSquare + "<-" + this.position + "]";
+            case SNAKE: return "[" + this.finalSquare.getPosition() + "<-" + this.position + "]";
         }
         return "ERROR IN SWITCH STATEMENT: squareType undefined!";
     }
