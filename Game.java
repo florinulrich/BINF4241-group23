@@ -6,6 +6,7 @@ public class Game {
     PlayerQueue players = new PlayerQueue();
     private ArrayList<ISquare> squares = new ArrayList<>();
     private boolean gameOver = false;
+    private Player currentPlayer;
 
     //Initializer
     Game(int numberOfSquares) {
@@ -21,7 +22,7 @@ public class Game {
     //Methods
     void movePlayer(int numberOfSquares){
     // moves player a number of squares on the board
-       Player currentPlayer = players.remove();
+        currentPlayer = players.remove();
        currentPlayer.moveFwd(numberOfSquares);
        players.add(currentPlayer);
        ISquare landedSquare = currentPlayer.square();
@@ -51,8 +52,8 @@ public class Game {
     }
 
     void printSquares(int numberToMove) {
-        String outputLine = "";
 
+        String outputLine = "";
 
         for (ISquare square: squares) {
 
@@ -65,7 +66,7 @@ public class Game {
         {
             DiceRoll = "Initial state: \t\t";
         } else {
-            DiceRoll = "Player rolls: " + numberToMove + "\t\t";
+            DiceRoll = currentPlayer.getName() + " rolls: " + numberToMove + "\t\t";
         }
         System.out.println(DiceRoll + outputLine);
     }
