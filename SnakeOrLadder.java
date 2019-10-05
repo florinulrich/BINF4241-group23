@@ -5,7 +5,6 @@ public class SnakeOrLadder implements ISquare {
     //Variables
     private Game myGame;
     private int position;
-    private boolean isLastSquare;
     private SquareType squareType;
 
     private ISquare finalSquare;
@@ -57,7 +56,7 @@ public class SnakeOrLadder implements ISquare {
 
     @Override
     public int getPosition() {
-        return finalSquare.getPosition();
+        return this.position;
     }
 
     @Override
@@ -74,7 +73,7 @@ public class SnakeOrLadder implements ISquare {
     public String printSquareString() {
 
         switch (this.squareType) {
-            case LADDER: return "[" + this.position + "->" + this.finalSquare.getPosition() + "]";
+            case LADDER: return "[" + this.position + "->" + (this.finalSquare.getPosition()+1) + "]";
 
             case SNAKE: return "[" + this.finalSquare.getPosition() + "<-" + this.position + "]";
         }
