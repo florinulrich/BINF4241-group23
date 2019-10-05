@@ -70,7 +70,13 @@ public class SnakeOrLadder implements ISquare {
     }
 
     @Override
-    public void printSquareString() {
+    public String printSquareString() {
 
+        switch (this.squareType) {
+            case LADDER: return "[" + this.position + "->" + this.finalSquare + "]";
+
+            case SNAKE: return "[" + this.finalSquare + "<-" + this.position + "]";
+        }
+        return "ERROR IN SWITCH STATEMENT: squareType undefined!";
     }
 }

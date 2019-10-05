@@ -55,14 +55,9 @@ public class Game {
 
         for (ISquare square: squares) {
 
-            String playerNames = "";
-            if (!square.getPlayerOnSquare().isEmpty()) {
-                for (Player player: square.getPlayerOnSquare()) {
-                    playerNames += "<" + player.getName() + ">";
-                }
+            String squareOutput = square.printSquareString();
 
-            }
-            outputLine = outputLine + ("[" + (square.getPosition()+1) + playerNames + "]");
+            outputLine = outputLine + squareOutput;
         }
         int numberToMove = 1;
         String DiceRoll = "Player rolls: "+ numberToMove + "\t\t";

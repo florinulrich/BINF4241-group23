@@ -84,4 +84,18 @@ public class Square implements ISquare {
   public void addPlayer(Player player) {
     playerOnSquare.add(player);
   }
+
+  @Override
+  public String printSquareString() {
+
+    String playerNames = "";
+    if (!this.getPlayerOnSquare().isEmpty()) {
+      for (Player player: this.getPlayerOnSquare()) {
+        playerNames += "<" + player.getName() + ">";
+      }
+
+    }
+    return  ("[" + (this.getPosition()+1) + playerNames + "]");
+
+  }
 }

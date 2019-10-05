@@ -20,5 +20,5 @@ public interface ISquare {
 
     public void addPlayer(Player player);
 
-    public void printSquareString();
+    public String printSquareString();
 }
