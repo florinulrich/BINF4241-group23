@@ -69,8 +69,12 @@ public class GameRunner{
         }
 
         //Print final State and winner
-        String Winner = "Default";
+        String Winner = gameBoard.getLastSquaresPlayer().getName();
         System.out.println(Winner +" wins!");
+    }
+
+    private void testSnakeAndLadders() {
+
     }
 
 }

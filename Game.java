@@ -19,7 +19,7 @@ public class Game {
     }
 
     //Methods
-    protected void movePlayer(int numberOfSquares){
+    void movePlayer(int numberOfSquares){
     // moves player a number of squares on the board
        Player currentPlayer = players.remove();
        currentPlayer.moveFwd(numberOfSquares);
@@ -73,6 +73,10 @@ public class Game {
     void addNewPlayer(Player newPlayer) {
         squares.get(0).addPlayer(newPlayer);
         players.add(newPlayer);
+    }
+
+    Player getLastSquaresPlayer() {
+        return squares.get(squares.size()-1).getPlayerOnSquare().get(0);
     }
 
 }
