@@ -19,4 +19,6 @@ public interface ISquare {
     public ArrayList<Player> getPlayerOnSquare();
 
     public void addPlayer(Player player);
+
+    public void printSquareString();
 }
