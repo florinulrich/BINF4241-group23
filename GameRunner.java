@@ -22,10 +22,10 @@ public class GameRunner{
 
 
         //ask for the names of the players:
-        System.out.print("Player names >>> \n");
+        System.out.print("Player names: \n");
         playerNames = new LinkedList();
         for (int i = 1; i <= numberOfPlayers; i++){
-            System.out.print("Player " + i + ">>>");
+            System.out.print("Player " + i + " >>> ");
             String name = input.next();
             playerNames.add(name);
         }
@@ -69,6 +69,8 @@ public class GameRunner{
         }
 
         //Print final State and winner
+        String Winner = "Default";
+        System.out.println(Winner +"wins!");
     }
 
 }

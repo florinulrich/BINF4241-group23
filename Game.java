@@ -53,9 +53,6 @@ public class Game {
     void printSquares() {
         String outputLine = "";
 
-        //First Part
-
-        //Second Part
         for (ISquare square: squares) {
 
             String playerNames = "";
@@ -67,8 +64,9 @@ public class Game {
             }
             outputLine = outputLine + ("[" + (square.getPosition()+1) + playerNames + "]");
         }
-
-        System.out.println(outputLine);
+        int numberToMove = 1;
+        String DiceRoll = "Player rolls: "+ numberToMove + "\t\t";
+        System.out.println(DiceRoll + outputLine);
     }
 
     void addNewPlayer(Player newPlayer) {
