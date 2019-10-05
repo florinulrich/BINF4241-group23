@@ -75,7 +75,7 @@ public class SnakeOrLadder implements ISquare {
         switch (this.squareType) {
             case LADDER: return "[" + this.position + "->" + (this.finalSquare.getPosition()+1) + "]";
 
-            case SNAKE: return "[" + this.finalSquare.getPosition() + "<-" + this.position + "]";
+            case SNAKE: return "[" + (this.finalSquare.getPosition()+1) + "<-" + this.position + "]";
         }
         return "ERROR IN SWITCH STATEMENT: squareType undefined!";
     }
