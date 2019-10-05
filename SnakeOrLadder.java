@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class SnakeOrLadder implements ISquare {
 
     //Variables
+    private Game myGame;
     private int position;
     private boolean isLastSquare;
     private SquareType squareType;
@@ -12,6 +13,13 @@ public class SnakeOrLadder implements ISquare {
     private enum SquareType {
         LADDER,
         SNAKE
+    }
+
+    //Initializer
+    SnakeOrLadder(Game parentGame, int position, SquareType setSquareType) {
+        this.myGame = parentGame;
+        this.position = position;
+        this.squareType = setSquareType;
     }
 
     //Methods
@@ -59,5 +67,10 @@ public class SnakeOrLadder implements ISquare {
     @Override
     public void addPlayer(Player player) {
         finalSquare.addPlayer(player);
+    }
+
+    @Override
+    public void printSquareString() {
+
     }
 }
