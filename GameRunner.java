@@ -68,11 +68,13 @@ public class GameRunner{
 
             int numberToMove = Dice.roll();
 
-            gameBoard.movePlayer(numberToMove);
             gameBoard.printSquares(numberToMove);
+            gameBoard.movePlayer(numberToMove);
         }
 
         //Print final State and winner
+        gameBoard.printSquares(7);
+
         String Winner = gameBoard.getLastSquaresPlayer().getName();
         System.out.println(Winner +" wins!");
     }

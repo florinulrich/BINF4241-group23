@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 public class Game {
 
     //Variables
@@ -65,8 +66,10 @@ public class Game {
         if (numberToMove == 0)
         {
             DiceRoll = "Initial state: \t\t\t";
+        } else if (numberToMove == 7) {
+            DiceRoll = "Final state: \t\t\t";
         } else {
-            DiceRoll = currentPlayer.getName() + " \trolls: " + numberToMove + "\t\t";
+            DiceRoll = players.peek().getName() + " \trolls: " + numberToMove + "\t\t";
         }
         System.out.println(DiceRoll + outputLine);
     }

@@ -16,4 +16,8 @@ class PlayerQueue {
         this.players.add(player);
     }
 
+    public Player peek() {
+        return players.peek();
+    }
+
 }
