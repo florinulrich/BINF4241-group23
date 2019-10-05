@@ -87,7 +87,7 @@ public class GameRunner{
         for (int i = 0; i < squaresLength; i++) {
 
             if (i%3 == 0) {
-                if (i > 0 && i < boardSize-5) {
+                if (i > 0 && i < boardSize-6) {
                     squares.remove(i);
                     ISquare newLadder = new SnakeOrLadder(game, i+1, SnakeOrLadder.SquareType.LADDER, squares.get(i+4));
                     squares.add(i, newLadder);
