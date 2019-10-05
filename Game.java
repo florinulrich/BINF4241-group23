@@ -60,7 +60,13 @@ public class Game {
 
             outputLine = outputLine + squareOutput;
         }
-        String DiceRoll = "Player rolls: "+ numberToMove + "\t\t";
+        String DiceRoll = "";
+        if (numberToMove == 0)
+        {
+            DiceRoll = "Initial state: \t\t";
+        } else {
+            DiceRoll = "Player rolls: " + numberToMove + "\t\t";
+        }
         System.out.println(DiceRoll + outputLine);
     }
 

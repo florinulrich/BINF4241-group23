@@ -58,7 +58,7 @@ public class GameRunner{
         }
 
         //Print initial State
-        gameBoard.printSquares();
+        gameBoard.printSquares(0);
 
         while (!gameBoard.gameOver()) {
 
