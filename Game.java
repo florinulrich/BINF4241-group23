@@ -50,8 +50,9 @@ public class Game {
         return this.gameOver;
     }
 
-    void printSquares() {
+    void printSquares(int numberToMove) {
         String outputLine = "";
+
 
         for (ISquare square: squares) {
 
@@ -64,7 +65,6 @@ public class Game {
             }
             outputLine = outputLine + ("[" + (square.getPosition()+1) + playerNames + "]");
         }
-        int numberToMove = 1;
         String DiceRoll = "Player rolls: "+ numberToMove + "\t\t";
         System.out.println(DiceRoll + outputLine);
     }
