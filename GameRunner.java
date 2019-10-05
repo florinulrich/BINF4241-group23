@@ -93,8 +93,14 @@ public class GameRunner{
                     squares.add(i, newLadder);
                 }
             }
+            if (i%5 == 0){
+                if (i > 6 && i < boardSize-1) {
+                    squares.remove(i);
+                    ISquare newLadder = new SnakeOrLadder(game, i+1, SnakeOrLadder.SquareType.SNAKE, squares.get(i-5));
+                    squares.add(i, newLadder);
+                }
+            }
         }
-
 
         return game;
     }

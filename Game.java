@@ -64,9 +64,9 @@ public class Game {
         String DiceRoll = "";
         if (numberToMove == 0)
         {
-            DiceRoll = "Initial state: \t\t";
+            DiceRoll = "Initial state: \t\t\t";
         } else {
-            DiceRoll = currentPlayer.getName() + " rolls: " + numberToMove + "\t\t";
+            DiceRoll = currentPlayer.getName() + " \trolls: " + numberToMove + "\t\t";
         }
         System.out.println(DiceRoll + outputLine);
     }
