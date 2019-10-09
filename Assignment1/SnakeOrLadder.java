@@ -26,7 +26,6 @@ public class SnakeOrLadder implements ISquare {
     @Override
     public void leave(Player playerName) {
         finalSquare.leave(playerName);
-
     }
 
     @Override

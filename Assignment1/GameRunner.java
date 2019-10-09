@@ -13,7 +13,6 @@ public class GameRunner{
     public static void main(String[] args){
 
         getSetupInputs();
-        //System.out.println("Players: " + numberOfPlayers + " Names: " + playerNames + " BoardSize: " + boardSize);
         setUpGame();
     }
 
