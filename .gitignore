@@ -1,0 +1,4 @@
+# Do not track the following files:
+##################################
+
+**/.DS_Store #In macOs a file that stores attributes of a folder
