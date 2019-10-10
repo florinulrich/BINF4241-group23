@@ -2,15 +2,11 @@ public interface Square {
 
     public boolean isOccupied();
 
-    // Is move valid regarding *only* the properties of the piece
-    public boolean technicalValid(int coordinate);
+    public Piece getOccupant();
 
-    // Is move valid regarding the current setup of the board
-    public boolean practicalValid(int coordinate);
+    public void setOccupant(Piece newOccupant);
 
-    public void leave();
-
-    public void enter(Object Piece);
-
+    //Coordinate must never be changed
+    public Coordinate getCoordinate();
 
 }
