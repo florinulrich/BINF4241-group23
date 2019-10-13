@@ -14,12 +14,29 @@ public class Pawn implements IPiece {
     private PieceColor color;
     private Board parentBoard;
     private Coordinate coordinate;
-    private static final PieceType TYPE = PieceType.PAWN;
+    private PieceType TYPE = PieceType.PAWN;
+    private PieceType promotionType;
 
     //Methods
     @Override
     public void move(Coordinate from, Coordinate to) throws IllegalMoveException {
 
+        //TODO: Normal Move Behavior
+
+        if (to.getY() == 7) {
+
+            askForPromotion();
+
+            switch (promotionType) {
+                case QUEEN: parentBoard.addPromotedPieceAt(to.getX(), to.getY(), PieceType.QUEEN); break;
+                case BISHOP: parentBoard.addPromotedPieceAt(to.getX(), to.getY(), PieceType.BISHOP); break;
+                case KNIGHT: parentBoard.addPromotedPieceAt(to.getX(),to.getY(), PieceType.KNIGHT); break;
+                case TOWER: parentBoard.addPromotedPieceAt(to.getX(), to.getY(), PieceType.TOWER); break;
+            }
+
+            parentBoard.removePiece(this);
+
+        }
     }
 
     @Override
@@ -72,9 +89,9 @@ public class Pawn implements IPiece {
         return color;
     }
 
-    private PieceType askForPromotion() {
+    private void askForPromotion() {
 
         //TODO: Get User Input fot the Promotion Type
-        return PieceType.QUEEN;
+        this.promotionType = PieceType.QUEEN;
     }
 }

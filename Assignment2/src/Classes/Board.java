@@ -2,6 +2,7 @@ package Classes;
 
 import Enumerations.Occupant;
 import Enumerations.PieceColor;
+import Enumerations.PieceType;
 import Exceptions.IllegalMoveException;
 import Interfaces.IPiece;
 
@@ -47,6 +48,15 @@ public class Board {
         return Occupant.EMPTY;
         //TODO: Implement this!
         //Also Check for the case that the Square does not exist --> return null
+    }
+
+    public void addPromotedPieceAt(int x, int y, PieceType type) {
+
+        //TODO: Add the promoted Piece
+    }
+
+    public void removePiece(IPiece piece) {
+        //TODO: Remove piece from Board
     }
 
 
