@@ -32,7 +32,7 @@ public class Knight implements IPiece {
 
         ArrayList<Move> moves = new ArrayList<>();
 
-        // Loop variables
+        // Variables
         int x = this.coordinate.getX();
         int y = this.coordinate.getY();
         Occupant beatableOccupant = null;
