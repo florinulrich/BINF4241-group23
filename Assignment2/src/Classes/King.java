@@ -53,6 +53,26 @@ public class King implements IPiece {
             }
         }
 
+        //Search Up Right
+        if (x+1 < 8 && y+1 < 8) {
+            Occupant squareStatus = parentBoard.getOccupantOfSquare(x+1, y + 1);
+            if (squareStatus == Occupant.EMPTY) {
+                moves.add(new Move(this, this.coordinate, new Coordinate(x+1, y + 1)));
+            } else if (squareStatus == beatableOccupant) {
+                moves.add(new Move(this, this.coordinate, new Coordinate(x+1, y + 1)));
+            }
+        }
+
+        //Search Up Left
+        if (x-1 >= 0 && y+1 < 8) {
+            Occupant squareStatus = parentBoard.getOccupantOfSquare(x-1, y + 1);
+            if (squareStatus == Occupant.EMPTY) {
+                moves.add(new Move(this, this.coordinate, new Coordinate(x-1, y + 1)));
+            } else if (squareStatus == beatableOccupant) {
+                moves.add(new Move(this, this.coordinate, new Coordinate(x-1, y + 1)));
+            }
+        }
+
         //Search Down
         if (y-1 >= 0) {
             Occupant squareStatus = parentBoard.getOccupantOfSquare(x, y - 1);
@@ -60,6 +80,26 @@ public class King implements IPiece {
                 moves.add(new Move(this, this.coordinate, new Coordinate(x, y - 1)));
             } else if (squareStatus == beatableOccupant) {
                 moves.add(new Move(this, this.coordinate, new Coordinate(x, y - 1)));
+            }
+        }
+
+        //Search Down Right
+        if (x+1 < 8 && y-1 >= 0) {
+            Occupant squareStatus = parentBoard.getOccupantOfSquare(x+1, y - 1);
+            if (squareStatus == Occupant.EMPTY) {
+                moves.add(new Move(this, this.coordinate, new Coordinate(x+1, y - 1)));
+            } else if (squareStatus == beatableOccupant) {
+                moves.add(new Move(this, this.coordinate, new Coordinate(x+1, y - 1)));
+            }
+        }
+
+        //Search Down Left
+        if (x-1 >=0 && y-1 >= 0) {
+            Occupant squareStatus = parentBoard.getOccupantOfSquare(x-1, y - 1);
+            if (squareStatus == Occupant.EMPTY) {
+                moves.add(new Move(this, this.coordinate, new Coordinate(x-1, y - 1)));
+            } else if (squareStatus == beatableOccupant) {
+                moves.add(new Move(this, this.coordinate, new Coordinate(x-1, y - 1)));
             }
         }
 
