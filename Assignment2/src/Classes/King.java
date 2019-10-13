@@ -14,13 +14,11 @@ public class King implements IPiece {
     private PieceColor color;
     private Board parentBoard;
     private Coordinate coordinate;
-    private static final PieceType TYPE = PieceType.TOWER;
+    private static final PieceType TYPE = PieceType.KING;
 
     //Methods
     @Override
-    public void move(Coordinate from, Coordinate to) throws IllegalMoveException {
-
-    }
+    public void move(Coordinate from, Coordinate to) throws IllegalMoveException {    }
 
     @Override
     public PieceType getType() {
