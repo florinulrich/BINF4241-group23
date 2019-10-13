@@ -1,9 +1,11 @@
+package Enumerations;
+
 public enum PieceType {
 
     KING,
     QUEEN,
     BISHOP,
     KNIGHT,
-    ROOK,
+    TOWER,
     PAWN
 }
