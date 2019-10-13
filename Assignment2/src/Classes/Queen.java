@@ -14,7 +14,7 @@ public class Queen implements IPiece {
     private PieceColor color;
     private Board parentBoard;
     private Coordinate coordinate;
-    private static final PieceType TYPE = PieceType.TOWER;
+    private static final PieceType TYPE = PieceType.QUEEN;
 
     //Methods
     @Override
