@@ -5,12 +5,14 @@ import Enumerations.PieceColor;
 import Enumerations.PieceType;
 import Exceptions.IllegalMoveException;
 import Interfaces.IPiece;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
 
 public class Board {
 
     private ArrayList<IPiece> pieces;
+    private ArrayList<ArrayList<PrintSquares>> printSquares = new ArrayList<ArrayList<PrintSquares>>();
 
     private ArrayList<Move> legalMovesBlack;
     private ArrayList<Move> legalMovesWhite;
@@ -57,6 +59,35 @@ public class Board {
 
     public void removePiece(IPiece piece) {
         //TODO: Remove piece from Board
+    }
+
+    public void printBoard() {
+        for(int i = 0; i < 8; i++) {
+            printSquares.add(new ArrayList<PrintSquares>());
+        }
+        for (ArrayList<PrintSquares> list: printSquares) {
+            for(int i = 0; i < 8; i++) {
+                list.add(new PrintSquares());
+            }
+        }
+
+        for (int i = 7; i >= 0; i--) {
+            String line = "";
+            for (PrintSquares square: printSquares.get(i)) {
+                line = line + square.getOutputString();
+            }
+            System.out.println(line);
+        }
+
+        for (IPiece piece: pieces) {
+            //getCoordinates
+            Pair<Integer, Integer> coordinates = piece.getCoordinates();
+            Integer x = coordinates.getKey();
+            Integer y = coordinates.getValue();
+
+            printSquares.get(y).get(x).setOccupant(piece.getType(), piece.getColor());
+        }
+
     }
 
 

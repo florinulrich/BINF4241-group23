@@ -5,6 +5,7 @@ import Classes.Move;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
 import Exceptions.IllegalMoveException;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
 
@@ -20,4 +21,6 @@ public interface IPiece {
     public ArrayList<Move> getPieceMoves();
 
     public PieceColor getColor();
+
+    public Pair<Integer, Integer> getCoordinates();
 }

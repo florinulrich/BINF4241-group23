@@ -5,6 +5,7 @@ import Enumerations.PieceColor;
 import Enumerations.PieceType;
 import Exceptions.IllegalMoveException;
 import Interfaces.IPiece;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
 
@@ -196,5 +197,10 @@ public class Queen implements IPiece {
     @Override
     public PieceColor getColor() {
         return color;
+    }
+
+    @Override
+    public Pair<Integer, Integer> getCoordinates() {
+        return null;
     }
 }
