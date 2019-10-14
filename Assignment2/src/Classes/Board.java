@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Board {
 
-    private ArrayList<IPiece> pieces;
+    private ArrayList<IPiece> pieces =  new ArrayList<>();
     private ArrayList<ArrayList<PrintSquares>> printSquares = new ArrayList<ArrayList<PrintSquares>>();
 
     private ArrayList<Move> legalMovesBlack;
@@ -61,6 +61,11 @@ public class Board {
         //TODO: Remove piece from Board
     }
 
+    public void addPiece(IPiece piece) {
+        this.pieces.add(piece);
+
+    }
+
     public void printBoard() {
         for(int i = 0; i < 8; i++) {
             printSquares.add(new ArrayList<PrintSquares>());
@@ -71,21 +76,21 @@ public class Board {
             }
         }
 
-        for (int i = 7; i >= 0; i--) {
-            String line = "";
-            for (PrintSquares square: printSquares.get(i)) {
-                line = line + square.getOutputString();
-            }
-            System.out.println(line);
-        }
-
-        for (IPiece piece: pieces) {
+        for (IPiece piece: this.pieces) {
             //getCoordinates
             Pair<Integer, Integer> coordinates = piece.getCoordinates();
             Integer x = coordinates.getKey();
             Integer y = coordinates.getValue();
 
             printSquares.get(y).get(x).setOccupant(piece.getType(), piece.getColor());
+        }
+
+        for (int i = 7; i >= 0; i--) {
+            String line = "";
+            for (PrintSquares square: printSquares.get(i)) {
+                line = line + square.getOutputString();
+            }
+            System.out.println(line);
         }
 
     }

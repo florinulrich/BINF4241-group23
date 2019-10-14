@@ -21,6 +21,13 @@ public class Pawn implements IPiece {
     private PieceType TYPE = PieceType.PAWN;
     private PieceType promotionType;
 
+    //Initializer
+    public Pawn(Board board, Coordinate coordinate, PieceColor color) {
+        this.parentBoard = board;
+        this.coordinate = coordinate;
+        this.color = color;
+    }
+
     //Methods
     @Override
     public void move(Coordinate from, Coordinate to) throws IllegalMoveException {
@@ -95,7 +102,7 @@ public class Pawn implements IPiece {
 
     @Override
     public Pair<Integer, Integer> getCoordinates() {
-        return null;
+        return new Pair<>(this.coordinate.getX(), this.coordinate.getY());
     }
 
     private void askForPromotion() {
