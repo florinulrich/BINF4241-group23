@@ -54,11 +54,10 @@ public class Board {
 
     public void addPromotedPieceAt(int x, int y, PieceType type) {
 
-        //TODO: Add the promoted Piece
     }
 
     public void removePiece(IPiece piece) {
-        //TODO: Remove piece from Board
+        this.pieces.remove(piece);
     }
 
     public void addPiece(IPiece piece) {
@@ -94,7 +93,5 @@ public class Board {
         }
 
     }
-
-
 
 }
