@@ -1,5 +1,8 @@
-package Classes;
+package Classes.Pieces;
 
+import Classes.Board;
+import Classes.Coordinate;
+import Classes.Move;
 import Enumerations.Occupant;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;

@@ -1,5 +1,8 @@
-package Classes;
+package Classes.Pieces;
 
+import Classes.Board;
+import Classes.Coordinate;
+import Classes.Move;
 import Enumerations.Occupant;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
@@ -9,19 +12,17 @@ import javafx.util.Pair;
 
 import java.util.ArrayList;
 
-public class Tower implements IPiece {
+public class Bishop implements IPiece {
 
     //Variables
     private PieceColor color;
     private Board parentBoard;
     private Coordinate coordinate;
-    private static final PieceType TYPE = PieceType.TOWER;
+    private static final PieceType TYPE = PieceType.BISHOP;
 
     //Methods
     @Override
-    public void move(Coordinate from, Coordinate to) throws IllegalMoveException {
-
-    }
+    public void move(Coordinate from, Coordinate to) throws IllegalMoveException {  }
 
     @Override
     public PieceType getType() {
@@ -45,15 +46,15 @@ public class Tower implements IPiece {
             beatableOccupant = Occupant.BLACK;
         }
 
-        //Search Up
-        while ((y+i) < 8) {
+        //Search Up right
+        while ((x+i) < 8 && (y+i) < 8) {
 
-            Occupant squareStatus = parentBoard.getOccupantOfSquare(x, (y+i));
+            Occupant squareStatus = parentBoard.getOccupantOfSquare((x+i), (y+i));
             if (squareStatus == Occupant.EMPTY) {
-                moves.add(new Move(this, this.coordinate, new Coordinate(x, (y+i))));
+                moves.add(new Move(this, this.coordinate, new Coordinate(x+i, y+i)));
             }
             else if(squareStatus == beatableOccupant){
-                moves.add(new Move(this, this.coordinate, new Coordinate(x, y+i)));
+                moves.add(new Move(this, this.coordinate, new Coordinate(x+i, y+i)));
                 break;
             }
             else{
@@ -62,36 +63,34 @@ public class Tower implements IPiece {
             i++;
         }
 
-        //SearchDown
+        //Search Up left
         i = 1;
 
-        while ((y-i) >= 0) {
+        while ((x-i) >= 0 && (y+i) < 8) {
 
-            Occupant squareStatus = parentBoard.getOccupantOfSquare(x, (y-i));
+            Occupant squareStatus = parentBoard.getOccupantOfSquare((x-i), (y+i));
             if (squareStatus == Occupant.EMPTY) {
-                moves.add(new Move(this, this.coordinate, new Coordinate(x, (y-i))));
+                moves.add(new Move(this, this.coordinate, new Coordinate(x-i, y+i)));
             }
             else if(squareStatus == beatableOccupant){
-                moves.add(new Move(this, this.coordinate, new Coordinate(x, y-i)));
+                moves.add(new Move(this, this.coordinate, new Coordinate(x-i, y+i)));
                 break;
             }
             else{
                 break;
             }
-            i--;
+            i++;
         }
 
-        //Search Right
-        i = 1;
+        //Search Down Right
+        while ((x+i) < 8 && (y-i) >= 0) {
 
-        while ((x+i) < 8) {
-
-            Occupant squareStatus = parentBoard.getOccupantOfSquare(x+i, (y));
+            Occupant squareStatus = parentBoard.getOccupantOfSquare((x+i), (y-i));
             if (squareStatus == Occupant.EMPTY) {
-                moves.add(new Move(this, this.coordinate, new Coordinate(x+i, (y))));
+                moves.add(new Move(this, this.coordinate, new Coordinate(x+i, y-i)));
             }
             else if(squareStatus == beatableOccupant){
-                moves.add(new Move(this, this.coordinate, new Coordinate(x+i, y)));
+                moves.add(new Move(this, this.coordinate, new Coordinate(x+i, y-i)));
                 break;
             }
             else{
@@ -101,22 +100,20 @@ public class Tower implements IPiece {
         }
 
         //Search Left
-        i = 1;
+        while ((x-i) >= 0 && (y-i) >= 0) {
 
-        while ((x-i) >= 0) {
-
-            Occupant squareStatus = parentBoard.getOccupantOfSquare(x-i, (y));
+            Occupant squareStatus = parentBoard.getOccupantOfSquare((x-i), (y-i));
             if (squareStatus == Occupant.EMPTY) {
-                moves.add(new Move(this, this.coordinate, new Coordinate(x-i, (y))));
+                moves.add(new Move(this, this.coordinate, new Coordinate(x-i, y-i)));
             }
             else if(squareStatus == beatableOccupant){
-                moves.add(new Move(this, this.coordinate, new Coordinate(x-i, y)));
+                moves.add(new Move(this, this.coordinate, new Coordinate(x-i, y-i)));
                 break;
             }
             else{
                 break;
             }
-            i--;
+            i++;
         }
 
 

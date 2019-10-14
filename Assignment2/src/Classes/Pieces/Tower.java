@@ -1,5 +1,8 @@
-package Classes;
+package Classes.Pieces;
 
+import Classes.Board;
+import Classes.Coordinate;
+import Classes.Move;
 import Enumerations.Occupant;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
@@ -9,13 +12,13 @@ import javafx.util.Pair;
 
 import java.util.ArrayList;
 
-public class Queen implements IPiece {
+public class Tower implements IPiece {
 
     //Variables
     private PieceColor color;
     private Board parentBoard;
     private Coordinate coordinate;
-    private static final PieceType TYPE = PieceType.QUEEN;
+    private static final PieceType TYPE = PieceType.TOWER;
 
     //Methods
     @Override
@@ -45,76 +48,6 @@ public class Queen implements IPiece {
             beatableOccupant = Occupant.BLACK;
         }
 
-        //Search Up right
-        while ((x+i) < 8 && (y+i) < 8) {
-
-            Occupant squareStatus = parentBoard.getOccupantOfSquare((x+i), (y+i));
-            if (squareStatus == Occupant.EMPTY) {
-                moves.add(new Move(this, this.coordinate, new Coordinate(x+i, y+i)));
-            }
-            else if(squareStatus == beatableOccupant){
-                moves.add(new Move(this, this.coordinate, new Coordinate(x+i, y+i)));
-                break;
-            }
-            else{
-                break;
-            }
-            i++;
-        }
-
-        //Search Up left
-        i = 1;
-
-        while ((x-i) >= 0 && (y+i) < 8) {
-
-            Occupant squareStatus = parentBoard.getOccupantOfSquare((x-i), (y+i));
-            if (squareStatus == Occupant.EMPTY) {
-                moves.add(new Move(this, this.coordinate, new Coordinate(x-i, y+i)));
-            }
-            else if(squareStatus == beatableOccupant){
-                moves.add(new Move(this, this.coordinate, new Coordinate(x-i, y+i)));
-                break;
-            }
-            else{
-                break;
-            }
-            i++;
-        }
-
-        //Search Down Right
-        while ((x+i) < 8 && (y-i) >= 0) {
-
-            Occupant squareStatus = parentBoard.getOccupantOfSquare((x+i), (y-i));
-            if (squareStatus == Occupant.EMPTY) {
-                moves.add(new Move(this, this.coordinate, new Coordinate(x+i, y-i)));
-            }
-            else if(squareStatus == beatableOccupant){
-                moves.add(new Move(this, this.coordinate, new Coordinate(x+i, y-i)));
-                break;
-            }
-            else{
-                break;
-            }
-            i++;
-        }
-
-        //Search Down Left
-        while ((x-i) >= 0 && (y-i) >= 0) {
-
-            Occupant squareStatus = parentBoard.getOccupantOfSquare((x-i), (y-i));
-            if (squareStatus == Occupant.EMPTY) {
-                moves.add(new Move(this, this.coordinate, new Coordinate(x-i, y-i)));
-            }
-            else if(squareStatus == beatableOccupant){
-                moves.add(new Move(this, this.coordinate, new Coordinate(x-i, y-i)));
-                break;
-            }
-            else{
-                break;
-            }
-            i++;
-        }
-
         //Search Up
         while ((y+i) < 8) {
 
@@ -132,7 +65,7 @@ public class Queen implements IPiece {
             i++;
         }
 
-        //Search Down
+        //SearchDown
         i = 1;
 
         while ((y-i) >= 0) {
@@ -188,7 +121,6 @@ public class Queen implements IPiece {
             }
             i--;
         }
-
 
 
         return moves;
