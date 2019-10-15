@@ -37,8 +37,8 @@ public class Coordinate {
     }
 
     public Coordinate(int x, int y) {
-        this.column = y;
-        this.row = x;
+        this.column = x;
+        this.row = y;
     }
 
     public String getAlgebraicNotation(int x, int y) {
