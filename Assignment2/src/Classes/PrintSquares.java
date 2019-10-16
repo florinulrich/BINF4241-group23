@@ -5,7 +5,7 @@ import Enumerations.PieceColor;
 import Enumerations.PieceType;
 
 public class PrintSquares{
-    private String occupant = "";
+    private String occupant = "  ";
     private String occupantColor = "";
 
     public void setOccupant(PieceType type, PieceColor color) {
