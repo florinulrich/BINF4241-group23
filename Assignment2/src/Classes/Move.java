@@ -1,5 +1,6 @@
 package Classes;
 
+import Exceptions.IllegalMoveException;
 import Interfaces.IPiece;
 
 public class Move {
@@ -15,12 +16,34 @@ public class Move {
         this.startCoordinate = start;
         this.endCoordinate = end;
 
-        //TODO; Calculate algebraicIdentifier
+        this.calculateAlgebraicIdentifier();
 
     }
 
+    private void calculateAlgebraicIdentifier() {
+        String identifier = "";
+
+        switch (this.performingPiece.getType()) {
+            case QUEEN: identifier = "Q"; break;
+            case KING: identifier = "K"; break;
+            case PAWN: identifier = ""; break;
+            case TOWER: identifier = "T"; break;
+            case BISHOP: identifier = "B"; break;
+            case KNIGHT: identifier = "N"; break;
+        }
+
+        identifier += endCoordinate.getAlgebraicNotation();
+
+        algebraicIdentifier = identifier;
+    }
+
     public void make() {
-        //Performs the move
+        try {
+            this.performingPiece.move(this);
+        } catch (IllegalMoveException e) {
+            e.printStackTrace();
+            System.out.println("Move.make in Move Class not working");
+        }
     }
 
     public boolean isLegal() {
@@ -35,5 +58,10 @@ public class Move {
 
     public Coordinate getEndCoordinate() {
         return endCoordinate;
+    }
+
+    public void correctAmbiguousIdentifier() {
+        if (algebraicIdentifier.length() = )
+
     }
 }

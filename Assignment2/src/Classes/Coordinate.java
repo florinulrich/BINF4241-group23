@@ -10,6 +10,7 @@ public class Coordinate {
 
     private int column;
     private int row;
+    private String algebraicNotation;
 
     public Coordinate(String algebraicNotation) throws CoordinateFormException {
 
@@ -34,18 +35,43 @@ public class Coordinate {
         } catch (Exception e) {
             throw new CoordinateFormException();
         }
+
+        this.algebraicNotation = algebraicNotation;
     }
 
-    public Coordinate(int x, int y) {
+    public Coordinate(int x, int y) throws CoordinateFormException {
         this.column = x;
         this.row = y;
+        this.algebraicNotation = calculateAlgebraicNotation(x,y);
     }
 
-    public String getAlgebraicNotation(int x, int y) {
+    public static String calculateAlgebraicNotation(int x, int y) throws CoordinateFormException {
 
-        //TODO: Get an acceptable output
+        String algebraic = "";
 
-        return "This is the Coordinate String";
+        switch (x) {
+            case 0: algebraic += "a"; break;
+            case 1: algebraic += "b"; break;
+            case 2: algebraic += "c"; break;
+            case 3: algebraic += "d"; break;
+            case 4: algebraic += "e"; break;
+            case 5: algebraic += "f"; break;
+            case 6: algebraic += "g"; break;
+            case 7: algebraic += "h"; break;
+            default: throw new CoordinateFormException();
+        }
+
+        if (y >= 0 && y < 8) {
+            algebraic += (char) y;
+        }
+        else { throw new CoordinateFormException(); }
+
+
+        return algebraic;
+    }
+
+    public String getAlgebraicNotation() {
+        return algebraicNotation;
     }
 
     public int getX() { return column; }
