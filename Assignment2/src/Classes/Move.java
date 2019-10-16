@@ -73,7 +73,9 @@ public class Move {
             else if (algebraicIdentifier.length() == 3 && additive.charAt(0) == algebraicIdentifier.charAt(0)) {
                 algebraicIdentifier = additive.charAt(1) + algebraicIdentifier;
             }
-            else { algebraicIdentifier =
+            else {
+                algebraicIdentifier = additive + algebraicIdentifier;
+            }
         }
 
     }
