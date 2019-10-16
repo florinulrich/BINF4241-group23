@@ -1,5 +1,6 @@
 package Classes;
 
+import Enumerations.PieceType;
 import Exceptions.IllegalMoveException;
 import Interfaces.IPiece;
 
@@ -61,7 +62,19 @@ public class Move {
     }
 
     public void correctAmbiguousIdentifier() {
-        if (algebraicIdentifier.length() = )
+
+        String additive = startCoordinate.getAlgebraicNotation();
+
+        //Move by a Pawn
+        if (performingPiece.getType() == PieceType.PAWN) {
+            if (algebraicIdentifier.length() == 2) {
+                algebraicIdentifier = additive.charAt(0) + algebraicIdentifier;
+            }
+            else if (algebraicIdentifier.length() == 3 && additive.charAt(0) == algebraicIdentifier.charAt(0)) {
+                algebraicIdentifier = additive.charAt(1) + algebraicIdentifier;
+            }
+            else { algebraicIdentifier =
+        }
 
     }
 }
