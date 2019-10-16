@@ -5,6 +5,8 @@ import Enumerations.PieceColor;
 import Exceptions.IllegalMoveException;
 import Interfaces.IPiece;
 
+import java.util.ArrayList;
+
 public class Game {
 
 
@@ -29,6 +31,15 @@ public class Game {
         //Test board.getOccupant WORKS
 //        System.out.println(board.getOccupantOfSquare(0,0)); //Must return white
 //        System.out.println(board.getOccupantOfSquare(7,7)); //Must return black
+
+
+        //Test getPiece Moves
+//        IPiece pawn = new Pawn(board,0, 1, PieceColor.WHITE);
+//        ArrayList<Move> pawnMoves = pawn.getPieceMoves();
+//
+//        for (Move move: pawnMoves) {
+//            System.out.println(move.getAlgebraicIdentifier());
+//        }
 
         board.printBoard();
 
