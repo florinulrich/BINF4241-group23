@@ -22,6 +22,8 @@ public class Board {
     private int scoreWhite = 0;
     private int scoreBlack = 0;
 
+    private ArrayList<Move> history;
+
     private void computeLegalMovesFor(ArrayList<Move> movesArray, PieceColor color) {
 
         for (IPiece piece: pieces) {
@@ -48,6 +50,8 @@ public class Board {
             throw new IllegalMoveException();
         } else {
             chosenMove.make();
+
+            history.add(chosenMove);
         }
     }
 
@@ -110,7 +114,9 @@ public class Board {
             for (PrintSquares square: printSquares.get(i)) {
                 line = line + square.getOutputString();
             }
-            System.out.print(line + "\t\t HISTORY");
+            for (int i = 7; i >= 0; i--) {
+                System.out.print(line + "\t\t " + history.get(history.size() - i));
+            }
             if (i==7){
                 System.out.println("\t\t WHITE Player score: " + scoreWhite);
             } else if (i==6){
