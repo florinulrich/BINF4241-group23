@@ -6,6 +6,7 @@ import Classes.Move;
 import Enumerations.Occupant;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
+import Exceptions.CoordinateFormException;
 import Exceptions.IllegalMoveException;
 import Interfaces.IPiece;
 import javafx.util.Pair;
@@ -22,7 +23,7 @@ public class Pawn implements IPiece {
     private PieceType promotionType;
 
     //Initializer
-    public Pawn(Board board, int xCoordinate, int yCoordinate, PieceColor color) {
+    public Pawn(Board board, int xCoordinate, int yCoordinate, PieceColor color) throws CoordinateFormException {
 
         Coordinate coordinate = new Coordinate(xCoordinate, yCoordinate);
 
