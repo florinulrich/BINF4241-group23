@@ -61,7 +61,7 @@ public class Move {
     }
 
     public void correctAmbiguousIdentifier() {
-        if (algebraicIdentifier.length() = )
+        //if (algebraicIdentifier.length() = )
 
     }
 }

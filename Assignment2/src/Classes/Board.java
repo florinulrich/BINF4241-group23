@@ -89,7 +89,7 @@ public class Board {
 
         for (int i = 7; i >= 0; i--) {
 
-            String line = "["+ (i+1) +"]"+"\t";
+            String line = "("+ (i+1) +")"+"\t";
 
             for (PrintSquares square: printSquares.get(i)) {
                 line = line + square.getOutputString();
@@ -97,7 +97,7 @@ public class Board {
             System.out.println(line);
         }
 
-        System.out.println("\t[a ][b ][c ][d ][e ][f ][g ][h ]\n");
+        System.out.println("\t(a )(b )(c )(d )(e )(f )(g )(h )\n");
 
         //TODO: Space after Board and some way to show the moves that have been made (last 8 for example)
 
