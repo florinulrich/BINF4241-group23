@@ -12,8 +12,8 @@ public class Game {
     static public void main(String[] args) {
         Board board = new Board();
 
-        Coordinate coord = new Coordinate(7, 1);
-        IPiece pawn = new Pawn(board, coord, PieceColor.WHITE);
+        Coordinate coordinate = new Coordinate(7, 1);
+        IPiece pawn = new Pawn(board, coordinate, PieceColor.WHITE);
         board.addPiece(pawn);
         board.printBoard();
         try {
@@ -21,7 +21,7 @@ public class Game {
         } catch (IllegalMoveException e) {
             e.printStackTrace();
         }
-        System.out.println("");
+        System.out.println();
 
         board.printBoard();
 
