@@ -30,19 +30,21 @@ public class Pawn implements IPiece {
 
     //Methods
     @Override
-    public void move(Coordinate to) throws IllegalMoveException {
+    public void move(Move move) throws IllegalMoveException {
 
-        this.coordinate = to;
+        Coordinate endCoordinate = move.getEndCoordinate();
 
-        if (to.getY() == 7) {
+        this.coordinate = endCoordinate;
+
+        if (this.coordinate.getY() == 7) {
 
             askForPromotion();
 
             switch (promotionType) {
-                case QUEEN: parentBoard.addPromotedPieceAt(to.getX(), to.getY(), PieceType.QUEEN); break;
-                case BISHOP: parentBoard.addPromotedPieceAt(to.getX(), to.getY(), PieceType.BISHOP); break;
-                case KNIGHT: parentBoard.addPromotedPieceAt(to.getX(),to.getY(), PieceType.KNIGHT); break;
-                case TOWER: parentBoard.addPromotedPieceAt(to.getX(), to.getY(), PieceType.TOWER); break;
+                case QUEEN: parentBoard.addPromotedPieceAt(endCoordinate.getX(), endCoordinate.getY(), PieceType.QUEEN); break;
+                case BISHOP: parentBoard.addPromotedPieceAt(endCoordinate.getX(), endCoordinate.getY(), PieceType.BISHOP); break;
+                case KNIGHT: parentBoard.addPromotedPieceAt(endCoordinate.getX(),endCoordinate.getY(), PieceType.KNIGHT); break;
+                case TOWER: parentBoard.addPromotedPieceAt(endCoordinate.getX(), endCoordinate.getY(), PieceType.TOWER); break;
             }
 
             parentBoard.removePiece(this);

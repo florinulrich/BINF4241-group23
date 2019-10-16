@@ -22,7 +22,7 @@ public class Bishop implements IPiece {
 
     //Methods
     @Override
-    public void move(Coordinate to) throws IllegalMoveException {  }
+    public void move(Move move) throws IllegalMoveException {  }
 
     @Override
     public PieceType getType() {
