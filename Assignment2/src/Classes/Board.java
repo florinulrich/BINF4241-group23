@@ -71,9 +71,9 @@ public class Board {
         this.pieces.remove(piece);
 
         if (piece.getcolor() == WHITE) {
-            scoreWhite += 1;
-        } else {
             scoreBlack += 1;
+        } else {
+            scoreWhite += 1;
         }
     }
 
