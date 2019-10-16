@@ -26,17 +26,14 @@ public class Game {
         System.out.println();
         */
 
-        //Test Move Class
-//        IPiece pawn = new Pawn(board, 1, 1, PieceColor.WHITE);
-//        Coordinate start = new Coordinate(1, 1);
-//        Coordinate end = new Coordinate(1, 0);
-//        Move move = new Move(pawn, start, end);
-//        System.out.println(move.getAlgebraicIdentifier());
-
+        //Test board.getOccupant WORKS
+//        System.out.println(board.getOccupantOfSquare(0,0)); //Must return white
+//        System.out.println(board.getOccupantOfSquare(7,7)); //Must return black
 
         board.printBoard();
 
     }
+
 
     private static void pieceSetup(Board board) {
         // WHITE Player

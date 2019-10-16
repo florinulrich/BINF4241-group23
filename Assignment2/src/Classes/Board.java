@@ -50,9 +50,15 @@ public class Board {
     }
 
     public Occupant getOccupantOfSquare(int xCoordinate, int yCoordinate) {
+        for (IPiece piece: pieces) {
+            if (piece.getCoordinates().equals(new Pair<>(xCoordinate, yCoordinate))) {
+                switch (piece.getColor()) {
+                    case BLACK: return Occupant.BLACK;
+                    case WHITE: return Occupant.WHITE;
+                }
+            }
+        }
         return Occupant.EMPTY;
-        //TODO: Implement this!
-        //Also Check for the case that the Square does not exist --> return null
     }
 
     public void addPromotedPieceAt(int x, int y, PieceType type) {
