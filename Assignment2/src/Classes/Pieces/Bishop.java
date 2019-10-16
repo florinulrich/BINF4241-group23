@@ -20,6 +20,16 @@ public class Bishop implements IPiece {
     private Coordinate coordinate;
     private static final PieceType TYPE = PieceType.BISHOP;
 
+    //Initializer
+    public Bishop(Board board, int xCoordinate, int yCoordinate, PieceColor color) {
+
+        Coordinate coordinate = new Coordinate(xCoordinate, yCoordinate);
+
+        this.parentBoard = board;
+        this.coordinate = coordinate;
+        this.color = color;
+    }
+
     //Methods
     @Override
     public void move(Move move) throws IllegalMoveException {  }

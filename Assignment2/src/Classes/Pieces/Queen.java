@@ -20,6 +20,17 @@ public class Queen implements IPiece {
     private Coordinate coordinate;
     private static final PieceType TYPE = PieceType.QUEEN;
 
+    //Initializer
+    public Queen(Board board, int xCoordinate, int yCoordinate, PieceColor color) {
+
+        Coordinate coordinate = new Coordinate(xCoordinate, yCoordinate);
+
+        this.parentBoard = board;
+        this.coordinate = coordinate;
+        this.color = color;
+    }
+
+
     //Methods
     @Override
     public void move(Move move) throws IllegalMoveException {
