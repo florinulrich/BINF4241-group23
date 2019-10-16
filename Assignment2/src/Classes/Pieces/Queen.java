@@ -204,6 +204,6 @@ public class Queen implements IPiece {
 
     @Override
     public Pair<Integer, Integer> getCoordinates() {
-        return null;
+        return new Pair<>(this.coordinate.getX(), this.coordinate.getY());
     }
 }
