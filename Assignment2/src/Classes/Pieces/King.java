@@ -20,6 +20,16 @@ public class King implements IPiece {
     private Coordinate coordinate;
     private static final PieceType TYPE = PieceType.KING;
 
+    //Initializer
+    public King(Board board, int xCoordinate, int yCoordinate, PieceColor color) {
+
+        Coordinate coordinate = new Coordinate(xCoordinate, yCoordinate);
+
+        this.parentBoard = board;
+        this.coordinate = coordinate;
+        this.color = color;
+    }
+
     //Methods
     @Override
     public void move(Move move) throws IllegalMoveException {    }
@@ -135,6 +145,6 @@ public class King implements IPiece {
 
     @Override
     public Pair<Integer, Integer> getCoordinates() {
-        return null;
+        return new Pair<>(this.coordinate.getX(), this.coordinate.getY());
     }
 }
