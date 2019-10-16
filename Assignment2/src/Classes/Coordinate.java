@@ -81,4 +81,11 @@ public class Coordinate {
     public int getX() { return column; }
 
     public int getY() { return row; }
+
+    public boolean equals(Coordinate coordinate) {
+        if (coordinate.getX() == this.getX() && coordinate.getY() == this.getY()) {
+            return true;
+        }
+        return false;
+    }
 }

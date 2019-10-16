@@ -49,6 +49,16 @@ public class Move {
         }
     }
 
+    public void revert() {
+        Move moveBack = new Move(performingPiece, endCoordinate, startCoordinate);
+        try {
+            this.performingPiece.move(moveBack);
+        } catch (IllegalMoveException e) {
+            e.printStackTrace();
+            System.out.println("Revert Method not working");
+        }
+    }
+
     public boolean isLegal() {
 
         //TODO: return if move is legal or not

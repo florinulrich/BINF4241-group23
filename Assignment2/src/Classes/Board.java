@@ -14,7 +14,6 @@ import java.util.Scanner;
 public class Board {
 
     private ArrayList<IPiece> pieces =  new ArrayList<>();
-    private ArrayList<ArrayList<PrintSquares>> printSquares = new ArrayList<ArrayList<PrintSquares>>();
 
     private ArrayList<Move> legalMovesBlack;
     private ArrayList<Move> legalMovesWhite;
@@ -87,7 +86,7 @@ public class Board {
 
     public void printBoard() {
 
-        printSquares = new ArrayList<>();
+        ArrayList<ArrayList<PrintSquares>> printSquares = new ArrayList<>();
 
         for(int i = 0; i < 8; i++) {
             printSquares.add(new ArrayList<PrintSquares>());
@@ -130,6 +129,33 @@ public class Board {
 
         //TODO: Space after Board and some way to show the moves that have been made (last 8 for example)
 
+    }
+
+    private void removeSuicideMoves(ArrayList<Move> moves) {
+        //TODO: Remove moves that result in a self check
+
+        //1. Make Move
+        //2. Check for check
+        //3. Save result
+        //4. Revert Move
+        //5. If necessary remove move from list
+
+    }
+
+    private boolean kingIsChecked(PieceColor color) {
+
+        Coordinate kingCoordinate;
+
+        for (IPiece piece: pieces) {
+            if (piece.getType() == PieceType.KING && piece.getColor() == color) {
+                Pair<Integer, Integer> coordinatePair = piece.getCoordinates();
+                kingCoordinate = new Coordinate(coordinatePair.getKey(), coordinatePair.getValue());
+            }
+        }
+
+        //TODO: Check if any opponents move reaches kinkCoordinate
+
+        return false;
     }
 
 }
