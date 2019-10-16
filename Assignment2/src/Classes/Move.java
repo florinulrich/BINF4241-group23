@@ -36,6 +36,8 @@ public class Move {
         identifier += endCoordinate.getAlgebraicNotation();
 
         algebraicIdentifier = identifier;
+
+        correctIdentifierForCapture();
     }
 
     public void make() {
@@ -62,6 +64,8 @@ public class Move {
     }
 
     public void correctAmbiguousIdentifier() {
+
+        removeCaptureInformation();
 
         String additive = startCoordinate.getAlgebraicNotation();
 
@@ -94,15 +98,21 @@ public class Move {
             }
         }
 
+        correctIdentifierForCapture();
+
     }
+
+    private void removeCaptureInformation() {
+        algebraicIdentifier.replace("x", "");
+    }
+
     private void correctIdentifierForCapture() {
 
-        char piece = algebraicIdentifier.charAt(0);
+        String prefix = algebraicIdentifier.substring(0, algebraicIdentifier.length() - 2);
         String move = endCoordinate.getAlgebraicNotation();
 
         if (performingPiece.willCaptureOnCoordinate(endCoordinate)) {
-
-            //TODO: Add x into string at right place
+            algebraicIdentifier = prefix + "x" + move;
         }
     }
 }

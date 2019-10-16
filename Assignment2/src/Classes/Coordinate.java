@@ -66,7 +66,7 @@ public class Coordinate {
         }
 
         if (y >= 0 && y < 8) {
-            algebraic += (char) y;
+            algebraic += (y + 1);
         }
         else { throw new CoordinateFormException(); }
 

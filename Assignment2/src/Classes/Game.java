@@ -13,6 +13,32 @@ public class Game {
         Board board = new Board();
 
         // initialize piece setup
+        pieceSetup(board);
+
+        /* tester
+
+        board.printBoard();
+        try {
+            pawn.move(pawn.getPieceMoves().get(0));
+        } catch (IllegalMoveException e) {
+            e.printStackTrace();
+        }
+        System.out.println();
+        */
+
+        //Test Move Class
+//        IPiece pawn = new Pawn(board, 1, 1, PieceColor.WHITE);
+//        Coordinate start = new Coordinate(1, 1);
+//        Coordinate end = new Coordinate(1, 0);
+//        Move move = new Move(pawn, start, end);
+//        System.out.println(move.getAlgebraicIdentifier());
+
+
+        board.printBoard();
+
+    }
+
+    private static void pieceSetup(Board board) {
         // WHITE Player
         // --pawns
         for (int i = 0; i <= 7; i++) {
@@ -76,20 +102,5 @@ public class Game {
         // --king
         IPiece king_b = new King(board, 4, 7, PieceColor.BLACK);
         board.addPiece(king_b);
-
-        /* tester
-
-        board.printBoard();
-        try {
-            pawn.move(pawn.getPieceMoves().get(0));
-        } catch (IllegalMoveException e) {
-            e.printStackTrace();
-        }
-        System.out.println();
-        */
-
-
-        board.printBoard();
-
     }
 }
