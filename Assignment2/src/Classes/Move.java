@@ -76,6 +76,22 @@ public class Move {
             else {
                 algebraicIdentifier = additive + algebraicIdentifier;
             }
+
+        //Any other Piece
+        } else {
+            char piece = algebraicIdentifier.charAt(0);
+            String move = endCoordinate.getAlgebraicNotation();
+
+            if (algebraicIdentifier.length() == 3) {
+                algebraicIdentifier = piece + additive.charAt(0) + move;
+            }
+            else if (algebraicIdentifier.length() == 4 && additive.charAt(0) == algebraicIdentifier.charAt(1)) {
+
+                algebraicIdentifier = piece + additive.charAt(1) + move;
+            }
+            else {
+                algebraicIdentifier = piece + additive + move;
+            }
         }
 
     }
