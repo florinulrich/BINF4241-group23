@@ -23,4 +23,6 @@ public interface IPiece {
     public PieceColor getColor();
 
     public Pair<Integer, Integer> getCoordinates();
+
+    public boolean willCaptureOnCoordinate(Coordinate coordinate);
 }

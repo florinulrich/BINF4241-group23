@@ -95,4 +95,14 @@ public class Move {
         }
 
     }
+    private void correctIdentifierForCapture() {
+
+        char piece = algebraicIdentifier.charAt(0);
+        String move = endCoordinate.getAlgebraicNotation();
+
+        if (performingPiece.willCaptureOnCoordinate(endCoordinate)) {
+
+            //TODO: Add x into string at right place
+        }
+    }
 }

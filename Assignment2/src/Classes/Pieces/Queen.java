@@ -217,4 +217,17 @@ public class Queen implements IPiece {
     public Pair<Integer, Integer> getCoordinates() {
         return new Pair<>(this.coordinate.getX(), this.coordinate.getY());
     }
+
+    @Override
+    public boolean willCaptureOnCoordinate(Coordinate coordinate) {
+        Occupant occupant = parentBoard.getOccupantOfSquare(coordinate.getX(), coordinate.getY());
+
+        if (occupant == Occupant.BLACK && this.getColor() == PieceColor.WHITE) {
+            return true;
+        } else if (occupant == Occupant.WHITE && this.getColor() == PieceColor.BLACK) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
