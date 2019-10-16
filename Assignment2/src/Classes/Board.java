@@ -74,7 +74,7 @@ public class Board {
     public void removePiece(IPiece piece) {
         this.pieces.remove(piece);
 
-        if (piece.getcolor() == WHITE) {
+        if (piece.getColor() == PieceColor.WHITE) {
             scoreBlack += 1;
         } else {
             scoreWhite += 1;
@@ -114,9 +114,8 @@ public class Board {
             for (PrintSquares square: printSquares.get(i)) {
                 line = line + square.getOutputString();
             }
-            for (int i = 7; i >= 0; i--) {
-                System.out.print(line + "\t\t " + history.get(history.size() - i));
-            }
+            System.out.print(line + "\t\t HISTORY");
+
             if (i==7){
                 System.out.println("\t\t WHITE Player score: " + scoreWhite);
             } else if (i==6){
