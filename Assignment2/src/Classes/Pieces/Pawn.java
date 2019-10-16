@@ -23,7 +23,7 @@ public class Pawn implements IPiece {
     private PieceType promotionType;
 
     //Initializer
-    public Pawn(Board board, int xCoordinate, int yCoordinate, PieceColor color) throws CoordinateFormException {
+    public Pawn(Board board, int xCoordinate, int yCoordinate, PieceColor color) {
 
         Coordinate coordinate = new Coordinate(xCoordinate, yCoordinate);
 

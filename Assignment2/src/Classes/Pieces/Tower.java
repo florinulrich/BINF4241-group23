@@ -6,6 +6,7 @@ import Classes.Move;
 import Enumerations.Occupant;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
+import Exceptions.CoordinateFormException;
 import Exceptions.IllegalMoveException;
 import Interfaces.IPiece;
 import javafx.util.Pair;

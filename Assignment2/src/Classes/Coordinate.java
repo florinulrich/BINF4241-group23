@@ -39,10 +39,14 @@ public class Coordinate {
         this.algebraicNotation = algebraicNotation;
     }
 
-    public Coordinate(int x, int y) throws CoordinateFormException {
+    public Coordinate(int x, int y){
         this.column = x;
         this.row = y;
-        this.algebraicNotation = calculateAlgebraicNotation(x,y);
+        try {
+            this.algebraicNotation = calculateAlgebraicNotation(x,y);
+        } catch (Exception e) {
+            System.out.println("Coordinate not Valid");
+        }
     }
 
     public static String calculateAlgebraicNotation(int x, int y) throws CoordinateFormException {
