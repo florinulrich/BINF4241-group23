@@ -22,7 +22,7 @@ public class King implements IPiece {
 
     //Methods
     @Override
-    public void move(Coordinate from, Coordinate to) throws IllegalMoveException {    }
+    public void move(Coordinate to) throws IllegalMoveException {    }
 
     @Override
     public PieceType getType() {

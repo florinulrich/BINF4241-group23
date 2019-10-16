@@ -30,9 +30,9 @@ public class Pawn implements IPiece {
 
     //Methods
     @Override
-    public void move(Coordinate from, Coordinate to) throws IllegalMoveException {
+    public void move(Coordinate to) throws IllegalMoveException {
 
-        //TODO: Normal Move Behavior
+        this.coordinate = to;
 
         if (to.getY() == 7) {
 

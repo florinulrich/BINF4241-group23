@@ -32,6 +32,7 @@ public class Board {
         }
     }
 
+    //Needs to check if move is possible in the move array of the respective player
     public void makeMove(String algebraicMove, ArrayList<Move> moveArray) throws IllegalMoveException {
 
         Move chosenMove = null;
@@ -66,6 +67,9 @@ public class Board {
     }
 
     public void printBoard() {
+
+        printSquares = new ArrayList<>();
+
         for(int i = 0; i < 8; i++) {
             printSquares.add(new ArrayList<PrintSquares>());
         }
@@ -91,6 +95,8 @@ public class Board {
             }
             System.out.println(line);
         }
+
+        //TODO: Space after Board and some way to show the moves that have been made (last 8 for example)
 
     }
 

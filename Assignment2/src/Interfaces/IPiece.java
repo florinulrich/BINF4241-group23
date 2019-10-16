@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public interface IPiece {
 
     //Moves the Interfaces.Piece, throws an exception if the Interfaces.Piece can not go there
-    public void move(Coordinate from, Coordinate to) throws IllegalMoveException;
+    public void move(Coordinate to) throws IllegalMoveException;
 
     //Get the Pieces Type, may be Nil!
     public PieceType getType();

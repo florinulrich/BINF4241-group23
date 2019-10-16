@@ -32,4 +32,8 @@ public class Move {
     public String getAlgebraicIdentifier() {
         return algebraicIdentifier;
     }
+
+    public Coordinate getEndCoordinate() {
+        return endCoordinate;
+    }
 }
