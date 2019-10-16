@@ -9,6 +9,8 @@ import javafx.util.Pair;
 
 import java.util.ArrayList;
 
+import java.util.Scanner;
+
 public class Board {
 
     private ArrayList<IPiece> pieces =  new ArrayList<>();
@@ -94,10 +96,18 @@ public class Board {
             for (PrintSquares square: printSquares.get(i)) {
                 line = line + square.getOutputString();
             }
-            System.out.println(line);
+            System.out.print(line + "\t\t HISTORY");
+            if (i==7){
+                System.out.println("\t\t WHITE Player score: 0");
+            } else if (i==6){
+                System.out.println("\t\t BLACK Player score: 0");
+            } else{
+                System.out.print("\n");
+            }
         }
 
         System.out.println("\t(a )(b )(c )(d )(e )(f )(g )(h )\n");
+        System.out.println("COLOR Player move >> ");
 
         //TODO: Space after Board and some way to show the moves that have been made (last 8 for example)
 
