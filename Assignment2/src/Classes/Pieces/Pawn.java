@@ -22,7 +22,10 @@ public class Pawn implements IPiece {
     private PieceType promotionType;
 
     //Initializer
-    public Pawn(Board board, Coordinate coordinate, PieceColor color) {
+    public Pawn(Board board, int xCoordinate, int yCoordinate, PieceColor color) {
+
+        Coordinate coordinate = new Coordinate(xCoordinate, yCoordinate);
+
         this.parentBoard = board;
         this.coordinate = coordinate;
         this.color = color;
