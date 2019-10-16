@@ -17,7 +17,7 @@ public class Game {
         board.addPiece(pawn);
         board.printBoard();
         try {
-            pawn.move(pawn.getPieceMoves().get(0).getEndCoordinate());
+            pawn.move(pawn.getPieceMoves().get(0));
         } catch (IllegalMoveException e) {
             e.printStackTrace();
         }
