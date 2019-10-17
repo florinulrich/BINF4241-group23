@@ -15,43 +15,78 @@ public class Board {
 
     private ArrayList<IPiece> pieces =  new ArrayList<>();
 
-    private ArrayList<Move> legalMovesBlack;
-    private ArrayList<Move> legalMovesWhite;
+    private ArrayList<Move> legalMovesBlack = new ArrayList<>();
+    private ArrayList<Move> legalMovesWhite = new ArrayList<>();
 
     private int scoreWhite = 0;
     private int scoreBlack = 0;
 
-    private ArrayList<Move> history;
+    private ArrayList<Move> history = new ArrayList<>();
 
-    private void computeLegalMovesFor(ArrayList<Move> movesArray, PieceColor color) {
+    private void computeLegalMoves() {
 
         for (IPiece piece: pieces) {
-            if (piece.getColor() == color) {
 
-                ArrayList<Move> PieceMoves = piece.getPieceMoves();
+            ArrayList<Move> PieceMoves = piece.getPieceMoves();
 
-                for (Move move: PieceMoves) {
-                    if (move.isLegal()) {movesArray.add(move);}
+            for (Move move: PieceMoves) {
+                if (move.isLegal() && piece.getColor() == PieceColor.BLACK) {
+                    legalMovesBlack.add(move);
+                } else {
+                    legalMovesWhite.add(move);
                 }
             }
+
         }
+
+        removeSuicideMoves(PieceColor.WHITE, legalMovesWhite, PieceColor.BLACK);
+        removeSuicideMoves(PieceColor.BLACK, legalMovesBlack, PieceColor.WHITE);
     }
 
     //Needs to check if move is possible in the move array of the respective player
-    public void makeMove(String algebraicMove, ArrayList<Move> moveArray) throws IllegalMoveException {
+    public void makeMove(String algebraicMove, PieceColor playerColor) throws IllegalMoveException {
+
+        computeLegalMoves();
+
+        ArrayList<Move> moveArray;
+
+        if (playerColor == PieceColor.WHITE) {
+            moveArray = legalMovesWhite;
+        } else {
+            moveArray = legalMovesBlack;
+        }
 
         Move chosenMove = null;
         for (Move move: moveArray) {
-            if (move.getAlgebraicIdentifier() == algebraicMove) { chosenMove = move; }
+            if (move.getAlgebraicIdentifier().equals(algebraicMove)) { chosenMove = move; }
         }
 
         if (chosenMove == null) {
-            throw new IllegalMoveException();
+            System.out.println("Chosen move: " + algebraicMove);
+            System.out.println("This is not a legal move, try another one!");
+            System.out.println("Available Moves:");
+
+            for (Move move: moveArray) {
+                System.out.print(move.getAlgebraicIdentifier() + " ");
+            }
+            System.out.println();
+
+            String newMove = getMoveInput();
+            makeMove(newMove, playerColor);
+
         } else {
             chosenMove.make();
 
             history.add(chosenMove);
         }
+        computeLegalMoves();
+    }
+
+    private String getMoveInput() throws IllegalMoveException {
+
+        //TODO: Get new Move from User
+        System.out.println("getMoveInput Method not yet implemented. Aborted Program!");
+        throw new IllegalMoveException();
     }
 
     public Occupant getOccupantOfSquare(int xCoordinate, int yCoordinate) {
@@ -131,8 +166,31 @@ public class Board {
 
     }
 
-    private void removeSuicideMoves(ArrayList<Move> moves) {
-        //TODO: Remove moves that result in a self check
+    private void removeSuicideMoves(PieceColor playerColor, ArrayList<Move> playerMoves , PieceColor opponentColor) {
+
+        for (Move move: playerMoves) {
+
+            boolean illegal = false;
+
+            move.make();
+
+            ArrayList<Move> opponentMoves = new ArrayList<>();
+            for (IPiece piece: pieces) {
+                if (piece.getColor().equals(opponentColor)) {
+                    opponentMoves.addAll(piece.getPieceMoves());
+                }
+            }
+
+            if (kingIsChecked(playerColor, opponentMoves)) {
+                illegal = true;
+            }
+
+            move.revert();
+
+            if (illegal) {
+                playerMoves.remove(move);
+            }
+        }
 
         //1. Make Move
         //2. Check for check
@@ -142,9 +200,9 @@ public class Board {
 
     }
 
-    private boolean kingIsChecked(PieceColor color) {
+    private boolean kingIsChecked(PieceColor color, ArrayList<Move> opponentsMoves) {
 
-        Coordinate kingCoordinate;
+        Coordinate kingCoordinate = null;
 
         for (IPiece piece: pieces) {
             if (piece.getType() == PieceType.KING && piece.getColor() == color) {
@@ -153,7 +211,13 @@ public class Board {
             }
         }
 
-        //TODO: Check if any opponents move reaches kinkCoordinate
+
+        for (Move move: opponentsMoves) {
+            assert kingCoordinate != null;
+            if (move.getEndCoordinate().equals(kingCoordinate)) {
+                return true;
+            }
+        }
 
         return false;
     }

@@ -15,18 +15,23 @@ public class Game {
         Board board = new Board();
 
         // initialize piece setup
-        pieceSetup(board);
+       // pieceSetup(board);
 
-        /* tester
+        tester();
 
-        board.printBoard();
-        try {
-            pawn.move(pawn.getPieceMoves().get(0));
-        } catch (IllegalMoveException e) {
-            e.printStackTrace();
-        }
-        System.out.println();
-        */
+    }
+
+    private static void tester() {
+    /* tester
+
+    board.printBoard();
+    try {
+        pawn.move(pawn.getPieceMoves().get(0));
+    } catch (IllegalMoveException e) {
+        e.printStackTrace();
+    }
+    System.out.println();
+    */
 
         //Test board.getOccupant WORKS
 //        System.out.println(board.getOccupantOfSquare(0,0)); //Must return white
@@ -35,14 +40,15 @@ public class Game {
 
         //Test getPiece Moves
 //        IPiece pawn = new Pawn(board,0, 1, PieceColor.WHITE);
-//        ArrayList<Move> pawnMoves = pawn.getPieceMoves();
+//        board.addPiece(pawn);
 //
-//        for (Move move: pawnMoves) {
-//            System.out.println(move.getAlgebraicIdentifier());
+//        try {
+//            board.makeMove("a3", PieceColor.WHITE);
+//        } catch (IllegalMoveException e) {
+//            e.printStackTrace();
 //        }
-
-        board.printBoard();
-
+//
+//        board.printBoard();
     }
 
 
