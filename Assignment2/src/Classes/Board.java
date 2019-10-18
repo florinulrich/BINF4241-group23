@@ -171,18 +171,18 @@ public class Board {
 
         if (pieceToRemove != null) {
             removePiece(pieceToRemove);
+
+            if (pieceToRemove.getColor() == PieceColor.WHITE) {
+                scoreBlack += 1;
+            } else {
+                scoreWhite += 1;
+            }
         }
     }
 
 
     public void removePiece(IPiece piece) {
         this.pieces.remove(piece);
-
-        if (piece.getColor() == PieceColor.WHITE) {
-            scoreBlack += 1;
-        } else {
-            scoreWhite += 1;
-        }
     }
 
     public void addPiece(IPiece piece) {

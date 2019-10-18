@@ -39,8 +39,6 @@ public class Pawn implements IPiece {
 
         Coordinate endCoordinate = move.getEndCoordinate();
 
-        this.coordinate = endCoordinate;
-
         if ((this.coordinate.getY() == 7 || this.coordinate.getY() == 0)) {
 
             askForPromotion();
@@ -58,7 +56,8 @@ public class Pawn implements IPiece {
 
             parentBoard.removePiece(this);
 
-
+        } else {
+            this.coordinate = endCoordinate;
         }
     }
 
