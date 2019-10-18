@@ -46,10 +46,14 @@ public class Pawn implements IPiece {
             askForPromotion();
 
             switch (promotionType) {
-                case QUEEN: parentBoard.addPromotedPieceAt(endCoordinate.getX(), endCoordinate.getY(), PieceType.QUEEN); break;
-                case BISHOP: parentBoard.addPromotedPieceAt(endCoordinate.getX(), endCoordinate.getY(), PieceType.BISHOP); break;
-                case KNIGHT: parentBoard.addPromotedPieceAt(endCoordinate.getX(),endCoordinate.getY(), PieceType.KNIGHT); break;
-                case TOWER: parentBoard.addPromotedPieceAt(endCoordinate.getX(), endCoordinate.getY(), PieceType.TOWER); break;
+                case QUEEN:
+                    parentBoard.addPromotedPieceAt(endCoordinate.getX(), endCoordinate.getY(), PieceType.QUEEN, this.color); break;
+                case BISHOP:
+                    parentBoard.addPromotedPieceAt(endCoordinate.getX(), endCoordinate.getY(), PieceType.BISHOP, this.color); break;
+                case KNIGHT:
+                    parentBoard.addPromotedPieceAt(endCoordinate.getX(),endCoordinate.getY(), PieceType.KNIGHT, this.color); break;
+                case TOWER:
+                    parentBoard.addPromotedPieceAt(endCoordinate.getX(), endCoordinate.getY(), PieceType.TOWER, this.color); break;
             }
 
             parentBoard.removePiece(this);
