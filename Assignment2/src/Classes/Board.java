@@ -80,6 +80,8 @@ public class Board {
             makeMove(newMove, playerColor);
 
         } else {
+
+            this.removePieceAt(chosenMove.getEndCoordinate());
             chosenMove.make();
 
             history.add(chosenMove);
@@ -130,6 +132,24 @@ public class Board {
         //TODO: Pawn Promotion
 
     }
+
+    private void removePieceAt(Coordinate coordinate) {
+
+        IPiece pieceToRemove = null;
+
+        for (IPiece piece: this.pieces) {
+            Coordinate pieceCoordinate = new Coordinate(piece.getCoordinates().getKey(), piece.getCoordinates().getValue());
+
+            if (pieceCoordinate.equals(coordinate)) {
+                pieceToRemove = piece;
+            }
+        }
+
+        if (pieceToRemove != null) {
+            removePiece(pieceToRemove);
+        }
+    }
+
 
     public void removePiece(IPiece piece) {
         this.pieces.remove(piece);
