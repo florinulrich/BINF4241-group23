@@ -150,7 +150,25 @@ public class Board {
             for (PrintSquares square: printSquares.get(i)) {
                 line = line + square.getOutputString();
             }
-            System.out.print(line + "\t\t HISTORY");
+
+            //get history from arraylist and print out latest history
+            //if arraylist has more than 6 items:
+            if(history.size() > 6){
+            Move getHistory = history.get(history.size() - i);
+            String historyLine = getHistory.getAlgebraicIdentifier();
+            System.out.print(line + "\t\t " + historyLine);
+            }
+
+            //if arraylist has less than 6 items:
+            else{
+            for(int n = 1; n <= history.size(); n++) {
+                Move getHistory = history.get(history.size() - n);
+                String historyLine = getHistory.getAlgebraicIdentifier();
+                System.out.print(line + "\t\t " + historyLine);
+                }
+            }
+
+            System.out.print(line + "\t\t " + historyLine);
 
             if (i==7){
                 System.out.println("\t\t WHITE Player score: " + scoreWhite);
