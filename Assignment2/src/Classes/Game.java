@@ -18,6 +18,9 @@ public class Game {
        // pieceSetup(board);
 
         tester();
+        pieceSetup(board);
+        board.printBoard();
+
 
     }
 
@@ -117,4 +120,5 @@ public class Game {
         IPiece king_b = new King(board, 4, 7, PieceColor.BLACK);
         board.addPiece(king_b);
     }
+
 }

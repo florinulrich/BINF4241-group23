@@ -5,6 +5,7 @@ import Enumerations.PieceColor;
 import Enumerations.PieceType;
 import Exceptions.IllegalMoveException;
 import Interfaces.IPiece;
+import javafx.beans.binding.BooleanExpression;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
@@ -82,11 +83,12 @@ public class Board {
         computeLegalMoves();
     }
 
-    private String getMoveInput() throws IllegalMoveException {
+    private String getMoveInput(){
 
-        //TODO: Get new Move from User
-        System.out.println("getMoveInput Method not yet implemented. Aborted Program!");
-        throw new IllegalMoveException();
+        Scanner playerInput = new Scanner(System.in);
+        String playerMove = playerInput.next();
+
+        return playerMove;
     }
 
     public Occupant getOccupantOfSquare(int xCoordinate, int yCoordinate) {
@@ -160,7 +162,11 @@ public class Board {
         }
 
         System.out.println("\t(a )(b )(c )(d )(e )(f )(g )(h )\n");
-        System.out.println("COLOR Player move >> ");
+
+        PieceColor colorCurrent = history.get(history.size()-1).performingPlayer();
+        System.out.print(colorCurrent + " Player move >> ");
+
+        getMoveInput();
 
         //TODO: Space after Board and some way to show the moves that have been made (last 8 for example)
 

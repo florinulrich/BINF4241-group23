@@ -1,5 +1,6 @@
 package Classes;
 
+import Enumerations.PieceColor;
 import Enumerations.PieceType;
 import Exceptions.IllegalMoveException;
 import Interfaces.IPiece;
@@ -125,4 +126,9 @@ public class Move {
             algebraicIdentifier = prefix + "x" + move;
         }
     }
+
+    public PieceColor performingPlayer(){
+        return performingPiece.getColor();
+    }
+
 }
