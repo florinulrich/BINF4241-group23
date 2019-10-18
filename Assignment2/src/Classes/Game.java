@@ -2,10 +2,7 @@ package Classes;
 
 import Classes.Pieces.*;
 import Enumerations.PieceColor;
-import Exceptions.IllegalMoveException;
 import Interfaces.IPiece;
-
-import java.util.ArrayList;
 
 public class Game {
 
@@ -19,9 +16,9 @@ public class Game {
 
         IPiece whiteKing = new King(board, 2, 0, PieceColor.WHITE);
         IPiece blackKing = new King(board, 5, 5, PieceColor.BLACK);
-        IPiece blackTower = new Pawn(board, 5, 1, PieceColor.BLACK);
-        IPiece whiteTower = new Pawn(board, 2, 6, PieceColor.WHITE);
-        IPiece blackTower2 = new Pawn(board, 0, 3, PieceColor.BLACK);
+        IPiece blackTower = new Tower(board, 5, 1, PieceColor.BLACK);
+        IPiece whiteTower = new Tower(board, 3, 3, PieceColor.WHITE);
+        IPiece blackTower2 = new Tower(board, 2, 3, PieceColor.BLACK);
 
         board.addPiece(whiteKing);
         board.addPiece(blackKing);
@@ -29,7 +26,7 @@ public class Game {
         board.addPiece(blackTower);
         board.addPiece(blackTower2);
 
-        board.printBoard();
+        board.startGame();
     }
 
     private static void tester() {

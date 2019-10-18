@@ -8,9 +8,7 @@ import Enumerations.Occupant;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
 import Exceptions.CheckmateException;
-import Exceptions.IllegalMoveException;
 import Interfaces.IPiece;
-import javafx.beans.binding.BooleanExpression;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
@@ -193,8 +191,46 @@ public class Board {
         this.pieces.add(piece);
     }
 
-    public void printBoard() {
+    public void startGame() {
 
+        printBoard();
+
+        PieceColor colorNext = PieceColor.WHITE;
+        ArrayList<Move> movesNextOpponent = new ArrayList<>();
+
+        if (history.size() > 0) {
+            if (history.get(history.size() - 1).performingPlayer() == PieceColor.BLACK) {
+                colorNext = PieceColor.WHITE;
+                movesNextOpponent = legalMovesBlack;
+            } else {
+                colorNext = PieceColor.BLACK;
+                movesNextOpponent = legalMovesWhite;
+            }
+        }
+
+
+        //See if opponent is now in check
+        if (kingIsChecked(colorNext, movesNextOpponent)) {
+            System.out.println("Check!");
+        }
+
+
+        System.out.print(colorNext + " Player move >> ");
+
+        String nextMove = getMoveInput();
+        try {
+            makeMove(nextMove, colorNext);
+            startGame();
+        } catch (CheckmateException e) {
+            printBoard();
+            return;
+        }
+
+        //TODO: Space after Board and some way to show the moves that have been made (last 8 for example)
+
+    }
+
+    private void printBoard() {
         System.out.println();
 
         ArrayList<ArrayList<PrintSquares>> printSquares = new ArrayList<>();
@@ -237,39 +273,6 @@ public class Board {
         }
 
         System.out.println("\t(a )(b )(c )(d )(e )(f )(g )(h )\n");
-
-        PieceColor colorNext = PieceColor.WHITE;
-        ArrayList<Move> movesNextOpponent = new ArrayList<>();
-
-        if (history.size() > 0) {
-            if (history.get(history.size() - 1).performingPlayer() == PieceColor.BLACK) {
-                colorNext = PieceColor.WHITE;
-                movesNextOpponent = legalMovesBlack;
-            } else {
-                colorNext = PieceColor.BLACK;
-                movesNextOpponent = legalMovesWhite;
-            }
-        }
-
-
-        //See if opponent is now in check
-        if (kingIsChecked(colorNext, movesNextOpponent)) {
-            System.out.println("Check!");
-        }
-
-
-        System.out.print(colorNext + " Player move >> ");
-
-        String nextMove = getMoveInput();
-        try {
-            makeMove(nextMove, colorNext);
-            printBoard();
-        } catch (CheckmateException e) {
-            return;
-        }
-
-        //TODO: Space after Board and some way to show the moves that have been made (last 8 for example)
-
     }
 
     private void removeSuicideMoves(PieceColor playerColor, ArrayList<Move> playerMoves , PieceColor opponentColor) {
