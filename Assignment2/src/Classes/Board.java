@@ -1,5 +1,9 @@
 package Classes;
 
+import Classes.Pieces.Bishop;
+import Classes.Pieces.Knight;
+import Classes.Pieces.Queen;
+import Classes.Pieces.Tower;
 import Enumerations.Occupant;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
@@ -130,10 +134,27 @@ public class Board {
         return Occupant.EMPTY;
     }
 
-    public void addPromotedPieceAt(int x, int y, PieceType type) {
+    public void addPromotedPieceAt(int x, int y, PieceType type, PieceColor color) {
 
         //TODO: Pawn Promotion
+        IPiece promoted;
 
+        switch (type){
+            case KNIGHT:
+                promoted = new Knight(this, x, y, color);
+                break;
+            case BISHOP:
+                promoted = new Bishop(this, x, y, color);
+                break;
+            case TOWER:
+                promoted = new Tower(this, x, y, color);
+                break;
+            default:
+                promoted = new Queen(this, x, y, color);
+                break;
+
+        }
+        this.pieces.add(promoted);
     }
 
     private void removePieceAt(Coordinate coordinate) {

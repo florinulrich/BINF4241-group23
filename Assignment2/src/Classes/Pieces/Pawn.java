@@ -54,6 +54,7 @@ public class Pawn implements IPiece {
 
             parentBoard.removePiece(this);
 
+
         }
     }
 
