@@ -15,19 +15,7 @@ public class Game {
         Board board = new Board();
 
         // initialize piece setup
-        //pieceSetup(board);
-
-
-        IPiece whiteKnight = new Knight(board, 3, 3, PieceColor.WHITE);
-        IPiece blackKnight = new Knight(board, 5, 5, PieceColor.BLACK);
-        IPiece whiteKing = new King(board, 7, 0, PieceColor.WHITE);
-        IPiece blackKing = new King(board, 7, 7, PieceColor.BLACK);
-
-        board.addPiece(whiteKing);
-        board.addPiece(blackKing);
-        board.addPiece(blackKnight);
-        board.addPiece(whiteKnight);
-
+        pieceSetup(board);
         board.printBoard();
     }
 

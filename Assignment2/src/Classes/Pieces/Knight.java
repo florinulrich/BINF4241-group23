@@ -82,7 +82,7 @@ public class Knight implements IPiece {
         }
 
         //Search Up Left var 1
-        if (x-1 >= 0 && y+2 < 8){
+        if ((x-1) >= 0 && y+2 < 8){
             Occupant squareStatus = parentBoard.getOccupantOfSquare(x-1, y+2);
             if (squareStatus == Occupant.EMPTY) {
                 moves.add(new Move(this, this.coordinate, new Coordinate(x-1, y+2)));
@@ -93,7 +93,7 @@ public class Knight implements IPiece {
         }
 
         //Search Up Left var 2
-        if (x-2 >= 0 && y+1 < 8){
+        if ((x-2) >= 0 && y+1 < 8){
             Occupant squareStatus = parentBoard.getOccupantOfSquare(x-2, y+1);
             if (squareStatus == Occupant.EMPTY) {
                 moves.add(new Move(this, this.coordinate, new Coordinate(x-2, y+1)));
@@ -104,7 +104,7 @@ public class Knight implements IPiece {
         }
 
         //Search Down Right var 1
-        if (x+1 < 8 && y-2 >= 0){
+        if (x+1 < 8 && (y-2) >= 0){
             Occupant squareStatus = parentBoard.getOccupantOfSquare(x+1, y-2);
             if (squareStatus == Occupant.EMPTY) {
                 moves.add(new Move(this, this.coordinate, new Coordinate(x+1, y-2)));
@@ -115,7 +115,7 @@ public class Knight implements IPiece {
         }
 
         //Search Down Right var 2
-        if (x+2 < 8 && y-1 >= 0){
+        if (x+2 < 8 && (y-1) >= 0){
             Occupant squareStatus = parentBoard.getOccupantOfSquare(x+2, y-1);
             if (squareStatus == Occupant.EMPTY) {
                 moves.add(new Move(this, this.coordinate, new Coordinate(x+2, y-1)));
@@ -126,7 +126,7 @@ public class Knight implements IPiece {
         }
 
         //Search Down Left var 1
-        if (x-1 >= 0 && y-2 < 8){
+        if ((x-1) >= 0 && (y-2) >= 0){
             Occupant squareStatus = parentBoard.getOccupantOfSquare(x-1, y-2);
             if (squareStatus == Occupant.EMPTY) {
                 moves.add(new Move(this, this.coordinate, new Coordinate(x-1, y-2)));
@@ -137,7 +137,7 @@ public class Knight implements IPiece {
         }
 
         //Search Up Left var 2
-        if (x-2 >= 0 && y-1 < 8){
+        if ((x-2) >= 0 && (y-1) >= 0){
             Occupant squareStatus = parentBoard.getOccupantOfSquare(x-2, y-1);
             if (squareStatus == Occupant.EMPTY) {
                 moves.add(new Move(this, this.coordinate, new Coordinate(x-2, y-1)));
