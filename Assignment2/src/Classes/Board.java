@@ -204,7 +204,12 @@ public class Board {
 
         System.out.println("\t(a )(b )(c )(d )(e )(f )(g )(h )\n");
 
-        PieceColor colorCurrent = history.get(history.size()-1).performingPlayer();
+        PieceColor colorCurrent = PieceColor.WHITE;
+
+        if (history.size() > 0) {
+            colorCurrent = history.get(history.size() - 1).performingPlayer();
+        }
+
         System.out.print(colorCurrent + " Player move >> ");
 
         getMoveInput();
