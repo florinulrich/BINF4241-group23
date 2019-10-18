@@ -251,6 +251,8 @@ public class Board {
 
     private void removeSuicideMoves(PieceColor playerColor, ArrayList<Move> playerMoves , PieceColor opponentColor) {
 
+        ArrayList<Move> movesToRemove = new ArrayList<>();
+
         for (Move move: playerMoves) {
 
             boolean illegal = false;
@@ -271,10 +273,13 @@ public class Board {
             move.revert();
 
             if (illegal) {
-                playerMoves.remove(move);
+                movesToRemove.add(move);
             }
 
+
         }
+
+        playerMoves.removeAll(movesToRemove);
 
         //1. Make Move
         //2. Check for check
