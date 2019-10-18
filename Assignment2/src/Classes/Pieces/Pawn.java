@@ -16,6 +16,8 @@ import java.util.Scanner;
 
 public class Pawn implements IPiece {
 
+    //TODO: Implement enpassant
+
     //Variables
     private PieceColor color;
     private Board parentBoard;
@@ -160,7 +162,6 @@ public class Pawn implements IPiece {
 
     private void askForPromotion() {
 
-        //TODO: Get User Input fot the Promotion Type
         Scanner playerInput = new Scanner(System.in);
         System.out.print("Enter Promotion Type >> ");
 

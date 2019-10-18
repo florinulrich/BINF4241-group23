@@ -138,7 +138,6 @@ public class Board {
 
     public void addPromotedPieceAt(int x, int y, PieceType type, PieceColor color) {
 
-        //TODO: Pawn Promotion
         IPiece promoted;
 
         switch (type){
@@ -226,7 +225,7 @@ public class Board {
             return;
         }
 
-        //TODO: Space after Board and some way to show the moves that have been made (last 8 for example)
+
 
     }
 

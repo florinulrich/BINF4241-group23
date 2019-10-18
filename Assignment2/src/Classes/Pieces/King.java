@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 public class King implements IPiece {
 
+    //TODO: Implement Castle
+
     //Variables
     private PieceColor color;
     private Board parentBoard;
