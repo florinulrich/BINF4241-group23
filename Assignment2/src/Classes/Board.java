@@ -92,14 +92,12 @@ public class Board {
         PieceColor opponentColor;
         if (playerColor == PieceColor.BLACK) {
             opponentMoves = legalMovesWhite;
-            opponentColor = PieceColor.WHITE;
         } else {
             opponentMoves = legalMovesBlack;
-            opponentColor = PieceColor.BLACK;
         }
 
         if (opponentMoves.isEmpty()) {
-            System.out.println("Checkmate! Player " + opponentColor + " wins!");
+            System.out.println("Checkmate! Player " + playerColor + " wins!");
             throw new CheckmateException();
         }
     }
@@ -215,6 +213,7 @@ public class Board {
         String nextMove = getMoveInput();
         try {
             makeMove(nextMove, colorCurrent);
+            printBoard();
         } catch (CheckmateException e) {
             return;
         }
