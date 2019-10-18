@@ -42,6 +42,7 @@ public class Move {
     }
 
     public void make() {
+
         try {
             this.performingPiece.move(this);
         } catch (IllegalMoveException e) {

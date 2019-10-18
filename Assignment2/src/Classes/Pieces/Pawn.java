@@ -34,7 +34,7 @@ public class Pawn implements IPiece {
 
     //Methods
     @Override
-    public void move(Move move) throws IllegalMoveException {
+    public void move(Move move) {
 
         Coordinate endCoordinate = move.getEndCoordinate();
 
