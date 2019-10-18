@@ -152,14 +152,14 @@ public class Board {
             }
 
             //get history from arraylist and print out latest history
-            //if arraylist has more than 6 items:
-            if(history.size() > 6){
-            Move getHistory = history.get(history.size() - i);
+            //if arraylist has more than 7 items:
+            if(history.size() >= 8){
+            Move getHistory = history.get(history.size() - i + 1);
             String historyLine = getHistory.getAlgebraicIdentifier();
             System.out.print(line + "\t\t " + historyLine);
             }
 
-            //if arraylist has less than 6 items:
+            //if arraylist has less than 8 items:
             else{
             for(int n = 1; n <= history.size(); n++) {
                 Move getHistory = history.get(history.size() - n);
@@ -167,8 +167,6 @@ public class Board {
                 System.out.print(line + "\t\t " + historyLine);
                 }
             }
-
-            System.out.print(line + "\t\t " + historyLine);
 
             if (i==7){
                 System.out.println("\t\t WHITE Player score: " + scoreWhite);
