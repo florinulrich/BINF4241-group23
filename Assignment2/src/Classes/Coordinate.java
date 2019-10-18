@@ -45,7 +45,7 @@ public class Coordinate {
         try {
             this.algebraicNotation = calculateAlgebraicNotation(x,y);
         } catch (Exception e) {
-            System.out.println("Coordinate not Valid");
+            System.out.println("Coordinate not Valid (" + x +"," + y + ")");
         }
     }
 

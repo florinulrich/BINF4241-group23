@@ -25,7 +25,7 @@ public class Board {
 
     private ArrayList<Move> history = new ArrayList<>();
 
-    private void computeLegalMoves() throws CheckmateException {
+    private void computeLegalMoves() {
 
         for (IPiece piece: pieces) {
 
@@ -45,7 +45,7 @@ public class Board {
     }
 
     //Needs to check if move is possible in the move array of the respective player
-    public void makeMove(String algebraicMove, PieceColor playerColor) throws IllegalMoveException, CheckmateException {
+    public void makeMove(String algebraicMove, PieceColor playerColor) throws CheckmateException {
 
         computeLegalMoves();
 
@@ -212,13 +212,18 @@ public class Board {
 
         System.out.print(colorCurrent + " Player move >> ");
 
-        getMoveInput();
+        String nextMove = getMoveInput();
+        try {
+            makeMove(nextMove, colorCurrent);
+        } catch (CheckmateException e) {
+            return;
+        }
 
         //TODO: Space after Board and some way to show the moves that have been made (last 8 for example)
 
     }
 
-    private void removeSuicideMoves(PieceColor playerColor, ArrayList<Move> playerMoves , PieceColor opponentColor) throws CheckmateException {
+    private void removeSuicideMoves(PieceColor playerColor, ArrayList<Move> playerMoves , PieceColor opponentColor) {
 
         for (Move move: playerMoves) {
 

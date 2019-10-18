@@ -74,6 +74,8 @@ public class Move {
         return endCoordinate;
     }
 
+
+    //TODO: Use this method somewhere useful
     public void correctAmbiguousIdentifier() {
 
         removeCaptureInformation();

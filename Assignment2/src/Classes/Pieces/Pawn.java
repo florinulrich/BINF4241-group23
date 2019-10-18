@@ -63,6 +63,53 @@ public class Pawn implements IPiece {
 
     @Override
     public ArrayList<Move> getPieceMoves() {
+        if (getColor() == PieceColor.WHITE) {
+            return getPieceMovesWhite();
+        } else {
+            return getPieceMovesBlack();
+        }
+    }
+
+    private ArrayList<Move> getPieceMovesBlack() {
+        ArrayList<Move> moves = new ArrayList<>();
+
+        int x = this.coordinate.getX();
+        int y = this.coordinate.getY();
+
+        Occupant beatableOccupant = null;
+
+        if (this.color == PieceColor.BLACK) {
+            beatableOccupant = Occupant.WHITE;
+        } else if (this.color == PieceColor.WHITE) {
+            beatableOccupant = Occupant.BLACK;
+        }
+
+        //Normal Forward move
+        if (parentBoard.getOccupantOfSquare(x,y-1) == Occupant.EMPTY) {
+            moves.add(new Move(this, this.coordinate, new Coordinate(x, y-1)));
+        }
+
+        //Capture to the left
+        if (parentBoard.getOccupantOfSquare(x-1,y-1) == beatableOccupant) {
+            moves.add(new Move(this, this.coordinate, new Coordinate(x-1, y-1)));
+        }
+
+        //Capture to the right
+        if (parentBoard.getOccupantOfSquare(x+1,y-1) == beatableOccupant) {
+            moves.add(new Move(this, this.coordinate, new Coordinate(x+1, y-1)));
+        }
+
+        //Initial Two step Move
+        if (parentBoard.getOccupantOfSquare(x,y-1) == Occupant.EMPTY
+                && parentBoard.getOccupantOfSquare(x, y-2) == Occupant.EMPTY
+                && this.coordinate.getY() == 6) {
+
+            moves.add(new Move(this, this.coordinate, new Coordinate(x, y-2)));
+        }
+        return moves;
+    }
+
+    private ArrayList<Move> getPieceMovesWhite() {
         ArrayList<Move> moves = new ArrayList<>();
 
         int x = this.coordinate.getX();
