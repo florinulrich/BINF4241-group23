@@ -205,17 +205,21 @@ public class Board {
 
         System.out.println("\t(a )(b )(c )(d )(e )(f )(g )(h )\n");
 
-        PieceColor colorCurrent = PieceColor.WHITE;
+        PieceColor colorNext = PieceColor.WHITE;
 
         if (history.size() > 0) {
-            colorCurrent = history.get(history.size() - 1).performingPlayer();
+            if (history.get(history.size() - 1).performingPlayer() == PieceColor.BLACK) {
+                colorNext = PieceColor.WHITE;
+            } else {
+                colorNext = PieceColor.BLACK;
+            }
         }
 
-        System.out.print(colorCurrent + " Player move >> ");
+        System.out.print(colorNext + " Player move >> ");
 
         String nextMove = getMoveInput();
         try {
-            makeMove(nextMove, colorCurrent);
+            makeMove(nextMove, colorNext);
             printBoard();
         } catch (CheckmateException e) {
             return;
