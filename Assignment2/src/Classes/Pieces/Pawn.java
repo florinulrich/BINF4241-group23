@@ -186,11 +186,11 @@ public class Pawn implements IPiece {
 
     }
 
-    public void promote() {
+    public void promote(Move move) {
 
         askForPromotion();
 
-        Coordinate endCoordinate = this.coordinate;
+        Coordinate endCoordinate = move.getEndCoordinate();
 
         switch (promotionType) {
             case QUEEN:

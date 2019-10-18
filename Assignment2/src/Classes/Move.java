@@ -147,7 +147,7 @@ public class Move {
 
             if (pawnRow == 7 || pawnRow == 1) {
                 Pawn promotionPawn = (Pawn) performingPiece;
-                promotionPawn.promote();
+                promotionPawn.promote(this);
             }
         }
     }
