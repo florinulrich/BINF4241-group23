@@ -96,7 +96,7 @@ public class Tower implements IPiece {
             else{
                 break;
             }
-            i--;
+            i++;
         }
 
         //Search Right
@@ -134,7 +134,7 @@ public class Tower implements IPiece {
             else{
                 break;
             }
-            i--;
+            i++;
         }
 
 
