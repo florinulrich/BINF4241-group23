@@ -134,4 +134,7 @@ public class Move {
         return performingPiece.getColor();
     }
 
+    public Coordinate getStartCoordinate() {
+        return this.startCoordinate;
+    }
 }

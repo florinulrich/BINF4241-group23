@@ -266,6 +266,17 @@ public class Board {
                 }
             }
 
+            //Check if any Piece is beaten and its moves therefore don't count
+            ArrayList<Move> movesOfBeatenEnemy = new ArrayList<>();
+            for (Move opponentMove: opponentMoves){
+
+                if (move.getEndCoordinate().equals(opponentMove.getStartCoordinate())) {
+                    movesOfBeatenEnemy.add(opponentMove);
+                }
+            }
+
+            opponentMoves.removeAll(movesOfBeatenEnemy);
+
             if (kingIsChecked(playerColor, opponentMoves)) {
                 illegal = true;
             }
