@@ -41,7 +41,7 @@ public class Pawn implements IPiece {
 
         this.coordinate = endCoordinate;
 
-        if (this.coordinate.getY() == 7) {
+        if ((this.coordinate.getY() == 7 || this.coordinate.getY() == 0)) {
 
             askForPromotion();
 
@@ -195,7 +195,7 @@ public class Pawn implements IPiece {
                 break;
             default:
                 System.out.println("Invalid Type");
-                break;
+                askForPromotion();
         }
 
     }
