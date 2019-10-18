@@ -15,18 +15,7 @@ public class Game {
         Board board = new Board();
 
         // initialize piece setup
-
-        IPiece whiteKing = new King(board, 1, 1, PieceColor.WHITE);
-        IPiece blackKing = new King(board, 5, 5, PieceColor.BLACK);
-        IPiece blackTower = new Tower(board, 2, 2, PieceColor.BLACK);
-        IPiece whiteTower = new Tower(board, 3, 3, PieceColor.WHITE);
-
-        board.addPiece(whiteKing);
-        board.addPiece(blackKing);
-        board.addPiece(whiteTower);
-        board.addPiece(blackTower);
-
-
+        pieceSetup(board);
         board.printBoard();
     }
 
@@ -58,18 +47,6 @@ public class Game {
 //        }
 //
 //        board.printBoard();
-
-
-//        IPiece whiteKing = new King(board, 1, 1, PieceColor.WHITE);
-//        IPiece blackKing = new King(board, 5, 5, PieceColor.BLACK);
-//        IPiece blackTower = new Tower(board, 2, 2, PieceColor.BLACK);
-//        IPiece whiteTower = new Tower(board, 3, 3, PieceColor.WHITE);
-//
-//        board.addPiece(whiteKing);
-//        board.addPiece(blackKing);
-//        board.addPiece(whiteTower);
-//        board.addPiece(blackTower);
-
     }
 
 

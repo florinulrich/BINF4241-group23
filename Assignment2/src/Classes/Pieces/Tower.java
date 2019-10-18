@@ -87,7 +87,7 @@ public class Tower implements IPiece {
 
             Occupant squareStatus = parentBoard.getOccupantOfSquare(x, (y-i));
             if (squareStatus == Occupant.EMPTY) {
-                moves.add(new Move(this, this.coordinate, new Coordinate(x, (y-i))));
+                moves.add(new Move(this, this.coordinate, new Coordinate(x, y-i)));
             }
             else if(squareStatus == beatableOccupant){
                 moves.add(new Move(this, this.coordinate, new Coordinate(x, y-i)));

@@ -166,7 +166,7 @@ public class Queen implements IPiece {
             else{
                 break;
             }
-            i--;
+            i++;
         }
 
         //Search Right
@@ -203,7 +203,7 @@ public class Queen implements IPiece {
             else{
                 break;
             }
-            i--;
+            i++;
         }
 
 

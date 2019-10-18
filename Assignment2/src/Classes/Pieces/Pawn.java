@@ -12,6 +12,7 @@ import Interfaces.IPiece;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Pawn implements IPiece {
 
@@ -174,6 +175,28 @@ public class Pawn implements IPiece {
     private void askForPromotion() {
 
         //TODO: Get User Input fot the Promotion Type
-        this.promotionType = PieceType.QUEEN;
+        Scanner playerInput = new Scanner(System.in);
+        System.out.println("Enter Promotion Type >> ");
+
+        String colorInput = playerInput.next();
+
+        switch (colorInput.toLowerCase()) {
+            case "queen":
+                this.promotionType = PieceType.QUEEN;
+                break;
+            case "knight":
+                this.promotionType = PieceType.KNIGHT;
+                break;
+            case "bishop":
+                this.promotionType = PieceType.BISHOP;
+                break;
+            case "tower":
+                this.promotionType = PieceType.TOWER;
+                break;
+            default:
+                System.out.println("Invalid Type");
+                break;
+        }
+
     }
 }
