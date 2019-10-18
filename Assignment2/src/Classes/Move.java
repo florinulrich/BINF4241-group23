@@ -1,5 +1,6 @@
 package Classes;
 
+import Classes.Pieces.Pawn;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
 import Exceptions.IllegalMoveException;
@@ -136,5 +137,18 @@ public class Move {
 
     public Coordinate getStartCoordinate() {
         return this.startCoordinate;
+    }
+
+    public void checkForPromotion() {
+
+        if (performingPiece.getType() == PieceType.PAWN) {
+
+            int pawnRow = endCoordinate.getY();
+
+            if (pawnRow == 7 || pawnRow == 1) {
+                Pawn promotionPawn = (Pawn) performingPiece;
+                promotionPawn.promote();
+            }
+        }
     }
 }

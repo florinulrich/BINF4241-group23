@@ -39,26 +39,8 @@ public class Pawn implements IPiece {
 
         Coordinate endCoordinate = move.getEndCoordinate();
 
-        if ((this.coordinate.getY() == 7 || this.coordinate.getY() == 0)) {
+        this.coordinate = endCoordinate;
 
-            askForPromotion();
-
-            switch (promotionType) {
-                case QUEEN:
-                    parentBoard.addPromotedPieceAt(endCoordinate.getX(), endCoordinate.getY(), PieceType.QUEEN, this.color); break;
-                case BISHOP:
-                    parentBoard.addPromotedPieceAt(endCoordinate.getX(), endCoordinate.getY(), PieceType.BISHOP, this.color); break;
-                case KNIGHT:
-                    parentBoard.addPromotedPieceAt(endCoordinate.getX(),endCoordinate.getY(), PieceType.KNIGHT, this.color); break;
-                case TOWER:
-                    parentBoard.addPromotedPieceAt(endCoordinate.getX(), endCoordinate.getY(), PieceType.TOWER, this.color); break;
-            }
-
-            parentBoard.removePiece(this);
-
-        } else {
-            this.coordinate = endCoordinate;
-        }
     }
 
     @Override
@@ -201,6 +183,27 @@ public class Pawn implements IPiece {
                 System.out.println("Invalid Type");
                 askForPromotion();
         }
+
+    }
+
+    public void promote() {
+
+        askForPromotion();
+
+        Coordinate endCoordinate = this.coordinate;
+
+        switch (promotionType) {
+            case QUEEN:
+                parentBoard.addPromotedPieceAt(endCoordinate.getX(), endCoordinate.getY(), PieceType.QUEEN, this.color); break;
+            case BISHOP:
+                parentBoard.addPromotedPieceAt(endCoordinate.getX(), endCoordinate.getY(), PieceType.BISHOP, this.color); break;
+            case KNIGHT:
+                parentBoard.addPromotedPieceAt(endCoordinate.getX(),endCoordinate.getY(), PieceType.KNIGHT, this.color); break;
+            case TOWER:
+                parentBoard.addPromotedPieceAt(endCoordinate.getX(), endCoordinate.getY(), PieceType.TOWER, this.color); break;
+        }
+
+        parentBoard.removePiece(this);
 
     }
 }

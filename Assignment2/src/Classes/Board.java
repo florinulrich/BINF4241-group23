@@ -89,6 +89,10 @@ public class Board {
         } else {
 
             this.removePieceAt(chosenMove.getEndCoordinate());
+
+            //Check if Pawn needs to be promoted
+            chosenMove.checkForPromotion();
+
             chosenMove.make();
 
             history.add(chosenMove);
@@ -101,7 +105,6 @@ public class Board {
         // Player is now checkmated, if he has no moves available -> Stalemate == Checkmate
 
         ArrayList<Move> opponentMoves;
-        PieceColor opponentColor;
         if (playerColor == PieceColor.BLACK) {
             opponentMoves = legalMovesWhite;
         } else {
