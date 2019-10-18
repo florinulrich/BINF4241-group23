@@ -98,6 +98,7 @@ public class Queen implements IPiece {
         }
 
         //Search Down Right
+        i = 1;
         while ((x+i) < 8 && (y-i) >= 0) {
 
             Occupant squareStatus = parentBoard.getOccupantOfSquare((x+i), (y-i));
@@ -115,6 +116,7 @@ public class Queen implements IPiece {
         }
 
         //Search Down Left
+        i = 1;
         while ((x-i) >= 0 && (y-i) >= 0) {
 
             Occupant squareStatus = parentBoard.getOccupantOfSquare((x-i), (y-i));
@@ -132,6 +134,7 @@ public class Queen implements IPiece {
         }
 
         //Search Up
+        i = 1;
         while ((y+i) < 8) {
 
             Occupant squareStatus = parentBoard.getOccupantOfSquare(x, (y+i));
@@ -150,7 +153,6 @@ public class Queen implements IPiece {
 
         //Search Down
         i = 1;
-
         while ((y-i) >= 0) {
 
             Occupant squareStatus = parentBoard.getOccupantOfSquare(x, (y-i));
@@ -169,7 +171,6 @@ public class Queen implements IPiece {
 
         //Search Right
         i = 1;
-
         while ((x+i) < 8) {
 
             Occupant squareStatus = parentBoard.getOccupantOfSquare(x+i, (y));

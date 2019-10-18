@@ -97,6 +97,7 @@ public class Bishop implements IPiece {
         }
 
         //Search Down Right
+        i = 1;
         while ((x+i) < 8 && (y-i) >= 0) {
 
             Occupant squareStatus = parentBoard.getOccupantOfSquare((x+i), (y-i));
@@ -114,6 +115,7 @@ public class Bishop implements IPiece {
         }
 
         //Search Left
+        i = 1;
         while ((x-i) >= 0 && (y-i) >= 0) {
 
             Occupant squareStatus = parentBoard.getOccupantOfSquare((x-i), (y-i));

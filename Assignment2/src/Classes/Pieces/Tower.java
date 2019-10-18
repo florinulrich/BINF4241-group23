@@ -50,9 +50,10 @@ public class Tower implements IPiece {
         ArrayList<Move> moves = new ArrayList<>();
 
         // Loop variables
-        int i = 1;
+
         int x = this.coordinate.getX();
         int y = this.coordinate.getY();
+
         Occupant beatableOccupant = null;
 
         if (this.color == PieceColor.BLACK) {
@@ -62,6 +63,7 @@ public class Tower implements IPiece {
         }
 
         //Search Up
+        int i = 1;
         while ((y+i) < 8) {
 
             Occupant squareStatus = parentBoard.getOccupantOfSquare(x, (y+i));
