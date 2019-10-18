@@ -34,7 +34,9 @@ public class Tower implements IPiece {
     //Methods
     @Override
     public void move(Move move) throws IllegalMoveException {
+        Coordinate endCoordinate = move.getEndCoordinate();
 
+        this.coordinate = endCoordinate;
     }
 
     @Override

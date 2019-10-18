@@ -32,7 +32,11 @@ public class Knight implements IPiece {
 
     //Methods
     @Override
-    public void move(Move move) throws IllegalMoveException { }
+    public void move(Move move) throws IllegalMoveException {
+        Coordinate endCoordinate = move.getEndCoordinate();
+
+        this.coordinate = endCoordinate;
+    }
 
     @Override
     public PieceType getType() {
