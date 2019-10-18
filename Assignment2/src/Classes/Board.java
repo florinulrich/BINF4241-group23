@@ -27,6 +27,9 @@ public class Board {
 
     private void computeLegalMoves() {
 
+        legalMovesWhite = new ArrayList<>();
+        legalMovesBlack = new ArrayList<>();
+
         for (IPiece piece: pieces) {
 
             ArrayList<Move> PieceMoves = piece.getPieceMoves();

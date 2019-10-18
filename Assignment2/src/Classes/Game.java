@@ -19,7 +19,7 @@ public class Game {
 
 
         IPiece whitePawn = new Pawn(board, 0, 1, PieceColor.WHITE);
-        IPiece blackPawn = new Pawn(board, 0, 6,PieceColor.BLACK);
+        IPiece blackPawn = new Pawn(board, 1, 6,PieceColor.BLACK);
         IPiece whiteKing = new King(board, 7, 0, PieceColor.WHITE);
         IPiece blackKing = new King(board, 7, 7, PieceColor.BLACK);
         board.addPiece(blackPawn);
