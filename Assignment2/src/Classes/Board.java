@@ -3,6 +3,7 @@ package Classes;
 import Enumerations.Occupant;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
+import Exceptions.CheckmateException;
 import Exceptions.IllegalMoveException;
 import Interfaces.IPiece;
 import javafx.beans.binding.BooleanExpression;
@@ -24,7 +25,7 @@ public class Board {
 
     private ArrayList<Move> history = new ArrayList<>();
 
-    private void computeLegalMoves() {
+    private void computeLegalMoves() throws CheckmateException {
 
         for (IPiece piece: pieces) {
 
@@ -37,7 +38,6 @@ public class Board {
                     legalMovesWhite.add(move);
                 }
             }
-
         }
 
         removeSuicideMoves(PieceColor.WHITE, legalMovesWhite, PieceColor.BLACK);
@@ -45,7 +45,7 @@ public class Board {
     }
 
     //Needs to check if move is possible in the move array of the respective player
-    public void makeMove(String algebraicMove, PieceColor playerColor) throws IllegalMoveException {
+    public void makeMove(String algebraicMove, PieceColor playerColor) throws IllegalMoveException, CheckmateException {
 
         computeLegalMoves();
 
@@ -56,6 +56,7 @@ public class Board {
         } else {
             moveArray = legalMovesBlack;
         }
+
 
         Move chosenMove = null;
         for (Move move: moveArray) {
@@ -81,6 +82,26 @@ public class Board {
             history.add(chosenMove);
         }
         computeLegalMoves();
+
+        //After move is performed, is the opponent checkmated?
+
+        // If there are no moves available it is checkmate
+        // Player is now checkmated, if he has no moves available -> Stalemate == Checkmate
+
+        ArrayList<Move> opponentMoves;
+        PieceColor opponentColor;
+        if (playerColor == PieceColor.BLACK) {
+            opponentMoves = legalMovesWhite;
+            opponentColor = PieceColor.WHITE;
+        } else {
+            opponentMoves = legalMovesBlack;
+            opponentColor = PieceColor.BLACK;
+        }
+
+        if (opponentMoves.isEmpty()) {
+            System.out.println("Checkmate! Player " + opponentColor + " wins!");
+            throw new CheckmateException();
+        }
     }
 
     private String getMoveInput(){
@@ -104,6 +125,8 @@ public class Board {
     }
 
     public void addPromotedPieceAt(int x, int y, PieceType type) {
+
+        //TODO: Pawn Promotion
 
     }
 
@@ -190,7 +213,7 @@ public class Board {
 
     }
 
-    private void removeSuicideMoves(PieceColor playerColor, ArrayList<Move> playerMoves , PieceColor opponentColor) {
+    private void removeSuicideMoves(PieceColor playerColor, ArrayList<Move> playerMoves , PieceColor opponentColor) throws CheckmateException {
 
         for (Move move: playerMoves) {
 
@@ -214,6 +237,7 @@ public class Board {
             if (illegal) {
                 playerMoves.remove(move);
             }
+
         }
 
         //1. Make Move
