@@ -162,7 +162,7 @@ public class Pawn implements IPiece {
 
         //TODO: Get User Input fot the Promotion Type
         Scanner playerInput = new Scanner(System.in);
-        System.out.println("Enter Promotion Type >> ");
+        System.out.print("Enter Promotion Type >> ");
 
         String colorInput = playerInput.next();
 
@@ -180,7 +180,7 @@ public class Pawn implements IPiece {
                 this.promotionType = PieceType.TOWER;
                 break;
             default:
-                System.out.println("Invalid Type");
+                System.out.println("Invalid Type! Input \"queen\", \"knight\", \"bishop\" or \"tower\"!");
                 askForPromotion();
         }
 

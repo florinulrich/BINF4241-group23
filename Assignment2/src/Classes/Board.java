@@ -93,6 +93,7 @@ public class Board {
             //Check if Pawn needs to be promoted
             chosenMove.checkForPromotion();
 
+
             chosenMove.make();
 
             history.add(chosenMove);
@@ -194,6 +195,8 @@ public class Board {
 
     public void printBoard() {
 
+        System.out.println();
+
         ArrayList<ArrayList<PrintSquares>> printSquares = new ArrayList<>();
 
         for(int i = 0; i < 8; i++) {
@@ -236,14 +239,24 @@ public class Board {
         System.out.println("\t(a )(b )(c )(d )(e )(f )(g )(h )\n");
 
         PieceColor colorNext = PieceColor.WHITE;
+        ArrayList<Move> movesNextOpponent = new ArrayList<>();
 
         if (history.size() > 0) {
             if (history.get(history.size() - 1).performingPlayer() == PieceColor.BLACK) {
                 colorNext = PieceColor.WHITE;
+                movesNextOpponent = legalMovesBlack;
             } else {
                 colorNext = PieceColor.BLACK;
+                movesNextOpponent = legalMovesWhite;
             }
         }
+
+
+        //See if opponent is now in check
+        if (kingIsChecked(colorNext, movesNextOpponent)) {
+            System.out.println("Check!");
+        }
+
 
         System.out.print(colorNext + " Player move >> ");
 

@@ -145,7 +145,7 @@ public class Move {
 
             int pawnRow = endCoordinate.getY();
 
-            if (pawnRow == 7 || pawnRow == 1) {
+            if (pawnRow == 7 || pawnRow == 0) {
                 Pawn promotionPawn = (Pawn) performingPiece;
                 promotionPawn.promote(this);
             }
