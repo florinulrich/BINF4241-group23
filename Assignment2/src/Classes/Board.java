@@ -50,7 +50,7 @@ public class Board {
     }
 
     //Needs to check if move is possible in the move array of the respective player
-    public void makeMove(String algebraicMove, PieceColor playerColor) throws CheckmateException {
+    private void makeMove(String algebraicMove, PieceColor playerColor) throws CheckmateException {
 
         computeLegalMoves();
 
@@ -119,9 +119,8 @@ public class Board {
     private String getMoveInput(){
 
         Scanner playerInput = new Scanner(System.in);
-        String playerMove = playerInput.next();
 
-        return playerMove;
+        return playerInput.next();
     }
 
     public Occupant getOccupantOfSquare(int xCoordinate, int yCoordinate) {
@@ -186,11 +185,11 @@ public class Board {
         this.pieces.remove(piece);
     }
 
-    public void addPiece(IPiece piece) {
+    void addPiece(IPiece piece) {
         this.pieces.add(piece);
     }
 
-    public void startGame() {
+    void startGame() {
 
         printBoard();
 
@@ -222,7 +221,6 @@ public class Board {
             startGame();
         } catch (CheckmateException e) {
             printBoard();
-            return;
         }
 
 
@@ -235,7 +233,7 @@ public class Board {
         ArrayList<ArrayList<PrintSquares>> printSquares = new ArrayList<>();
 
         for(int i = 0; i < 8; i++) {
-            printSquares.add(new ArrayList<PrintSquares>());
+            printSquares.add(new ArrayList<>());
         }
         for (ArrayList<PrintSquares> list: printSquares) {
             for(int i = 0; i < 8; i++) {
@@ -254,10 +252,10 @@ public class Board {
 
         for (int i = 7; i >= 0; i--) {
 
-            String line = "("+ (i+1) +")"+"\t";
+            StringBuilder line = new StringBuilder("(" + (i + 1) + ")" + "\t");
 
             for (PrintSquares square: printSquares.get(i)) {
-                line = line + square.getOutputString();
+                line.append(square.getOutputString());
             }
 
             System.out.print(line);

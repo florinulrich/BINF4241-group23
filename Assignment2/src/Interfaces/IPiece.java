@@ -12,17 +12,17 @@ import java.util.ArrayList;
 public interface IPiece {
 
     //Moves the Interfaces.Piece, throws an exception if the Interfaces.Piece can not go there
-    public void move(Move move) throws IllegalMoveException;
+    void move(Move move) throws IllegalMoveException;
 
     //Get the Pieces Type, may be Nil!
-    public PieceType getType();
+    PieceType getType();
 
     //Returns all moves the piece could make,
-    public ArrayList<Move> getPieceMoves();
+    ArrayList<Move> getPieceMoves();
 
-    public PieceColor getColor();
+    PieceColor getColor();
 
-    public Pair<Integer, Integer> getCoordinates();
+    Pair<Integer, Integer> getCoordinates();
 
-    public boolean willCaptureOnCoordinate(Coordinate coordinate);
+    boolean willCaptureOnCoordinate(Coordinate coordinate);
 }
