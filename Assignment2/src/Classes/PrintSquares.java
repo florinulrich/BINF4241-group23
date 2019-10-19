@@ -4,11 +4,11 @@ package Classes;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
 
-public class PrintSquares{
+class PrintSquares{
     private String occupant = "  ";
     private String occupantColor = "";
 
-    public void setOccupant(PieceType type, PieceColor color) {
+    void setOccupant(PieceType type, PieceColor color) {
         switch (type) {
             case KING: occupant = "K"; break;
             case PAWN: occupant = "P"; break;
@@ -24,7 +24,7 @@ public class PrintSquares{
         }
     }
 
-    public String getOutputString() {
+    String getOutputString() {
         return "[" + occupantColor + occupant + "]";
     }
 

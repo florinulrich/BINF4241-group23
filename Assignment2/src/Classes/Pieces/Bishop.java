@@ -6,7 +6,6 @@ import Classes.Move;
 import Enumerations.Occupant;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
-import Exceptions.IllegalMoveException;
 import Interfaces.IPiece;
 import javafx.util.Pair;
 
@@ -32,10 +31,9 @@ public class Bishop implements IPiece {
 
     //Methods
     @Override
-    public void move(Move move) throws IllegalMoveException {
-        Coordinate endCoordinate = move.getEndCoordinate();
+    public void move(Move move) {
 
-        this.coordinate = endCoordinate;
+        this.coordinate = move.getEndCoordinate();
     }
 
     @Override
@@ -152,10 +150,6 @@ public class Bishop implements IPiece {
 
         if (occupant == Occupant.BLACK && this.getColor() == PieceColor.WHITE) {
             return true;
-        } else if (occupant == Occupant.WHITE && this.getColor() == PieceColor.BLACK) {
-            return true;
-        } else {
-            return false;
-        }
+        } else return occupant == Occupant.WHITE && this.getColor() == PieceColor.BLACK;
     }
 }

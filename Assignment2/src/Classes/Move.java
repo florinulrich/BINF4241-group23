@@ -42,7 +42,7 @@ public class Move {
         correctIdentifierForCapture();
     }
 
-    public void make() {
+    void make() {
 
         try {
             this.performingPiece.move(this);
@@ -52,7 +52,7 @@ public class Move {
         }
     }
 
-    public void revert() {
+    void revert() {
         Move moveBack = new Move(performingPiece, endCoordinate, startCoordinate);
         try {
             this.performingPiece.move(moveBack);
@@ -62,13 +62,13 @@ public class Move {
         }
     }
 
-    public boolean isLegal() {
+    boolean isLegal() {
 
         //TODO: return if move is legal or not
         return true;
     }
 
-    public String getAlgebraicIdentifier() {
+    String getAlgebraicIdentifier() {
         return algebraicIdentifier;
     }
 
@@ -118,7 +118,7 @@ public class Move {
     }
 
     private void removeCaptureInformation() {
-        algebraicIdentifier.replace("x", "");
+        algebraicIdentifier = algebraicIdentifier.replace("x", "");
     }
 
     private void correctIdentifierForCapture() {
@@ -131,15 +131,15 @@ public class Move {
         }
     }
 
-    public PieceColor performingPlayer(){
+    PieceColor performingPlayer(){
         return performingPiece.getColor();
     }
 
-    public Coordinate getStartCoordinate() {
+    Coordinate getStartCoordinate() {
         return this.startCoordinate;
     }
 
-    public void checkForPromotion() {
+    void checkForPromotion() {
 
         if (performingPiece.getType() == PieceType.PAWN) {
 

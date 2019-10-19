@@ -27,7 +27,7 @@ public class Coordinate {
 
         try {
             int rowCoordinate = algebraicNotation.charAt(1);
-            if (rowCoordinate >= 0 && rowCoordinate < 8) {
+            if (rowCoordinate < 8) {
                 this.row = rowCoordinate;
             }
             else { throw new CoordinateFormException();}
@@ -49,7 +49,7 @@ public class Coordinate {
         }
     }
 
-    public static String calculateAlgebraicNotation(int x, int y) throws CoordinateFormException {
+    private static String calculateAlgebraicNotation(int x, int y) throws CoordinateFormException {
 
         String algebraic = "";
 
@@ -74,7 +74,7 @@ public class Coordinate {
         return algebraic;
     }
 
-    public String getAlgebraicNotation() {
+    String getAlgebraicNotation() {
         return algebraicNotation;
     }
 
@@ -82,10 +82,7 @@ public class Coordinate {
 
     public int getY() { return row; }
 
-    public boolean equals(Coordinate coordinate) {
-        if (coordinate.getX() == this.getX() && coordinate.getY() == this.getY()) {
-            return true;
-        }
-        return false;
+    boolean equals(Coordinate coordinate) {
+        return coordinate.getX() == this.getX() && coordinate.getY() == this.getY();
     }
 }
