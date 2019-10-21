@@ -12,24 +12,14 @@ public class Game {
 
 
     static public void main(String[] args) {
-        Board board = new Board();
+        // Board board = new Board();
 
         // initialize piece setup
 
+        Board board = new Board();
+        pieceSetup(board);
+        board.startGame();
 
-        IPiece whiteKing = new King(board, 2, 0, PieceColor.WHITE);
-        IPiece blackKing = new King(board, 5, 5, PieceColor.BLACK);
-        IPiece blackTower = new Pawn(board, 5, 1, PieceColor.BLACK);
-        IPiece whiteTower = new Pawn(board, 2, 6, PieceColor.WHITE);
-        IPiece blackTower2 = new Pawn(board, 0, 3, PieceColor.BLACK);
-
-        board.addPiece(whiteKing);
-        board.addPiece(blackKing);
-        board.addPiece(whiteTower);
-        board.addPiece(blackTower);
-        board.addPiece(blackTower2);
-
-        board.printBoard();
     }
 
     private static void tester() {
@@ -63,7 +53,7 @@ public class Game {
     }
 
 
-    private static void pieceSetup(Board board) {
+    public static void pieceSetup(Board board) {
         // WHITE Player
         // --pawns
         for (int i = 0; i <= 7; i++) {

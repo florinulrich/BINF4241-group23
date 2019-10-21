@@ -189,7 +189,7 @@ public class Board {
         this.pieces.add(piece);
     }
 
-    void startGame() {
+    public void startGame() {
 
         printBoard();
 
