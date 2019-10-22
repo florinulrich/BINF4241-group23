@@ -37,7 +37,7 @@ public class Board {
             ArrayList<Move> PieceMoves = piece.getPieceMoves();
 
             for (Move move: PieceMoves) {
-                if (move.isLegal() && piece.getColor() == PieceColor.BLACK) {
+                if (piece.getColor() == PieceColor.BLACK) {
                     legalMovesBlack.add(move);
                 } else {
                     legalMovesWhite.add(move);
@@ -47,6 +47,7 @@ public class Board {
 
         removeSuicideMoves(PieceColor.WHITE, legalMovesWhite, PieceColor.BLACK);
         removeSuicideMoves(PieceColor.BLACK, legalMovesBlack, PieceColor.WHITE);
+
     }
 
     //Needs to check if move is possible in the move array of the respective player

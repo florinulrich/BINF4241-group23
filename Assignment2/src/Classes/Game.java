@@ -12,9 +12,6 @@ public class Game {
 
 
     static public void main(String[] args) {
-        // Board board = new Board();
-
-        // initialize piece setup
 
         Board board = new Board();
         pieceSetup(board);

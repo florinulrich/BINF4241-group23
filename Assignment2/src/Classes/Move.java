@@ -62,12 +62,6 @@ public class Move {
         }
     }
 
-    boolean isLegal() {
-
-        //TODO: return if move is legal or not
-        return true;
-    }
-
     String getAlgebraicIdentifier() {
         return algebraicIdentifier;
     }
