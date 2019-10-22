@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class Game {
 
 
-
     static public void main(String[] args) {
 
         Board board = new Board();
