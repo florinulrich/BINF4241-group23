@@ -99,17 +99,17 @@ public class Pawn implements IPiece {
         }
 
         // enpassant right
-        if (parentBoard.getOccupantOfSquare(x+1,4) == beatableOccupant
-                && parentBoard.enPassantAt(x+1,4)) {
+        if (parentBoard.getOccupantOfSquare(x+1,3) == beatableOccupant
+                && parentBoard.enPassantAt(x+1,3) && coordinate.getY() == 3) {
 
-            moves.add(new Move(this, this.coordinate, new Coordinate(x+1, y+1)));
+            moves.add(new Move(this, this.coordinate, new Coordinate(x+1, y-1)));
         }
 
         // enpassant left
-        if (parentBoard.getOccupantOfSquare(x-1,4) == beatableOccupant
-                && parentBoard.enPassantAt(x-1,4)) {
+        if (parentBoard.getOccupantOfSquare(x-1,3) == beatableOccupant
+                && parentBoard.enPassantAt(x-1,3) && coordinate.getY() == 3) {
 
-            moves.add(new Move(this, this.coordinate, new Coordinate(x-1, y+1)));
+            moves.add(new Move(this, this.coordinate, new Coordinate(x-1, y-1)));
         }
         return moves;
     }
@@ -149,6 +149,20 @@ public class Pawn implements IPiece {
                 && this.coordinate.getY() == 1) {
 
             moves.add(new Move(this, this.coordinate, new Coordinate(x, y+2)));
+        }
+
+        // enpassant right
+        if (parentBoard.getOccupantOfSquare(x+1,4) == beatableOccupant
+                && parentBoard.enPassantAt(x+1,4) && coordinate.getY() == 4) {
+
+            moves.add(new Move(this, this.coordinate, new Coordinate(x+1, y+1)));
+        }
+
+        // enpassant left
+        if (parentBoard.getOccupantOfSquare(x-1,4) == beatableOccupant
+                && parentBoard.enPassantAt(x-1,4)  && coordinate.getY() == 4) {
+
+            moves.add(new Move(this, this.coordinate, new Coordinate(x-1, y+1)));
         }
 
 
