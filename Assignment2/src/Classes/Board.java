@@ -1,9 +1,6 @@
 package Classes;
 
-import Classes.Pieces.Bishop;
-import Classes.Pieces.Knight;
-import Classes.Pieces.Queen;
-import Classes.Pieces.Tower;
+import Classes.Pieces.*;
 import Enumerations.Occupant;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
@@ -344,6 +341,15 @@ public class Board {
         }
 
         return false;
+    }
+
+    public boolean enPassantAt(int x, int y) {
+        for (IPiece piece: pieces) {
+            if (piece.getType() == PieceType.PAWN) {
+                Pawn pawn = (Pawn) piece;
+                return pawn.beatableEnPassant();
+            }
+        }
     }
 
 }

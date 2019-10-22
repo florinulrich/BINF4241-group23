@@ -24,6 +24,7 @@ public class Pawn implements IPiece {
     private Coordinate coordinate;
     private PieceType TYPE = PieceType.PAWN;
     private PieceType promotionType;
+    private int numberOfMoves = 0;
 
     //Initializer
     public Pawn(Board board, int xCoordinate, int yCoordinate, PieceColor color) {
@@ -42,6 +43,7 @@ public class Pawn implements IPiece {
         Coordinate endCoordinate = move.getEndCoordinate();
 
         this.coordinate = endCoordinate;
+        this.numberOfMoves += 1;
 
     }
 
@@ -206,5 +208,14 @@ public class Pawn implements IPiece {
 
         parentBoard.removePiece(this);
 
+    }
+
+    public boolean beatableEnPassant() {
+        if (numberOfMoves == 1 && color == PieceColor.WHITE && coordinate.getY() == 3) {
+            return true;
+        } else if (numberOfMoves == 1 && color == PieceColor.BLACK && coordinate.getY() == 4) {
+            return true;
+        }
+        return false;
     }
 }
