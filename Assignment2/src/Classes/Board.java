@@ -350,14 +350,12 @@ public class Board {
                 Pawn pawn = (Pawn) piece;
                 Coordinate pawnCoordinate = new Coordinate(pawn.getCoordinates().getKey(), pawn.getCoordinates().getValue());
 
-                boolean canBeBeatenEnPassant = pawn.beatableEnPassant();
-
                 if (history.size() > 0) {
 
                     Move lastMove = history.get(history.size() - 1);
                     if (lastMove.getEndCoordinate().equals(pawnCoordinate)
                             && lastMove.getEndCoordinate().equals(testedCoordinate)) {
-                        return canBeBeatenEnPassant;
+                        return true;
                     }
                 }
             }
