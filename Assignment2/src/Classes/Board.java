@@ -352,11 +352,13 @@ public class Board {
 
                 boolean canBeBeatenEnPassant = pawn.beatableEnPassant();
 
-                Move lastMove = history.get(history.size()-1);
-                if (lastMove.getEndCoordinate().equals(pawnCoordinate)
-                        && lastMove.getEndCoordinate().equals(testedCoordinate))
-                {
-                    return canBeBeatenEnPassant;
+                if (history.size() > 0) {
+
+                    Move lastMove = history.get(history.size() - 1);
+                    if (lastMove.getEndCoordinate().equals(pawnCoordinate)
+                            && lastMove.getEndCoordinate().equals(testedCoordinate)) {
+                        return canBeBeatenEnPassant;
+                    }
                 }
             }
         }
