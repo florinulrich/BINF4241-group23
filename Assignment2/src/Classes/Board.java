@@ -350,7 +350,7 @@ public class Board {
                 return pawn.beatableEnPassant();
             }
         }
-        return false
+        return false;
     }
 
 }
