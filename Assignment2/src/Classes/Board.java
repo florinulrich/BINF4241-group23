@@ -187,7 +187,7 @@ public class Board {
         this.pieces.add(piece);
     }
 
-    public void startGame() {
+    void startGame() {
 
         printBoard();
 
@@ -344,16 +344,19 @@ public class Board {
     }
 
     public boolean enPassantAt(int x, int y) {
+        Coordinate testedCoordinate = new Coordinate(x, y);
         for (IPiece piece: pieces) {
             if (piece.getType() == PieceType.PAWN) {
                 Pawn pawn = (Pawn) piece;
-                Coordinate pawnCoordinate = new Coordinate(pawn.getCoordinates().getKey(), pawn.getCoordinates().getValue())
+                Coordinate pawnCoordinate = new Coordinate(pawn.getCoordinates().getKey(), pawn.getCoordinates().getValue());
 
-                boolean wasFirstMove = pawn.beatableEnPassant();
+                boolean canBeBeatenEnPassant = pawn.beatableEnPassant();
 
                 Move lastMove = history.get(history.size()-1);
-                if (lastMove.getEndCoordinate().equals(pawnCoordinate)) {
-                    return wasFirstMove;
+                if (lastMove.getEndCoordinate().equals(pawnCoordinate)
+                        && lastMove.getEndCoordinate().equals(testedCoordinate))
+                {
+                    return canBeBeatenEnPassant;
                 }
             }
         }
