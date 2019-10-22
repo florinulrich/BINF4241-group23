@@ -347,7 +347,14 @@ public class Board {
         for (IPiece piece: pieces) {
             if (piece.getType() == PieceType.PAWN) {
                 Pawn pawn = (Pawn) piece;
-                return pawn.beatableEnPassant();
+                Coordinate pawnCoordinate = new Coordinate(pawn.getCoordinates().getKey(), pawn.getCoordinates().getValue())
+
+                boolean wasFirstMove = pawn.beatableEnPassant();
+
+                Move lastMove = history.get(history.size()-1);
+                if (lastMove.getEndCoordinate().equals(pawnCoordinate)) {
+                    return wasFirstMove;
+                }
             }
         }
         return false;

@@ -40,9 +40,7 @@ public class Pawn implements IPiece {
     @Override
     public void move(Move move) {
 
-        Coordinate endCoordinate = move.getEndCoordinate();
-
-        this.coordinate = endCoordinate;
+        this.coordinate = move.getEndCoordinate();
         this.numberOfMoves += 1;
 
     }
@@ -213,9 +211,6 @@ public class Pawn implements IPiece {
     public boolean beatableEnPassant() {
         if (numberOfMoves == 1 && color == PieceColor.WHITE && coordinate.getY() == 3) {
             return true;
-        } else if (numberOfMoves == 1 && color == PieceColor.BLACK && coordinate.getY() == 4) {
-            return true;
-        }
-        return false;
+        } else return numberOfMoves == 1 && color == PieceColor.BLACK && coordinate.getY() == 4;
     }
 }
