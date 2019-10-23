@@ -552,8 +552,8 @@ public class Board {
                                     || (move.getEndCoordinate().getX() == 3 && move.getEndCoordinate().getY() == 0)) {
                                 return false;
                             }
-                            return true;
                         }
+                        return true;
 
                     } else {
                         return false;
