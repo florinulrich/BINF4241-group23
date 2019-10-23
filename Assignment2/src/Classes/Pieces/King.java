@@ -167,12 +167,13 @@ public class King implements IPiece {
 
         // Long Castle
         if (parentBoard.kingCanCastle(this.color, CastleType.SHORT)) {
-            moves.add(new Move(this, this.coordinate, new Coordinate(x+2, y)));
+            moves.add(new Move(this, this.coordinate, new Coordinate(x+2, y), CastleType.SHORT));
+
         }
 
         // Short Castle
         if (parentBoard.kingCanCastle(this.color, CastleType.LONG)) {
-            moves.add(new Move(this, this.coordinate, new Coordinate(x-2, y)));
+            moves.add(new Move(this, this.coordinate, new Coordinate(x-2, y), CastleType.LONG));
         }
 
         return moves;

@@ -334,7 +334,6 @@ public class Board {
         }
 
 
-
     }
 
     private void printBoard() {
@@ -448,7 +447,7 @@ public class Board {
 
     }
 
-    private IPiece getPieceAt(Coordinate coordinate) {
+    public IPiece getPieceAt(Coordinate coordinate) {
         for (IPiece piece: pieces) {
             Coordinate pieceCoordinate = new Coordinate(piece.getCoordinates().getKey(), piece.getCoordinates().getValue());
             if (pieceCoordinate.equals(coordinate)) {
