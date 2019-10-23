@@ -55,7 +55,6 @@ public class Move {
         this.endCoordinate = end;
 
         this.isCastleMove = true;
-        this.towerMove = towerMove;
         this.castleType = type;
 
         calculateAlgebraicIdentifier();
@@ -63,10 +62,12 @@ public class Move {
         Coordinate towerCoordinate = new Coordinate(tower.getCoordinates().getKey(), tower.getCoordinates().getValue());
 
         if (type == CastleType.LONG) {
+            this.towerMove = new Move(tower, towerCoordinate,
+                    new Coordinate(towerCoordinate.getX()+3, towerCoordinate.getY()));
 
-            towerMove = new Move(tower, towerCoordinate, new Coordinate(towerCoordinate.getX()+3, towerCoordinate.getY()));
         } else {
-            towerMove = new Move(tower, towerCoordinate, new Coordinate(towerCoordinate.getX()-2, towerCoordinate.getY()));
+            this.towerMove = new Move(tower, towerCoordinate,
+                    new Coordinate(towerCoordinate.getX()-2, towerCoordinate.getY()));
         }
 
 
