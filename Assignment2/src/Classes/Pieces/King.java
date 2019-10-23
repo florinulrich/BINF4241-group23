@@ -3,6 +3,7 @@ package Classes.Pieces;
 import Classes.Board;
 import Classes.Coordinate;
 import Classes.Move;
+import Enumerations.CastleType;
 import Enumerations.Occupant;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
@@ -164,12 +165,15 @@ public class King implements IPiece {
 
         // TODO: Check if King is not in check
 
-        if (parentBoard.kingCanCastle()) {
+        // Long Castle
+        if (parentBoard.kingCanCastle(this.color, CastleType.SHORT)) {
             moves.add(new Move(this, this.coordinate, new Coordinate(x+2, y)));
-            // move tower
-
         }
 
+        // Short Castle
+        if (parentBoard.kingCanCastle(this.color, CastleType.LONG)) {
+            moves.add(new Move(this, this.coordinate, new Coordinate(x-2, y)));
+        }
 
         return moves;
     }
