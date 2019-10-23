@@ -139,6 +139,38 @@ public class King implements IPiece {
             }
         }
 
+        // castle
+        // TODO: Notation 0-0 or 0-0-0 (short and long castle)
+
+        // TODO: Check if King and corresponding Tower numberOfMoves = 0
+        //       Check if King is not in check
+
+        // TODO: Relevant Squares f1(5,0) and g1(6,0) for 0-0 WHITE
+        //       Relevant Squares b1(1,0), c1(2,0) and d1(3,0) for 0-0-0 WHITE
+        //       Relevant Squares f8(5,7) and g8(6,7) for 0-0 BLACK
+        //       Relevant Squares b8(1,7), c8(2,7) and d8(3,7) for 0-0-0 BLACK
+
+        // TODO: Check if relevant Squares are EMPTY
+        //       Check if relevant Squares are under attack, except b1(1,0) and b8(1,7)
+
+        // TODO: Move King from e1(4,0) to g1(6,0) for 0-0 WHITE
+        //       Move Tower form h1(7,0) to f1(5,0) for 0-0 WHITE
+        // TODO: Move King from e1(4,0) to c1(2,0) for 0-0-0 WHITE
+        //       Move Tower form a1(0,0) to d1(3,0) for 0-0-0 WHITE
+        // TODO: Move King from e8(4,7) to g8(6,7) for 0-0 BLACK
+        //       Move Tower form h8(7,7) to f8(5,7) for 0-0 BLACK
+        // TODO: Move King from e8(4,7) to c8(2,7) for 0-0-0 BLACK
+        //       Move Tower form a8(0,7) to d8(3,7) for 0-0-0 BLACK
+
+        // TODO: Check if King is not in check
+
+        if (parentBoard.kingCanCastle()) {
+            moves.add(new Move(this, this.coordinate, new Coordinate(x+2, y)));
+            // move tower
+
+        }
+
+
         return moves;
     }
 

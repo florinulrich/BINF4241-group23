@@ -577,12 +577,43 @@ public class Board {
             } else {
 
                 if (type == CastleType.LONG) {
-                    //
+
+                    if (getOccupantOfSquare(1, 7) == Occupant.EMPTY
+                            && getOccupantOfSquare(2, 7) == Occupant.EMPTY
+                            && getOccupantOfSquare(3, 7) == Occupant.EMPTY) {
+
+                        //Check if opponent blocks Castle
+                        for (Move move: opponentMoves) {
+                            if ((move.getEndCoordinate().getX() == 2 && move.getEndCoordinate().getY() == 7)
+                                    || (move.getEndCoordinate().getX() == 3 && move.getEndCoordinate().getY() == 7)) {
+                                return false;
+                            }
+                            return true;
+                        }
+
+                    } else {
+                        return false;
+                    }
+
                 } else {
-                    //
+
+                    if (getOccupantOfSquare(5, 7) == Occupant.EMPTY
+                            && getOccupantOfSquare(6, 7) == Occupant.EMPTY) {
+
+                        //Check if opponent blocks Castle
+                        for (Move move: opponentMoves) {
+                            if ((move.getEndCoordinate().getX() == 5 && move.getEndCoordinate().getY() == 7)
+                                    || (move.getEndCoordinate().getX() == 6 && move.getEndCoordinate().getY() == 7)) {
+                                return false;
+                            }
+                            return true;
+                        }
+
+                    } else {
+                        return false;
+                    }
                 }
             }
-
 
         }
         return false;

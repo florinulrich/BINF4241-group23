@@ -14,8 +14,6 @@ import java.util.Scanner;
 
 public class Pawn implements IPiece {
 
-    //TODO: Implement enpassant
-
     //Variables
     private PieceColor color;
     private Board parentBoard;
