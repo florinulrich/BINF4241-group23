@@ -167,13 +167,15 @@ public class King implements IPiece {
 
         // Long Castle
         if (parentBoard.kingCanCastle(this.color, CastleType.SHORT)) {
-            moves.add(new Move(this, this.coordinate, new Coordinate(x+2, y), CastleType.SHORT));
+            moves.add(new Move(this, this.coordinate, new Coordinate(x+2, y), CastleType.SHORT,
+                    parentBoard.getPieceAt(new Coordinate(7, y))));
 
         }
 
         // Short Castle
         if (parentBoard.kingCanCastle(this.color, CastleType.LONG)) {
-            moves.add(new Move(this, this.coordinate, new Coordinate(x-2, y), CastleType.LONG));
+            moves.add(new Move(this, this.coordinate, new Coordinate(x-2, y), CastleType.LONG,
+                    parentBoard.getPieceAt(new Coordinate(0, y))));
         }
 
         return moves;
