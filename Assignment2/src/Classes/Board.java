@@ -525,6 +525,12 @@ public class Board {
     }
 
     public boolean kingCanCastle(PieceColor color, CastleType type) {
+
+        ArrayList<Move> opponentMoves = legalMovesBlack;
+        if (color == PieceColor.BLACK) {
+            opponentMoves = legalMovesWhite;
+        }
+
         if (kingOrTowerNotMoved(color, type)) {
 
             if (color == PieceColor.WHITE) {
@@ -535,10 +541,37 @@ public class Board {
                             && getOccupantOfSquare(2, 0) == Occupant.EMPTY
                             && getOccupantOfSquare(3, 0) == Occupant.EMPTY) {
 
+                        //Check if opponent blocks Castle
+                        for (Move move: opponentMoves) {
+                            if ((move.getEndCoordinate().getX() == 2 && move.getEndCoordinate().getY() == 0)
+                                    || (move.getEndCoordinate().getX() == 3 && move.getEndCoordinate().getY() == 0)) {
+                                return false;
+                            }
+                            return true;
+                        }
+
+                    } else {
+                        return false;
                     }
 
                 } else {
-                    //
+
+                    if (getOccupantOfSquare(5, 0) == Occupant.EMPTY
+                            && getOccupantOfSquare(6, 0) == Occupant.EMPTY) {
+
+                        //Check if opponent blocks Castle
+                        for (Move move: opponentMoves) {
+                            if ((move.getEndCoordinate().getX() == 5 && move.getEndCoordinate().getY() == 0)
+                                    || (move.getEndCoordinate().getX() == 6 && move.getEndCoordinate().getY() == 0)) {
+                                return false;
+                            }
+                            return true;
+                        }
+
+
+                    } else {
+                        return false;
+                    }
                 }
 
             } else {
