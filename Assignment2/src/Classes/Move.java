@@ -1,6 +1,7 @@
 package Classes;
 
 import Classes.Pieces.Pawn;
+import Enumerations.CastleType;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
 import Exceptions.IllegalMoveException;
@@ -18,13 +19,16 @@ public class Move {
     private Coordinate enPassantBeatenPiece;
     private boolean leadsToCheck = false;
     private boolean leadsToCheckmate = false;
+    private Move towerMove;
+    private boolean isCastleMove = false;
+    private CastleType castleType;
 
 
     public boolean leadsToCheckmate() {
         return leadsToCheckmate;
     }
 
-    public void setLeadsToCheckmate(boolean leadsToCheckmate) {
+    void setLeadsToCheckmate(boolean leadsToCheckmate) {
         this.leadsToCheckmate = leadsToCheckmate;
     }
 
@@ -32,7 +36,7 @@ public class Move {
         return leadsToCheck;
     }
 
-    public void setLeadsToCheck(boolean leadsToCheck) {
+    void setLeadsToCheck(boolean leadsToCheck) {
         this.leadsToCheck = leadsToCheck;
     }
 
@@ -58,6 +62,21 @@ public class Move {
         correctAmbiguousIdentifier();
     }
 
+    public Move(IPiece piece, Coordinate start, Coordinate end, CastleType type, Move towerMove) {
+
+        this.performingPiece = piece;
+        this.startCoordinate = start;
+        this.endCoordinate = end;
+
+        this.isCastleMove = true;
+        this.towerMove = towerMove;
+        this.castleType = type;
+
+        calculateAlgebraicIdentifier();
+
+
+    }
+
     private void calculateAlgebraicIdentifier() {
         String identifier = "";
 
@@ -75,12 +94,25 @@ public class Move {
         algebraicIdentifier = identifier;
 
         correctIdentifierForCapture();
+
+        if (isCastleMove) {
+            if (this.castleType == CastleType.LONG) {
+                algebraicIdentifier = "0-0-0";
+            } else {
+                algebraicIdentifier = "0-0";
+            }
+        }
     }
 
     void make() {
 
         try {
             this.performingPiece.move(this);
+
+            if (isCastleMove) {
+                towerMove.make();
+            }
+
         } catch (IllegalMoveException e) {
             e.printStackTrace();
             System.out.println("Move.make in Move Class not working");
@@ -91,6 +123,11 @@ public class Move {
         Move moveBack = new Move(performingPiece, endCoordinate, startCoordinate);
         try {
             this.performingPiece.move(moveBack);
+
+            if (isCastleMove) {
+                towerMove.revert();
+            }
+
         } catch (IllegalMoveException e) {
             e.printStackTrace();
             System.out.println("Revert Method not working");

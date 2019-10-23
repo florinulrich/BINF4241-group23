@@ -531,6 +531,10 @@ public class Board {
             opponentMoves = legalMovesWhite;
         }
 
+        if (kingIsChecked(color, opponentMoves)) {
+            return false;
+        }
+
         if (kingOrTowerNotMoved(color, type)) {
 
             if (color == PieceColor.WHITE) {
@@ -567,7 +571,6 @@ public class Board {
                             }
                             return true;
                         }
-
 
                     } else {
                         return false;
