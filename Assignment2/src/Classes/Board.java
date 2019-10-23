@@ -564,14 +564,15 @@ public class Board {
                     if (getOccupantOfSquare(5, 0) == Occupant.EMPTY
                             && getOccupantOfSquare(6, 0) == Occupant.EMPTY) {
 
+
                         //Check if opponent blocks Castle
                         for (Move move: opponentMoves) {
                             if ((move.getEndCoordinate().getX() == 5 && move.getEndCoordinate().getY() == 0)
                                     || (move.getEndCoordinate().getX() == 6 && move.getEndCoordinate().getY() == 0)) {
                                 return false;
                             }
-                            return true;
                         }
+                        return true;
 
                     } else {
                         return false;
@@ -592,8 +593,8 @@ public class Board {
                                     || (move.getEndCoordinate().getX() == 3 && move.getEndCoordinate().getY() == 7)) {
                                 return false;
                             }
-                            return true;
                         }
+                        return true;
 
                     } else {
                         return false;
@@ -610,8 +611,8 @@ public class Board {
                                     || (move.getEndCoordinate().getX() == 6 && move.getEndCoordinate().getY() == 7)) {
                                 return false;
                             }
-                            return true;
                         }
+                        return true;
 
                     } else {
                         return false;
