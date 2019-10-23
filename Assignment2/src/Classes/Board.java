@@ -45,6 +45,25 @@ public class Board {
         removeSuicideMoves(PieceColor.WHITE, legalMovesWhite, PieceColor.BLACK);
         removeSuicideMoves(PieceColor.BLACK, legalMovesBlack, PieceColor.WHITE);
 
+        checkAmbiguity(legalMovesWhite);
+        checkAmbiguity(legalMovesBlack);
+
+    }
+
+    private void checkAmbiguity(ArrayList<Move> moves) {
+
+        for (Move moveToCompare: moves) {
+
+            for (Move move: moves) {
+
+                if (move != moveToCompare) {
+                    if (move.getAlgebraicIdentifier().equals(moveToCompare.getAlgebraicIdentifier())) {
+                        move.correctAmbiguousIdentifier();
+                        moveToCompare.correctAmbiguousIdentifier();
+                    }
+                }
+            }
+        }
     }
 
     //Needs to check if move is possible in the move array of the respective player
@@ -85,6 +104,9 @@ public class Board {
         } else {
 
             this.removePieceAt(chosenMove.getEndCoordinate());
+
+            if (chosenMove.getEnPassantBeatenPiece() != null)
+            this.removePieceAt(chosenMove.getEnPassantBeatenPiece());
 
             //Check if Pawn needs to be promoted
             chosenMove.checkForPromotion();
@@ -196,7 +218,6 @@ public class Board {
 
         if (history.size() > 0) {
             if (history.get(history.size() - 1).performingPlayer() == PieceColor.BLACK) {
-                colorNext = PieceColor.WHITE;
                 movesNextOpponent = legalMovesBlack;
             } else {
                 colorNext = PieceColor.BLACK;
@@ -349,12 +370,20 @@ public class Board {
             if (piece.getType() == PieceType.PAWN) {
                 Pawn pawn = (Pawn) piece;
                 Coordinate pawnCoordinate = new Coordinate(pawn.getCoordinates().getKey(), pawn.getCoordinates().getValue());
+                Coordinate pawnStartCoordinate;
+                if (pawn.getColor() == PieceColor.BLACK) {
+                    pawnStartCoordinate = new Coordinate(pawnCoordinate.getX(), 6);
+                } else {
+                    pawnStartCoordinate = new Coordinate(pawnCoordinate.getX(), 1);
+                }
 
                 if (history.size() > 0) {
 
                     Move lastMove = history.get(history.size() - 1);
                     if (lastMove.getEndCoordinate().equals(pawnCoordinate)
-                            && lastMove.getEndCoordinate().equals(testedCoordinate)) {
+                            && lastMove.getEndCoordinate().equals(testedCoordinate)
+                            && lastMove.getStartCoordinate().equals(pawnStartCoordinate))
+                    {
                         return true;
                     }
                 }

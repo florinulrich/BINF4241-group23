@@ -6,8 +6,6 @@ import Classes.Move;
 import Enumerations.Occupant;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
-import Exceptions.CoordinateFormException;
-import Exceptions.IllegalMoveException;
 import Interfaces.IPiece;
 import javafx.util.Pair;
 
@@ -98,14 +96,14 @@ public class Pawn implements IPiece {
         if (parentBoard.getOccupantOfSquare(x+1,3) == beatableOccupant
                 && parentBoard.enPassantAt(x+1,3) && coordinate.getY() == 3) {
 
-            moves.add(new Move(this, this.coordinate, new Coordinate(x+1, y-1)));
+            moves.add(new Move(this, this.coordinate, new Coordinate(x+1, y-1), true, new Coordinate(x+1, y)));
         }
 
         // enpassant left
         if (parentBoard.getOccupantOfSquare(x-1,3) == beatableOccupant
                 && parentBoard.enPassantAt(x-1,3) && coordinate.getY() == 3) {
 
-            moves.add(new Move(this, this.coordinate, new Coordinate(x-1, y-1)));
+            moves.add(new Move(this, this.coordinate, new Coordinate(x-1, y-1), true, new Coordinate(x-1, y)));
         }
         return moves;
     }
@@ -151,14 +149,14 @@ public class Pawn implements IPiece {
         if (parentBoard.getOccupantOfSquare(x+1,y) == beatableOccupant
                 && parentBoard.enPassantAt(x+1,y) && coordinate.getY() == 4) {
 
-            moves.add(new Move(this, this.coordinate, new Coordinate(x+1, y+1)));
+            moves.add(new Move(this, this.coordinate, new Coordinate(x+1, y+1), true, new Coordinate(x+1, y)));
         }
 
         // enpassant left
         if (parentBoard.getOccupantOfSquare(x-1,y) == beatableOccupant
                 && parentBoard.enPassantAt(x-1,y)  && coordinate.getY() == 4) {
 
-            moves.add(new Move(this, this.coordinate, new Coordinate(x-1, y+1)));
+            moves.add(new Move(this, this.coordinate, new Coordinate(x-1, y+1), true, new Coordinate(x-1, y)));
         }
 
         return moves;
@@ -180,11 +178,7 @@ public class Pawn implements IPiece {
 
         if (occupant == Occupant.BLACK && this.getColor() == PieceColor.WHITE) {
             return true;
-        } else if (occupant == Occupant.WHITE && this.getColor() == PieceColor.BLACK) {
-            return true;
-        } else {
-            return false;
-        }
+        } else return occupant == Occupant.WHITE && this.getColor() == PieceColor.BLACK;
     }
 
     private void askForPromotion() {

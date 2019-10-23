@@ -2,15 +2,15 @@ package Classes;
 
 import Classes.Pieces.*;
 import Enumerations.PieceColor;
-import Exceptions.IllegalMoveException;
 import Interfaces.IPiece;
-
-import java.util.ArrayList;
 
 public class Game {
 
 
     static public void main(String[] args) {
+
+        tester();
+
 
         Board board = new Board();
         pieceSetup(board);
@@ -46,10 +46,17 @@ public class Game {
 //        }
 //
 //        board.printBoard();
+
+//        String algebraicIdentifier = "Tcxd3";
+//
+//
+//        algebraicIdentifier = algebraicIdentifier.replace("x", "");
+//
+//        System.out.println(algebraicIdentifier);
     }
 
 
-    public static void pieceSetup(Board board) {
+    private static void pieceSetup(Board board) {
         // WHITE Player
         // --pawns
         for (int i = 0; i <= 7; i++) {

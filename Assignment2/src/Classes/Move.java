@@ -12,6 +12,9 @@ public class Move {
     private IPiece performingPiece;
     private Coordinate startCoordinate;
     private Coordinate endCoordinate;
+    private boolean isEnPassantMove = false;
+    private Coordinate enPassantBeatenPiece;
+
 
     public Move(IPiece piece, Coordinate start, Coordinate end) {
 
@@ -21,6 +24,18 @@ public class Move {
 
         this.calculateAlgebraicIdentifier();
 
+    }
+
+    public Move(IPiece piece, Coordinate start, Coordinate end, boolean enPassant, Coordinate pieceToBeBeaten) {
+
+        this.performingPiece = piece;
+        this.startCoordinate = start;
+        this.endCoordinate = end;
+        this.isEnPassantMove = enPassant;
+        this.enPassantBeatenPiece = pieceToBeBeaten;
+
+        this.calculateAlgebraicIdentifier();
+        correctAmbiguousIdentifier();
     }
 
     private void calculateAlgebraicIdentifier() {
@@ -72,7 +87,7 @@ public class Move {
 
 
     //TODO: Use this method somewhere useful
-    public void correctAmbiguousIdentifier() {
+    void correctAmbiguousIdentifier() {
 
         removeCaptureInformation();
 
@@ -92,19 +107,24 @@ public class Move {
 
         //Any other Piece
         } else {
+
+            StringBuilder prefix = new StringBuilder();
             char piece = algebraicIdentifier.charAt(0);
+            prefix.append(piece);
             String move = endCoordinate.getAlgebraicNotation();
 
             if (algebraicIdentifier.length() == 3) {
-                algebraicIdentifier = piece + additive.charAt(0) + move;
+                prefix.append(additive.charAt(0));
             }
             else if (algebraicIdentifier.length() == 4 && additive.charAt(0) == algebraicIdentifier.charAt(1)) {
 
-                algebraicIdentifier = piece + additive.charAt(1) + move;
+                prefix.append(additive.charAt(1));
             }
             else {
-                algebraicIdentifier = piece + additive + move;
+                prefix.append(additive);
             }
+
+            algebraicIdentifier = prefix + move;
         }
 
         correctIdentifierForCapture();
@@ -120,7 +140,7 @@ public class Move {
         String prefix = algebraicIdentifier.substring(0, algebraicIdentifier.length() - 2);
         String move = endCoordinate.getAlgebraicNotation();
 
-        if (performingPiece.willCaptureOnCoordinate(endCoordinate)) {
+        if (performingPiece.willCaptureOnCoordinate(endCoordinate) || this.isEnPassantMove) {
             algebraicIdentifier = prefix + "x" + move;
         }
     }
@@ -144,5 +164,12 @@ public class Move {
                 promotionPawn.promote(this);
             }
         }
+    }
+
+    Coordinate getEnPassantBeatenPiece() {
+        if (isEnPassantMove) {
+            return enPassantBeatenPiece;
+        }
+        return null;
     }
 }
