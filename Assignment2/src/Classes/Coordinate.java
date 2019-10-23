@@ -1,6 +1,4 @@
 package Classes;
-//Values of an instance of Coordinate cannot be changed
-//Coordinate should only ever be used by the square --> should this be a private class or part of Interfaces.Square?
 
 import Exceptions.CoordinateFormException;
 

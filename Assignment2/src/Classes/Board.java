@@ -9,7 +9,6 @@ import Interfaces.IPiece;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
-
 import java.util.Scanner;
 
 public class Board {
@@ -42,12 +41,66 @@ public class Board {
             }
         }
 
-        removeSuicideMoves(PieceColor.WHITE, legalMovesWhite, PieceColor.BLACK);
-        removeSuicideMoves(PieceColor.BLACK, legalMovesBlack, PieceColor.WHITE);
+        removeSuicideMoves(PieceColor.WHITE, legalMovesWhite);
+        removeSuicideMoves(PieceColor.BLACK, legalMovesBlack);
 
         checkAmbiguity(legalMovesWhite);
         checkAmbiguity(legalMovesBlack);
 
+        findCheckOrCheckmateMoves(legalMovesWhite, PieceColor.BLACK);
+        findCheckOrCheckmateMoves(legalMovesBlack, PieceColor.WHITE);
+
+        correctForCheckAndCheckmate(legalMovesWhite);
+        correctForCheckAndCheckmate(legalMovesBlack);
+
+    }
+
+    private void correctForCheckAndCheckmate(ArrayList<Move> moves) {
+
+        for (Move move: moves) {
+
+            move.correctIdentifierForCheck();
+            move.correctIdentifierForCheckmate();
+        }
+    }
+
+    private void findCheckOrCheckmateMoves(ArrayList<Move> moves, PieceColor opponentColor) {
+
+        Coordinate opponentKingCoordinate = null;
+
+        for(IPiece piece: pieces) {
+            if (piece.getType() == PieceType.KING && piece.getColor() == opponentColor) {
+                opponentKingCoordinate = new Coordinate(piece.getCoordinates().getKey(), piece.getCoordinates().getValue());
+            }
+        }
+        assert opponentKingCoordinate != null;
+        for (Move move: moves) {
+            //1. Make Move
+            move.make();
+            //2. See if piece can go to King Coordinate in next move
+            ArrayList<Move> piecesNextMoves = new ArrayList<>(move.getPerformingPiecesMoves());
+            if (kingIsChecked(opponentColor, piecesNextMoves)) {
+
+                //3. Set move variable accordingly
+                move.setLeadsToCheck(true);
+            }
+            //4. calculate opponent moves
+            ArrayList<Move> opponentMoves = new ArrayList<>();
+            for (IPiece piece: pieces) {
+                if (piece.getColor().equals(opponentColor)) {
+                    opponentMoves.addAll(piece.getPieceMoves());
+                }
+            }
+            removeSuicideMoves(opponentColor, opponentMoves);
+
+            //5. if opponent moves empty --> Checkmate
+            if (opponentMoves.isEmpty()) {
+                move.setLeadsToCheckmate(true);
+            }
+
+            //6. revert move!!!
+            move.revert();
+        }
     }
 
     private void checkAmbiguity(ArrayList<Move> moves) {
@@ -291,7 +344,12 @@ public class Board {
         System.out.println("\t(a )(b )(c )(d )(e )(f )(g )(h )\n");
     }
 
-    private void removeSuicideMoves(PieceColor playerColor, ArrayList<Move> playerMoves , PieceColor opponentColor) {
+    private void removeSuicideMoves(PieceColor playerColor, ArrayList<Move> playerMoves) {
+
+        PieceColor opponentColor = PieceColor.WHITE;
+        if (playerColor == opponentColor) {
+            opponentColor = PieceColor.BLACK;
+        }
 
         ArrayList<Move> movesToRemove = new ArrayList<>();
 
@@ -308,9 +366,12 @@ public class Board {
                 }
             }
 
-            //Check if any Piece is beaten and its moves therefore don't count
+            //Check if Move beats Piece and its moves therefore don't count
             ArrayList<Move> movesOfBeatenEnemy = new ArrayList<>();
             for (Move opponentMove: opponentMoves){
+
+                //Check if Piece is Protected --> If protected, cant be beaten by King
+
 
                 if (move.getEndCoordinate().equals(opponentMove.getStartCoordinate())) {
                     movesOfBeatenEnemy.add(opponentMove);

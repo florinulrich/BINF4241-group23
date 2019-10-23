@@ -6,6 +6,8 @@ import Enumerations.PieceType;
 import Exceptions.IllegalMoveException;
 import Interfaces.IPiece;
 
+import java.util.ArrayList;
+
 public class Move {
 
     private String algebraicIdentifier;
@@ -14,7 +16,25 @@ public class Move {
     private Coordinate endCoordinate;
     private boolean isEnPassantMove = false;
     private Coordinate enPassantBeatenPiece;
+    private boolean leadsToCheck = false;
+    private boolean leadsToCheckmate = false;
 
+
+    public boolean leadsToCheckmate() {
+        return leadsToCheckmate;
+    }
+
+    public void setLeadsToCheckmate(boolean leadsToCheckmate) {
+        this.leadsToCheckmate = leadsToCheckmate;
+    }
+
+    public boolean leadsToCheck() {
+        return leadsToCheck;
+    }
+
+    public void setLeadsToCheck(boolean leadsToCheck) {
+        this.leadsToCheck = leadsToCheck;
+    }
 
     public Move(IPiece piece, Coordinate start, Coordinate end) {
 
@@ -145,8 +165,27 @@ public class Move {
         }
     }
 
+    public void correctIdentifierForCheck() {
+
+        if (leadsToCheck) {
+            algebraicIdentifier = algebraicIdentifier + "+";
+        }
+    }
+
+    public void correctIdentifierForCheckmate() {
+
+        if (leadsToCheckmate) {
+            algebraicIdentifier = algebraicIdentifier.replace("+", "");
+            algebraicIdentifier = algebraicIdentifier + "#";
+        }
+    }
+
     PieceColor performingPlayer(){
         return performingPiece.getColor();
+    }
+
+    ArrayList<Move> getPerformingPiecesMoves() {
+        return performingPiece.getPieceMoves();
     }
 
     Coordinate getStartCoordinate() {
