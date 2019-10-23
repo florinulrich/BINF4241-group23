@@ -21,6 +21,9 @@ public class Board {
     private int scoreWhite = 0;
     private int scoreBlack = 0;
 
+    private boolean canCastleRight = true;
+    private boolean canCastleLeft = true;
+
     private ArrayList<Move> history = new ArrayList<>();
 
     private void computeLegalMoves() {
@@ -163,6 +166,16 @@ public class Board {
 
             //Check if Pawn needs to be promoted
             chosenMove.checkForPromotion();
+
+            //Check if Castle will still be possible
+            if (chosenMove.performingPieceType() == PieceType.KING) {
+                canCastleLeft = false;
+                canCastleRight = false;
+            }
+
+            //Tower 1
+
+            //Tower 2
 
 
             chosenMove.make();
@@ -356,8 +369,14 @@ public class Board {
         for (Move move: playerMoves) {
 
             boolean illegal = false;
+            IPiece beatenEnemy = getPieceAt(move.getEndCoordinate());
+            if (beatenEnemy != null) {
+                removePiece(beatenEnemy);
+            }
 
             move.make();
+
+
 
             ArrayList<Move> opponentMoves = new ArrayList<>();
             for (IPiece piece: pieces) {
@@ -371,8 +390,6 @@ public class Board {
             for (Move opponentMove: opponentMoves){
 
                 //Check if Piece is Protected --> If protected, cant be beaten by King
-
-
                 if (move.getEndCoordinate().equals(opponentMove.getStartCoordinate())) {
                     movesOfBeatenEnemy.add(opponentMove);
                 }
@@ -385,6 +402,9 @@ public class Board {
             }
 
             move.revert();
+            if (beatenEnemy != null) {
+                addPiece(beatenEnemy);
+            }
 
             if (illegal) {
                 movesToRemove.add(move);
@@ -401,6 +421,16 @@ public class Board {
         //4. Revert Move
         //5. If necessary remove move from list
 
+    }
+
+    private IPiece getPieceAt(Coordinate coordinate) {
+        for (IPiece piece: pieces) {
+            Coordinate pieceCoordinate = new Coordinate(piece.getCoordinates().getKey(), piece.getCoordinates().getValue());
+            if (pieceCoordinate.equals(coordinate)) {
+                return piece;
+            }
+        }
+        return null;
     }
 
     private boolean kingIsChecked(PieceColor color, ArrayList<Move> opponentsMoves) {

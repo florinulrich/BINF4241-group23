@@ -184,6 +184,10 @@ public class Move {
         return performingPiece.getColor();
     }
 
+    PieceType performingPieceType() {
+        return performingPiece.getType();
+    }
+
     ArrayList<Move> getPerformingPiecesMoves() {
         return performingPiece.getPieceMoves();
     }
