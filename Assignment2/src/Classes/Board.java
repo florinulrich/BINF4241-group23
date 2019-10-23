@@ -1,6 +1,7 @@
 package Classes;
 
 import Classes.Pieces.*;
+import Enumerations.CastleType;
 import Enumerations.Occupant;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
@@ -21,8 +22,11 @@ public class Board {
     private int scoreWhite = 0;
     private int scoreBlack = 0;
 
-    private boolean canCastleRight = true;
-    private boolean canCastleLeft = true;
+    private boolean WhiteCanCastleShort = true;
+    private boolean WhiteCanCastleLong = true;
+
+    private boolean BlackCanCastleShort = true;
+    private boolean BlackCanCastleLong = true;
 
     private ArrayList<Move> history = new ArrayList<>();
 
@@ -169,11 +173,32 @@ public class Board {
 
             //Check if Castle will still be possible
             if (chosenMove.performingPieceType() == PieceType.KING) {
-                canCastleLeft = false;
-                canCastleRight = false;
+                if (chosenMove.performingPlayer() == PieceColor.BLACK) {
+                    BlackCanCastleLong = false;
+                    BlackCanCastleShort = false;
+                } else {
+                    WhiteCanCastleLong = false;
+                    WhiteCanCastleShort = false;
+                }
             }
 
             //Tower 1
+            if (chosenMove.performingPieceType() == PieceType.TOWER) {
+                if (chosenMove.performingPlayer() == PieceColor.BLACK) {
+                    if (chosenMove.getStartCoordinate().getX() == 0) {
+                        BlackCanCastleLong = false;
+                    } else {
+                        BlackCanCastleShort = false;
+                    }
+                } else {
+                    if (chosenMove.getStartCoordinate().getX() == 0) {
+                        WhiteCanCastleLong = false;
+                    } else {
+                        WhiteCanCastleShort = false;
+                    }
+                }
+            }
+
 
             //Tower 2
 
@@ -483,4 +508,50 @@ public class Board {
         return false;
     }
 
+    private boolean kingOrTowerNotMoved(PieceColor color, CastleType type) {
+        if (color == PieceColor.BLACK) {
+            if (type == CastleType.LONG) {
+                return BlackCanCastleLong;
+            } else {
+                return BlackCanCastleShort;
+            }
+        } else {
+            if (type == CastleType.LONG) {
+                return WhiteCanCastleLong;
+            } else {
+                return WhiteCanCastleShort;
+            }
+        }
+    }
+
+    public boolean kingCanCastle(PieceColor color, CastleType type) {
+        if (kingOrTowerNotMoved(color, type)) {
+
+            if (color == PieceColor.WHITE) {
+
+                if (type == CastleType.LONG) {
+
+                    if (getOccupantOfSquare(1, 0) == Occupant.EMPTY
+                            && getOccupantOfSquare(2, 0) == Occupant.EMPTY
+                            && getOccupantOfSquare(3, 0) == Occupant.EMPTY) {
+
+                    }
+
+                } else {
+                    //
+                }
+
+            } else {
+
+                if (type == CastleType.LONG) {
+                    //
+                } else {
+                    //
+                }
+            }
+
+
+        }
+        return false;
+    }
 }
