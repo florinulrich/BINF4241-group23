@@ -1,7 +1,6 @@
 package Classes;
 
 import Classes.Pieces.Pawn;
-import Classes.Pieces.Tower;
 import Enumerations.CastleType;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;

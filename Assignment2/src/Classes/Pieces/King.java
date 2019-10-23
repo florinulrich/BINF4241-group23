@@ -166,14 +166,19 @@ public class King implements IPiece {
         // TODO: Check if King is not in check
 
         // Long Castle
-        if (parentBoard.kingCanCastle(this.color, CastleType.SHORT)) {
+
+        if (parentBoard.kingCanCastle(this.color, CastleType.SHORT) && x == 4 && (y == 0 || y == 7)
+                && parentBoard.getPieceAt(new Coordinate(7, y)) != null) {
+
             moves.add(new Move(this, this.coordinate, new Coordinate(x+2, y), CastleType.SHORT,
                     parentBoard.getPieceAt(new Coordinate(7, y))));
 
         }
 
         // Short Castle
-        if (parentBoard.kingCanCastle(this.color, CastleType.LONG)) {
+        if (parentBoard.kingCanCastle(this.color, CastleType.LONG) && x == 4 && (y == 0 || y == 7)
+                && parentBoard.getPieceAt(new Coordinate(0, y)) != null) {
+
             moves.add(new Move(this, this.coordinate, new Coordinate(x-2, y), CastleType.LONG,
                     parentBoard.getPieceAt(new Coordinate(0, y))));
         }
