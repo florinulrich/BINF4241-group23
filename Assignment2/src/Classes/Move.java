@@ -1,6 +1,7 @@
 package Classes;
 
 import Classes.Pieces.Pawn;
+import Classes.Pieces.Tower;
 import Enumerations.CastleType;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
@@ -24,21 +25,6 @@ public class Move {
     private CastleType castleType;
 
 
-    public boolean leadsToCheckmate() {
-        return leadsToCheckmate;
-    }
-
-    void setLeadsToCheckmate(boolean leadsToCheckmate) {
-        this.leadsToCheckmate = leadsToCheckmate;
-    }
-
-    public boolean leadsToCheck() {
-        return leadsToCheck;
-    }
-
-    void setLeadsToCheck(boolean leadsToCheck) {
-        this.leadsToCheck = leadsToCheck;
-    }
 
     public Move(IPiece piece, Coordinate start, Coordinate end) {
 
@@ -62,7 +48,7 @@ public class Move {
         correctAmbiguousIdentifier();
     }
 
-    public Move(IPiece piece, Coordinate start, Coordinate end, CastleType type, Move towerMove) {
+    public Move(IPiece piece, Coordinate start, Coordinate end, CastleType type, IPiece tower) {
 
         this.performingPiece = piece;
         this.startCoordinate = start;
@@ -74,7 +60,35 @@ public class Move {
 
         calculateAlgebraicIdentifier();
 
+        Coordinate towerCoordinate = new Coordinate(tower.getCoordinates().getKey(), tower.getCoordinates().getValue());
 
+        if (type == CastleType.LONG) {
+
+            towerMove = new Move(tower, towerCoordinate, new Coordinate(towerCoordinate.getX()+3, towerCoordinate.getY()));
+        } else {
+            towerMove = new Move(tower, towerCoordinate, new Coordinate(towerCoordinate.getX()-2, towerCoordinate.getY()));
+        }
+
+
+
+
+    }
+
+
+    public boolean leadsToCheckmate() {
+        return leadsToCheckmate;
+    }
+
+    void setLeadsToCheckmate(boolean leadsToCheckmate) {
+        this.leadsToCheckmate = leadsToCheckmate;
+    }
+
+    public boolean leadsToCheck() {
+        return leadsToCheck;
+    }
+
+    void setLeadsToCheck(boolean leadsToCheck) {
+        this.leadsToCheck = leadsToCheck;
     }
 
     private void calculateAlgebraicIdentifier() {
