@@ -31,5 +31,6 @@ considered methods:
 <<PART 3>>
 
 3) Implement a Scoreboard using the Observer pattern
+for notation rules, consider the README.md file of this project
 
 
