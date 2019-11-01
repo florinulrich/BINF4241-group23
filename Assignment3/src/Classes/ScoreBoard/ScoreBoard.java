@@ -18,7 +18,7 @@ public class ScoreBoard implements ScoreObserver {
             scoreToBeAdded = 5;
         }
 
-        if (lastBeatenPiece.getColor() == PieceColor.BLACK) {
+        if (lastBeatenPiece.getColor() == PieceColor.WHITE) {
             scoreBlack += scoreToBeAdded;
         } else {
             scoreWhite += scoreToBeAdded;
