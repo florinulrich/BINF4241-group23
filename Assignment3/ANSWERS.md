@@ -30,6 +30,6 @@ considered methods:
 
 <<PART 3>>
 
-2) Implement a Scoreboard and a ChessPieceIterator class
+3) Implement a Scoreboard using the Observer pattern
 
 
