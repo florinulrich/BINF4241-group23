@@ -1,23 +1,27 @@
 package Classes;
 
+import Classes.Observers.CheckMate;
 import Classes.Pieces.*;
-import Classes.ScoreBoard.ScoreBoard;
+import Classes.Observers.ScoreBoard;
 import Enumerations.CastleType;
 import Enumerations.Occupant;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
 import Exceptions.CheckmateException;
+import Interfaces.CheckMateObserverInterfaces.CheckMateObservable;
+import Interfaces.CheckMateObserverInterfaces.CheckMateObserver;
 import Interfaces.IPiece;
-import Interfaces.ScoreObservable;
-import Interfaces.ScoreObserver;
+import Interfaces.ScoreObserverInterfaces.ScoreObservable;
+import Interfaces.ScoreObserverInterfaces.ScoreObserver;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Board implements ScoreObservable {
+public class Board implements ScoreObservable, CheckMateObservable {
 
     private ArrayList<ScoreObserver> scoreObservers;
+    private ArrayList<CheckMateObserver> checkMateObservers;
 
     private ArrayList<IPiece> pieces =  new ArrayList<>();
 
@@ -36,6 +40,10 @@ public class Board implements ScoreObservable {
         scoreObservers = new ArrayList<>();
         ScoreObserver defaultObserver = new ScoreBoard();
         this.registerObserver(defaultObserver);
+
+        checkMateObservers = new ArrayList<>();
+        CheckMateObserver defaultCheckMateObserver = new CheckMate();
+        this.registerObserver(defaultCheckMateObserver);
     }
 
     private void computeLegalMoves() {
@@ -230,8 +238,8 @@ public class Board implements ScoreObservable {
         }
 
         if (opponentMoves.isEmpty()) {
-            System.out.println("Checkmate! Player " + playerColor + " wins!");
-            throw new CheckmateException();
+            this.notifyCheckMateObservers();
+
         }
     }
 
@@ -291,7 +299,7 @@ public class Board implements ScoreObservable {
         if (pieceToRemove != null) {
             removePiece(pieceToRemove);
 
-           notifyObservers(pieceToRemove);
+           notifyScoreObservers(pieceToRemove);
         }
     }
 
@@ -641,12 +649,34 @@ public class Board implements ScoreObservable {
     }
 
     @Override
-    public void notifyObservers(IPiece lastBeatenPiece) {
+    public void notifyScoreObservers(IPiece lastBeatenPiece) {
 
         for (ScoreObserver observer: scoreObservers) {
             observer.update(lastBeatenPiece);
         }
 
     }
+
+    @Override
+    public void registerObserver(CheckMateObserver observer) {
+        this.checkMateObservers.add(observer);
+    }
+
+    @Override
+    public void unregisterObserver(CheckMateObserver observer) {
+        this.checkMateObservers.remove(observer);
+    }
+
+    @Override
+    public void notifyCheckMateObservers() {
+
+        for (CheckMateObserver observer: checkMateObservers) {
+            observer.update();
+        }
+
+    }
+
+
+    //
 
 }
