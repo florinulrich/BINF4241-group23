@@ -238,7 +238,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
         }
 
         if (opponentMoves.isEmpty()) {
-            this.notifyCheckMateObservers();
+            this.notifyCheckMateObservers(playerColor);
 
         }
     }
@@ -668,10 +668,10 @@ public class Board implements ScoreObservable, CheckMateObservable {
     }
 
     @Override
-    public void notifyCheckMateObservers() {
+    public void notifyCheckMateObservers(PieceColor playerColor) {
 
         for (CheckMateObserver observer: checkMateObservers) {
-            observer.update();
+            observer.update(playerColor);
         }
 
     }
