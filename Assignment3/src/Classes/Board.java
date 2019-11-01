@@ -1,6 +1,7 @@
 package Classes;
 
 import Classes.Pieces.*;
+import Classes.ScoreBoard.ScoreBoard;
 import Enumerations.CastleType;
 import Enumerations.Occupant;
 import Enumerations.PieceColor;
@@ -16,15 +17,12 @@ import java.util.Scanner;
 
 public class Board implements ScoreObservable {
 
-    private ArrayList<ScoreObserver> scoreObservers = new ArrayList<>();
+    private ArrayList<ScoreObserver> scoreObservers;
 
     private ArrayList<IPiece> pieces =  new ArrayList<>();
 
     private ArrayList<Move> legalMovesBlack = new ArrayList<>();
     private ArrayList<Move> legalMovesWhite = new ArrayList<>();
-
-    private int scoreWhite = 0;
-    private int scoreBlack = 0;
 
     private boolean WhiteCanCastleShort = true;
     private boolean WhiteCanCastleLong = true;
@@ -33,6 +31,12 @@ public class Board implements ScoreObservable {
     private boolean BlackCanCastleLong = true;
 
     private ArrayList<Move> history = new ArrayList<>();
+
+    Board() {
+        scoreObservers = new ArrayList<>();
+        ScoreObserver defaultObserver = new ScoreBoard();
+        this.registerObserver(defaultObserver);
+    }
 
     private void computeLegalMoves() {
 
@@ -370,9 +374,9 @@ public class Board implements ScoreObservable {
             System.out.print(line);
 
             if (i==7){
-                System.out.println("\t\t WHITE Player score: " + scoreObservers.get(0).);
+                System.out.println("\t\t WHITE Player score: " + scoreObservers.get(0).getScoreWhite());
             } else if (i==6){
-                System.out.println("\t\t BLACK Player score: " + scoreBlack);
+                System.out.println("\t\t BLACK Player score: " + scoreObservers.get(0).getScoreBlack());
             } else{
                 System.out.print("\n");
             }
