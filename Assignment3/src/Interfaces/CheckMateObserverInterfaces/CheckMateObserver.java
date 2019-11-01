@@ -1,6 +1,8 @@
 package Interfaces.CheckMateObserverInterfaces;
 
+import Enumerations.PieceColor;
+
 public interface CheckMateObserver {
 
-    void update();
+    void update(PieceColor playerColor);
 }

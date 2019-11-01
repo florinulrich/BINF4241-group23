@@ -238,8 +238,8 @@ public class Board implements ScoreObservable, CheckMateObservable {
         }
 
         if (opponentMoves.isEmpty()) {
-            System.out.println("Checkmate! Player " + playerColor + " wins!");
-            throw new CheckmateException();
+            this.notifyCheckMateObservers();
+
         }
     }
 
@@ -299,7 +299,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
         if (pieceToRemove != null) {
             removePiece(pieceToRemove);
 
-           notifyObservers(pieceToRemove);
+           notifyScoreObservers(pieceToRemove);
         }
     }
 
@@ -649,7 +649,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
     }
 
     @Override
-    public void notifyObservers(IPiece lastBeatenPiece) {
+    public void notifyScoreObservers(IPiece lastBeatenPiece) {
 
         for (ScoreObserver observer: scoreObservers) {
             observer.update(lastBeatenPiece);
@@ -668,7 +668,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
     }
 
     @Override
-    public void notifyObservers() {
+    public void notifyCheckMateObservers() {
 
         for (CheckMateObserver observer: checkMateObservers) {
             observer.update();
