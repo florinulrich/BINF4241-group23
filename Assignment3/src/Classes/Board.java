@@ -1,27 +1,23 @@
 package Classes;
 
-import Classes.Observers.CheckMate;
 import Classes.Pieces.*;
-import Classes.Observers.ScoreBoard;
+import Classes.ScoreBoard.ScoreBoard;
 import Enumerations.CastleType;
 import Enumerations.Occupant;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
 import Exceptions.CheckmateException;
-import Interfaces.CheckMateObserverInterfaces.CheckMateObservable;
-import Interfaces.CheckMateObserverInterfaces.CheckMateObserver;
 import Interfaces.IPiece;
-import Interfaces.ScoreObserverInterfaces.ScoreObservable;
-import Interfaces.ScoreObserverInterfaces.ScoreObserver;
+import Interfaces.ScoreObservable;
+import Interfaces.ScoreObserver;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Board implements ScoreObservable, CheckMateObservable {
+public class Board implements ScoreObservable {
 
     private ArrayList<ScoreObserver> scoreObservers;
-    private ArrayList<CheckMateObserver> checkMateObservers;
 
     private ArrayList<IPiece> pieces =  new ArrayList<>();
 
@@ -40,10 +36,6 @@ public class Board implements ScoreObservable, CheckMateObservable {
         scoreObservers = new ArrayList<>();
         ScoreObserver defaultObserver = new ScoreBoard();
         this.registerObserver(defaultObserver);
-
-        checkMateObservers = new ArrayList<>();
-        CheckMateObserver defaultCheckMateObserver = new CheckMate();
-        this.registerObserver(defaultCheckMateObserver);
     }
 
     private void computeLegalMoves() {
@@ -656,27 +648,5 @@ public class Board implements ScoreObservable, CheckMateObservable {
         }
 
     }
-
-    @Override
-    public void registerObserver(CheckMateObserver observer) {
-        this.checkMateObservers.add(observer);
-    }
-
-    @Override
-    public void unregisterObserver(CheckMateObserver observer) {
-        this.checkMateObservers.remove(observer);
-    }
-
-    @Override
-    public void notifyObservers() {
-
-        for (CheckMateObserver observer: checkMateObservers) {
-            observer.update();
-        }
-
-    }
-
-
-    //
 
 }
