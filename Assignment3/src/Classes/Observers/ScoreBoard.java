@@ -1,9 +1,9 @@
-package Classes.ScoreBoard;
+package Classes.Observers;
 
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
 import Interfaces.IPiece;
-import Interfaces.ScoreObserver;
+import Interfaces.ScoreObserverInterfaces.ScoreObserver;
 
 public class ScoreBoard implements ScoreObserver {
 

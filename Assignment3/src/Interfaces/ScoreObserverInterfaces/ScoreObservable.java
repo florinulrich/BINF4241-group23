@@ -1,4 +1,6 @@
-package Interfaces;
+package Interfaces.ScoreObserverInterfaces;
+
+import Interfaces.IPiece;
 
 public interface ScoreObservable {
 
