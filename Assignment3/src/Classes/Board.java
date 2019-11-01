@@ -7,12 +7,16 @@ import Enumerations.PieceColor;
 import Enumerations.PieceType;
 import Exceptions.CheckmateException;
 import Interfaces.IPiece;
+import Interfaces.ScoreObservable;
+import Interfaces.ScoreObserver;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Board {
+public class Board implements ScoreObservable {
+
+    private ArrayList<ScoreObserver> scoreObservers = new ArrayList<>();
 
     private ArrayList<IPiece> pieces =  new ArrayList<>();
 
@@ -283,11 +287,7 @@ public class Board {
         if (pieceToRemove != null) {
             removePiece(pieceToRemove);
 
-            if (pieceToRemove.getColor() == PieceColor.WHITE) {
-                scoreBlack += 1;
-            } else {
-                scoreWhite += 1;
-            }
+           notifyObservers(pieceToRemove);
         }
     }
 
@@ -370,7 +370,7 @@ public class Board {
             System.out.print(line);
 
             if (i==7){
-                System.out.println("\t\t WHITE Player score: " + scoreWhite);
+                System.out.println("\t\t WHITE Player score: " + scoreObservers.get(0).);
             } else if (i==6){
                 System.out.println("\t\t BLACK Player score: " + scoreBlack);
             } else{
@@ -623,4 +623,29 @@ public class Board {
         }
         return false;
     }
+
+
+
+    @Override
+    public void registerObserver(ScoreObserver observer) {
+        scoreObservers.add(observer);
+    }
+
+    @Override
+    public void unregisterObserver(ScoreObserver observer) {
+        scoreObservers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers(IPiece lastBeatenPiece) {
+
+        for (ScoreObserver observer: scoreObservers) {
+            observer.update(lastBeatenPiece);
+        }
+
+    }
+
+
+    //
+
 }
