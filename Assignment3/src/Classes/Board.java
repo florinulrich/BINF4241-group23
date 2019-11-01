@@ -23,7 +23,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
     private ArrayList<ScoreObserver> scoreObservers;
     private ArrayList<CheckMateObserver> checkMateObservers;
 
-    private ArrayList<IPiece> pieces =  new ArrayList<>();
+    private ArrayList<IPiece> pieces = new ArrayList<>();
 
     private ArrayList<Move> legalMovesBlack = new ArrayList<>();
     private ArrayList<Move> legalMovesWhite = new ArrayList<>();
@@ -51,11 +51,11 @@ public class Board implements ScoreObservable, CheckMateObservable {
         legalMovesWhite = new ArrayList<>();
         legalMovesBlack = new ArrayList<>();
 
-        for (IPiece piece: pieces) {
+        for (IPiece piece : pieces) {
 
             ArrayList<Move> PieceMoves = piece.getPieceMoves();
 
-            for (Move move: PieceMoves) {
+            for (Move move : PieceMoves) {
                 if (piece.getColor() == PieceColor.BLACK) {
                     legalMovesBlack.add(move);
                 } else {
@@ -80,7 +80,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
 
     private void correctForCheckAndCheckmate(ArrayList<Move> moves) {
 
-        for (Move move: moves) {
+        for (Move move : moves) {
 
             move.correctIdentifierForCheck();
             move.correctIdentifierForCheckmate();
@@ -91,13 +91,13 @@ public class Board implements ScoreObservable, CheckMateObservable {
 
         Coordinate opponentKingCoordinate = null;
 
-        for(IPiece piece: pieces) {
+        for (IPiece piece : pieces) {
             if (piece.getType() == PieceType.KING && piece.getColor() == opponentColor) {
                 opponentKingCoordinate = new Coordinate(piece.getCoordinates().getKey(), piece.getCoordinates().getValue());
             }
         }
         assert opponentKingCoordinate != null;
-        for (Move move: moves) {
+        for (Move move : moves) {
             //1. Make Move
             move.make();
             //2. See if piece can go to King Coordinate in next move
@@ -109,7 +109,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
             }
             //4. calculate opponent moves
             ArrayList<Move> opponentMoves = new ArrayList<>();
-            for (IPiece piece: pieces) {
+            for (IPiece piece : pieces) {
                 if (piece.getColor().equals(opponentColor)) {
                     opponentMoves.addAll(piece.getPieceMoves());
                 }
@@ -128,9 +128,9 @@ public class Board implements ScoreObservable, CheckMateObservable {
 
     private void checkAmbiguity(ArrayList<Move> moves) {
 
-        for (Move moveToCompare: moves) {
+        for (Move moveToCompare : moves) {
 
-            for (Move move: moves) {
+            for (Move move : moves) {
 
                 if (move != moveToCompare) {
                     if (move.getAlgebraicIdentifier().equals(moveToCompare.getAlgebraicIdentifier())) {
@@ -157,8 +157,10 @@ public class Board implements ScoreObservable, CheckMateObservable {
 
 
         Move chosenMove = null;
-        for (Move move: moveArray) {
-            if (move.getAlgebraicIdentifier().equals(algebraicMove)) { chosenMove = move; }
+        for (Move move : moveArray) {
+            if (move.getAlgebraicIdentifier().equals(algebraicMove)) {
+                chosenMove = move;
+            }
         }
 
         if (chosenMove == null) {
@@ -166,7 +168,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
             System.out.println("This is not a legal move, try another one!");
             System.out.println("Available Moves:");
 
-            for (Move move: moveArray) {
+            for (Move move : moveArray) {
                 System.out.print(move.getAlgebraicIdentifier() + " ");
             }
             System.out.println();
@@ -182,7 +184,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
             this.removePieceAt(chosenMove.getEndCoordinate());
 
             if (chosenMove.getEnPassantBeatenPiece() != null)
-            this.removePieceAt(chosenMove.getEnPassantBeatenPiece());
+                this.removePieceAt(chosenMove.getEnPassantBeatenPiece());
 
             //Check if Pawn needs to be promoted
             chosenMove.checkForPromotion();
@@ -243,7 +245,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
         }
     }
 
-    private String getMoveInput(){
+    private String getMoveInput() {
 
         Scanner playerInput = new Scanner(System.in);
 
@@ -251,11 +253,13 @@ public class Board implements ScoreObservable, CheckMateObservable {
     }
 
     public Occupant getOccupantOfSquare(int xCoordinate, int yCoordinate) {
-        for (IPiece piece: pieces) {
+        for (IPiece piece : pieces) {
             if (piece.getCoordinates().equals(new Pair<>(xCoordinate, yCoordinate))) {
                 switch (piece.getColor()) {
-                    case BLACK: return Occupant.BLACK;
-                    case WHITE: return Occupant.WHITE;
+                    case BLACK:
+                        return Occupant.BLACK;
+                    case WHITE:
+                        return Occupant.WHITE;
                 }
             }
         }
@@ -266,7 +270,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
 
         IPiece promoted;
 
-        switch (type){
+        switch (type) {
             case KNIGHT:
                 promoted = new Knight(this, x, y, color);
                 break;
@@ -288,7 +292,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
 
         IPiece pieceToRemove = null;
 
-        for (IPiece piece: this.pieces) {
+        for (IPiece piece : this.pieces) {
             Coordinate pieceCoordinate = new Coordinate(piece.getCoordinates().getKey(), piece.getCoordinates().getValue());
 
             if (pieceCoordinate.equals(coordinate)) {
@@ -299,7 +303,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
         if (pieceToRemove != null) {
             removePiece(pieceToRemove);
 
-           notifyScoreObservers(pieceToRemove);
+            notifyScoreObservers(pieceToRemove);
         }
     }
 
@@ -343,7 +347,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
         if (!checkMateObservers.get(0).isCheckmate()) {
             startGame();
 
-        }else {
+        } else {
             printBoard();
         }
 
@@ -354,16 +358,16 @@ public class Board implements ScoreObservable, CheckMateObservable {
 
         ArrayList<ArrayList<PrintSquares>> printSquares = new ArrayList<>();
 
-        for(int i = 0; i < 8; i++) {
+        for (int i = 0; i < 8; i++) {
             printSquares.add(new ArrayList<>());
         }
-        for (ArrayList<PrintSquares> list: printSquares) {
-            for(int i = 0; i < 8; i++) {
+        for (ArrayList<PrintSquares> list : printSquares) {
+            for (int i = 0; i < 8; i++) {
                 list.add(new PrintSquares());
             }
         }
 
-        for (IPiece piece: this.pieces) {
+        for (IPiece piece : this.pieces) {
             //getCoordinates
             Pair<Integer, Integer> coordinates = piece.getCoordinates();
             Integer x = coordinates.getKey();
@@ -376,17 +380,17 @@ public class Board implements ScoreObservable, CheckMateObservable {
 
             StringBuilder line = new StringBuilder("(" + (i + 1) + ")" + "\t");
 
-            for (PrintSquares square: printSquares.get(i)) {
+            for (PrintSquares square : printSquares.get(i)) {
                 line.append(square.getOutputString());
             }
 
             System.out.print(line);
 
-            if (i==7){
+            if (i == 7) {
                 System.out.println("\t\t WHITE Player score: " + scoreObservers.get(0).getScoreWhite());
-            } else if (i==6){
+            } else if (i == 6) {
                 System.out.println("\t\t BLACK Player score: " + scoreObservers.get(0).getScoreBlack());
-            } else{
+            } else {
                 System.out.print("\n");
             }
         }
@@ -403,7 +407,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
 
         ArrayList<Move> movesToRemove = new ArrayList<>();
 
-        for (Move move: playerMoves) {
+        for (Move move : playerMoves) {
 
             boolean illegal = false;
             IPiece beatenEnemy = getPieceAt(move.getEndCoordinate());
@@ -414,9 +418,8 @@ public class Board implements ScoreObservable, CheckMateObservable {
             move.make();
 
 
-
             ArrayList<Move> opponentMoves = new ArrayList<>();
-            for (IPiece piece: pieces) {
+            for (IPiece piece : pieces) {
                 if (piece.getColor().equals(opponentColor)) {
                     opponentMoves.addAll(piece.getPieceMoves());
                 }
@@ -424,7 +427,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
 
             //Check if Move beats Piece and its moves therefore don't count
             ArrayList<Move> movesOfBeatenEnemy = new ArrayList<>();
-            for (Move opponentMove: opponentMoves){
+            for (Move opponentMove : opponentMoves) {
 
                 //Check if Piece is Protected --> If protected, cant be beaten by King
                 if (move.getEndCoordinate().equals(opponentMove.getStartCoordinate())) {
@@ -461,7 +464,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
     }
 
     public IPiece getPieceAt(Coordinate coordinate) {
-        for (IPiece piece: pieces) {
+        for (IPiece piece : pieces) {
             Coordinate pieceCoordinate = new Coordinate(piece.getCoordinates().getKey(), piece.getCoordinates().getValue());
             if (pieceCoordinate.equals(coordinate)) {
                 return piece;
@@ -474,7 +477,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
 
         Coordinate kingCoordinate = null;
 
-        for (IPiece piece: pieces) {
+        for (IPiece piece : pieces) {
             if (piece.getType() == PieceType.KING && piece.getColor() == color) {
                 Pair<Integer, Integer> coordinatePair = piece.getCoordinates();
                 kingCoordinate = new Coordinate(coordinatePair.getKey(), coordinatePair.getValue());
@@ -482,7 +485,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
         }
 
 
-        for (Move move: opponentsMoves) {
+        for (Move move : opponentsMoves) {
             assert kingCoordinate != null;
             if (move.getEndCoordinate().equals(kingCoordinate)) {
                 return true;
@@ -494,7 +497,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
 
     public boolean enPassantAt(int x, int y) {
         Coordinate testedCoordinate = new Coordinate(x, y);
-        for (IPiece piece: pieces) {
+        for (IPiece piece : pieces) {
             if (piece.getType() == PieceType.PAWN) {
                 Pawn pawn = (Pawn) piece;
                 Coordinate pawnCoordinate = new Coordinate(pawn.getCoordinates().getKey(), pawn.getCoordinates().getValue());
@@ -510,8 +513,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
                     Move lastMove = history.get(history.size() - 1);
                     if (lastMove.getEndCoordinate().equals(pawnCoordinate)
                             && lastMove.getEndCoordinate().equals(testedCoordinate)
-                            && lastMove.getStartCoordinate().equals(pawnStartCoordinate))
-                    {
+                            && lastMove.getStartCoordinate().equals(pawnStartCoordinate)) {
                         return true;
                     }
                 }
@@ -560,7 +562,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
                             && getOccupantOfSquare(3, 0) == Occupant.EMPTY) {
 
                         //Check if opponent blocks Castle
-                        for (Move move: opponentMoves) {
+                        for (Move move : opponentMoves) {
                             if ((move.getEndCoordinate().getX() == 2 && move.getEndCoordinate().getY() == 0)
                                     || (move.getEndCoordinate().getX() == 3 && move.getEndCoordinate().getY() == 0)) {
                                 return false;
@@ -579,7 +581,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
 
 
                         //Check if opponent blocks Castle
-                        for (Move move: opponentMoves) {
+                        for (Move move : opponentMoves) {
                             if ((move.getEndCoordinate().getX() == 5 && move.getEndCoordinate().getY() == 0)
                                     || (move.getEndCoordinate().getX() == 6 && move.getEndCoordinate().getY() == 0)) {
                                 return false;
@@ -601,7 +603,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
                             && getOccupantOfSquare(3, 7) == Occupant.EMPTY) {
 
                         //Check if opponent blocks Castle
-                        for (Move move: opponentMoves) {
+                        for (Move move : opponentMoves) {
                             if ((move.getEndCoordinate().getX() == 2 && move.getEndCoordinate().getY() == 7)
                                     || (move.getEndCoordinate().getX() == 3 && move.getEndCoordinate().getY() == 7)) {
                                 return false;
@@ -619,7 +621,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
                             && getOccupantOfSquare(6, 7) == Occupant.EMPTY) {
 
                         //Check if opponent blocks Castle
-                        for (Move move: opponentMoves) {
+                        for (Move move : opponentMoves) {
                             if ((move.getEndCoordinate().getX() == 5 && move.getEndCoordinate().getY() == 7)
                                     || (move.getEndCoordinate().getX() == 6 && move.getEndCoordinate().getY() == 7)) {
                                 return false;
@@ -638,7 +640,6 @@ public class Board implements ScoreObservable, CheckMateObservable {
     }
 
 
-
     @Override
     public void registerObserver(ScoreObserver observer) {
         scoreObservers.add(observer);
@@ -652,7 +653,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
     @Override
     public void notifyScoreObservers(IPiece lastBeatenPiece) {
 
-        for (ScoreObserver observer: scoreObservers) {
+        for (ScoreObserver observer : scoreObservers) {
             observer.update(lastBeatenPiece);
         }
 
@@ -671,13 +672,10 @@ public class Board implements ScoreObservable, CheckMateObservable {
     @Override
     public void notifyCheckMateObservers(PieceColor playerColor) {
 
-        for (CheckMateObserver observer: checkMateObservers) {
+        for (CheckMateObserver observer : checkMateObservers) {
             observer.update(playerColor);
         }
 
     }
-
-
-    //
 
 }
