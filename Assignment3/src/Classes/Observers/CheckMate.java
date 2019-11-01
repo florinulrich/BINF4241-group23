@@ -9,7 +9,7 @@ public class CheckMate implements CheckMateObserver {
 
     @Override
     public void update(PieceColor playerColor) {
-        System.out.println("Checkmate! Player " + playerColor + " wins!");
+        System.out.println("\nCheckmate! Player " + playerColor + " wins!");
 
         isCheckmate = true;
 
