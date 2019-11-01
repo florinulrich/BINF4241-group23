@@ -143,7 +143,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
     }
 
     //Needs to check if move is possible in the move array of the respective player
-    private void makeMove(String algebraicMove, PieceColor playerColor) throws CheckmateException {
+    private void makeMove(String algebraicMove, PieceColor playerColor) {
 
         computeLegalMoves();
 
@@ -338,13 +338,14 @@ public class Board implements ScoreObservable, CheckMateObservable {
         System.out.print(colorNext + " Player move >> ");
 
         String nextMove = getMoveInput();
-        try {
-            makeMove(nextMove, colorNext);
+        makeMove(nextMove, colorNext);
+
+        if (!checkMateObservers.get(0).isCheckmate()) {
             startGame();
-        } catch (CheckmateException e) {
+
+        }else {
             printBoard();
         }
-
 
     }
 
