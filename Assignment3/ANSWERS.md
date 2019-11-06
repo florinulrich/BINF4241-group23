@@ -19,7 +19,7 @@ the corresponding sequence diagrams of the methods mentioned below are in the "D
 
 considered methods:
 - removePiece
-![removePieceDiagram](Assignment3/DiagramPictures().png)
+![removePieceDiagram](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/removePiece().png)
 
 - removePieceAt
 - addPiece
