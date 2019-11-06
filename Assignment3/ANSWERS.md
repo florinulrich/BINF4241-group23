@@ -49,19 +49,17 @@ add diagram
 
 - removeSuicideMoves
 
-add diagram
-
 - computeLegalMoves
 
-add diagram
+![computeLegalMoves](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/computeLegalMoves().png)
 
 - makeMove (computeLegalMoves removed for clarity)
 
-add diagram
+![makeMove](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/makeMove().png)
 
 - startGame
 
-add diagram
+![startGame](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/startGame().png)
 
 
 ## PART 3
