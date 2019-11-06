@@ -13,7 +13,7 @@ Observer
 3)
 
 
-<<PART 2>>
+## PART 2
 
 the corresponding sequence diagrams of the methods mentioned below are in the "DiagramPictures" folder in Assignment3
 
@@ -30,7 +30,7 @@ considered methods:
 - startGame
 
 
-<<PART 3>>
+## PART 3
 
 3) Implement a Scoreboard using the Observer pattern
 for notation rules, consider the README.md file of this project
