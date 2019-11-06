@@ -5,9 +5,10 @@
 Observer
 1) Using an Exception to escape the recurring funtion that keeps the game running is a rather unelegant solution. At the time of implementation we did not have a better alternative. Being introduced to the new design patterns we thought this situation is a good place to implement an observer, because we could delegate the responsibility of keeping track of the checkmate state (updating the observer) to the place where the error has previously been thrown. Before calling startGame() again, the observer can be asked if the game continues.
 
-2)
+2) class Diagram
 ![classDiagram](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/ClassDiagramCheckMateObserver.png)
-3)
+
+3) sequenceDiagram
 ![sequenceDiagram](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/CheckmateObserverSequenceDiagram.png)
 
 
