@@ -1,8 +1,8 @@
 package Classes;
 
 import Classes.Observers.CheckMate;
-import Classes.Pieces.*;
 import Classes.Observers.ScoreBoard;
+import Classes.Pieces.*;
 import Enumerations.CastleType;
 import Enumerations.Occupant;
 import Enumerations.PieceColor;
@@ -347,7 +347,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
 
         } else {
             printBoard();
-            System.out.println("\nCheckmate! Player " + history.get(history.size()-1).performingPlayer() + " wins!");
+            System.out.println("\nCheckmate! Player " + history.get(history.size() - 1).performingPlayer() + " wins!");
         }
 
     }
