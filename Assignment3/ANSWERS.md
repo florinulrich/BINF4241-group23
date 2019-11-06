@@ -29,18 +29,31 @@ considered methods:
 ![removePieceDiagram](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/removePiece().png)
 
 - removePieceAt
+
 add diagram
+
 - addPiece
+
 add diagram
+
 - addPromotedPiece (only considering Queen promotion for clarity reasons)
+
 add diagram
+
 - removeSuicideMoves
+
 add diagram
+
 - computeLegalMoves
+
 add diagram
+
 - makeMove (computeLegalMoves removed for clarity)
+
 add diagram
+
 - startGame
+
 add diagram
 
 
