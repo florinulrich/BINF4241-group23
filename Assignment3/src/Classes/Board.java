@@ -305,7 +305,6 @@ public class Board implements ScoreObservable, CheckMateObservable {
         }
     }
 
-
     public void removePiece(IPiece piece) {
         this.pieces.remove(piece);
     }
