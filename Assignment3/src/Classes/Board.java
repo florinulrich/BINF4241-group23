@@ -7,7 +7,6 @@ import Enumerations.CastleType;
 import Enumerations.Occupant;
 import Enumerations.PieceColor;
 import Enumerations.PieceType;
-import Exceptions.CheckmateException;
 import Interfaces.CheckMateObserverInterfaces.CheckMateObservable;
 import Interfaces.CheckMateObserverInterfaces.CheckMateObserver;
 import Interfaces.IPiece;
@@ -42,7 +41,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
         this.registerObserver(defaultObserver);
 
         checkMateObservers = new ArrayList<>();
-        CheckMateObserver defaultCheckMateObserver = new CheckMate();
+        CheckMateObserver defaultCheckMateObserver = CheckMate.getInstance();
         this.registerObserver(defaultCheckMateObserver);
     }
 
@@ -240,8 +239,7 @@ public class Board implements ScoreObservable, CheckMateObservable {
         }
 
         if (opponentMoves.isEmpty()) {
-            this.notifyCheckMateObservers(playerColor);
-
+            this.notifyCheckMateObservers();
         }
     }
 
@@ -344,11 +342,12 @@ public class Board implements ScoreObservable, CheckMateObservable {
         String nextMove = getMoveInput();
         makeMove(nextMove, colorNext);
 
-        if (!checkMateObservers.get(0).isCheckmate()) {
+        if (!CheckMate.getInstance().isCheckmate()) {
             startGame();
 
         } else {
             printBoard();
+            System.out.println("\nCheckmate! Player " + history.get(history.size()-1).performingPlayer() + " wins!");
         }
 
     }
@@ -670,10 +669,10 @@ public class Board implements ScoreObservable, CheckMateObservable {
     }
 
     @Override
-    public void notifyCheckMateObservers(PieceColor playerColor) {
+    public void notifyCheckMateObservers() {
 
         for (CheckMateObserver observer : checkMateObservers) {
-            observer.update(playerColor);
+            observer.update();
         }
 
     }

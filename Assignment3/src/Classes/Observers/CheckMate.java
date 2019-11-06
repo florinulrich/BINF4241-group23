@@ -16,9 +16,7 @@ public class CheckMate implements CheckMateObserver {
     private boolean isCheckmate = false;
 
     @Override
-    public void update(PieceColor playerColor) {
-        System.out.println("\nCheckmate! Player " + playerColor + " wins!");
-
+    public void update() {
         isCheckmate = true;
 
     }
