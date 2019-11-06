@@ -37,29 +37,31 @@ considered methods:
 
 - removePieceAt
 
-add diagram
+![removePieceAt](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/removePieceAt().png)
 
 - addPiece
 
-add diagram
+![addPiece](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/addPiece().png)
 
 - addPromotedPiece (only considering Queen promotion for clarity reasons)
 
-add diagram
+![addPromotedPiece]()
 
 - removeSuicideMoves
 
+![removeSuicideMoves](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/removeSuicideMoves().png)
+
 - computeLegalMoves
 
-![computeLegalMoves](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/computeLegalMoves().png)
+add diagram
 
 - makeMove (computeLegalMoves removed for clarity)
 
-![makeMove](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/makeMove().png)
+add diagram
 
 - startGame
 
-![startGame](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/startGame().png)
+add diagram
 
 
 ## PART 3
