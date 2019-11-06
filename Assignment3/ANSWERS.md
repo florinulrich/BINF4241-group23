@@ -19,6 +19,8 @@ the corresponding sequence diagrams of the methods mentioned below are in the "D
 
 considered methods:
 - removePiece
+![removePieceDiagram](Assignment3/DiagramPictures/removePiece().png)
+
 - removePieceAt
 - addPiece
 - addPromotedPiece (only considering Queen promotion for clarity reasons)
