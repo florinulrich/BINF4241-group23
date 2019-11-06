@@ -28,6 +28,8 @@
 
 ## PART 2
 
+for collaborative workflow reasons all graphs represent the state of the project at the beginning of assignment 3
+
 the corresponding sequence diagrams of the methods mentioned below are in the "DiagramPictures" folder in Assignment3
 
 considered methods:
