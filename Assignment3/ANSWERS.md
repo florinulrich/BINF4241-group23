@@ -8,12 +8,15 @@ Observer
 2)
 ![classDiagram](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/ClassDiagramCheckMateObserver.png)
 3)
+add Diagram
 
 
 Singelton
 1) Our class CheckMate has the sole purpose to know if the game may continue. Other actors might still want to observe that as well, thus the Observer Pattern, but the CheckMate class has no additional functionality. That is why we decided to implement it as a singleton. This way we can ensure that the Game knows exactly that the Observer it asked is indeed the one that is responsible. The game does this by only asking the unique CheckMate instance if it should continue.
 2)
+Add diagram
 3)
+Add diagram
 
 
 ## PART 2
@@ -25,12 +28,19 @@ considered methods:
 ![removePieceDiagram](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/removePiece().png)
 
 - removePieceAt
+add diagram
 - addPiece
+add diagram
 - addPromotedPiece (only considering Queen promotion for clarity reasons)
+add diagram
 - removeSuicideMoves
+add diagram
 - computeLegalMoves
+add diagram
 - makeMove (computeLegalMoves removed for clarity)
+add diagram
 - startGame
+add diagram
 
 
 ## PART 3
