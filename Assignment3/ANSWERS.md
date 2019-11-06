@@ -8,7 +8,7 @@ Observer
 2)
 ![classDiagram](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/ClassDiagramCheckMateObserver.png)
 3)
-add Diagram
+![sequenceDiagram](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/CheckmateObserverSequenceDiagram.png)
 
 
 Singelton
