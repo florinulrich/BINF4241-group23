@@ -45,7 +45,7 @@ considered methods:
 
 - addPromotedPiece (only considering Queen promotion for clarity reasons)
 
-![addPromotedPiece]()
+![addPromotedPiece](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/addPromotedPiece().png)
 
 - removeSuicideMoves
 
