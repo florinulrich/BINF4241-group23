@@ -53,20 +53,21 @@ considered methods:
 
 - computeLegalMoves
 
-add diagram
+![comouteLegalMoves](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/computeLegalMoves().png)
 
 - makeMove (computeLegalMoves removed for clarity)
 
-add diagram
+![makeMove](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/makeMove().png)
 
 - startGame
 
-add diagram
+![startGame](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/startGame().png)
 
 
 ## PART 3
 
 3) Implement a Scoreboard using the Observer pattern
+
 for notation rules, consider the README.md file of this project
 
 
