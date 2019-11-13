@@ -10,7 +10,7 @@ public class Oven implements Commandable {
 
     //Variables
     private boolean switchedOn = false;
-    private int timer = 0;
+    private int timerMinutes = 0;
     private int temperature = 0;
     private String program = "";
 
@@ -51,7 +51,7 @@ public class Oven implements Commandable {
     }
 
     //Set Timer
-    public void setTimer(int timer) { this.timer = timer; }
+    public void setTimerMinutes(int timerMinutes) { this.timerMinutes = timerMinutes; }
 
     //Set Program
     public void setProgram(String program) { this.program = program; }
