@@ -38,7 +38,7 @@ public class MyTimer implements Runnable{
 
     }
 
-    boolean isRunning() {
+    public boolean isRunning() {
         return timerIsRunning;
     }
 }

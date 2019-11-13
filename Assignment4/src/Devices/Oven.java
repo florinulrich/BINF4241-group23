@@ -15,6 +15,7 @@ public class Oven implements Commandable {
     private MyTimer timer;
     private int temperature = 0;
     private String program = "";
+    private boolean isCooking = false;
 
     //Constructors
 
@@ -61,6 +62,21 @@ public class Oven implements Commandable {
 
     }
 
+    //CheckTimer
+    public int checkTimer() {
+        if (timer.isRunning()) {
+            return timer.getRemainingMinutes();
+        }
+        return timerMinutes;
+    }
+
     //Set Program
     public void setProgram(String program) { this.program = program; }
+
+    //Start cooking
+    public void startCooking() {
+
+        startTimer();
+        isCooking = true;
+    }
 }
