@@ -70,7 +70,7 @@ public class Oven implements Commandable {
 
     //CheckTimer
     public int checkTimer() {
-        if (timer.isRunning()) {
+        if (timer != null && timer.isRunning()) {
             return timer.getRemainingMinutes();
         }
         return timerMinutes;
