@@ -3,34 +3,34 @@ package Utilities;
 public class MyTimer implements Runnable{
 
     //Variables
-    private int remainingMinutes;
+    private int remainingSeconds;
     private boolean timerIsRunning = false;
     private Thread timerThread = new Thread(this);
 
     //Constructor
     public MyTimer(int minutes) {
-        remainingMinutes = minutes;
+        remainingSeconds = minutes;
     }
 
     //Methods
     @Override
     public void run() {
         timerIsRunning = true;
-        while (remainingMinutes > 0) {
+        while (remainingSeconds > 0) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            remainingMinutes--;
+            remainingSeconds--;
         }
 
         timerIsRunning = false;
 
     }
 
-    public int getRemainingMinutes() {
-        return remainingMinutes;
+    public int getRemainingSeconds() {
+        return remainingSeconds;
     }
 
     public void start() {

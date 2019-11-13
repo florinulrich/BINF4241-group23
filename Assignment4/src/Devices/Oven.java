@@ -1,6 +1,6 @@
 package Devices;
 
-import Commands.*;
+import Commands.OvenCommands.*;
 import Interfaces.Command;
 import Interfaces.Commandable;
 import Utilities.MyTimer;
@@ -11,7 +11,7 @@ public class Oven implements Commandable {
 
     //Variables
     private boolean switchedOn = false;
-    private int timerMinutes = 0;
+    private int timerSeconds = 0;
     private MyTimer timer;
     private int temperature = 0;
     private String program = "";
@@ -39,7 +39,7 @@ public class Oven implements Commandable {
             commands.add(new SetProgramOven(this));
             commands.add(new CheckTimerOven(this));
 
-            if (timerMinutes != 0 && temperature != 0 && !program.equals("") && !isCooking) {
+            if (timerSeconds != 0 && temperature != 0 && !program.equals("") && !isCooking) {
                 commands.add(new StartCookingOven(this));
             }
 
@@ -60,7 +60,7 @@ public class Oven implements Commandable {
         temperature = 0;
         program = "";
         isCooking = false;
-        timerMinutes = 0;
+        timerSeconds = 0;
     }
 
     public boolean isOn() { return switchedOn; }
@@ -71,10 +71,10 @@ public class Oven implements Commandable {
     }
 
     //Set Timer
-    public void setTimerMinutes(int timerMinutes) { this.timerMinutes = timerMinutes; }
+    public void setTimerSeconds(int timerSeconds) { this.timerSeconds = timerSeconds; }
 
     public void startTimer() {
-        timer = new MyTimer(timerMinutes);
+        timer = new MyTimer(timerSeconds);
         timer.start();
 
     }
@@ -82,9 +82,9 @@ public class Oven implements Commandable {
     //CheckTimer
     public int checkTimer() {
         if (timer != null && timer.isRunning()) {
-            return timer.getRemainingMinutes();
+            return timer.getRemainingSeconds();
         }
-        return timerMinutes;
+        return timerSeconds;
     }
 
     //Set Program

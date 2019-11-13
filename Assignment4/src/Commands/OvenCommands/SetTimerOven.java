@@ -1,4 +1,4 @@
-package Commands;
+package Commands.OvenCommands;
 
 import Devices.Oven;
 import Interfaces.Command;
@@ -19,7 +19,7 @@ public class SetTimerOven implements Command {
         System.out.print("enter timer [sec] >> ");
         int timer = Integer.parseInt(myObj.next().trim());
 
-        oven.setTimerMinutes(timer);
+        oven.setTimerSeconds(timer);
 
     }
 

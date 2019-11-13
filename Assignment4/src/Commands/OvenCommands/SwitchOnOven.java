@@ -1,4 +1,4 @@
-package Commands;
+package Commands.OvenCommands;
 
 import Devices.Oven;
 import Interfaces.Command;
