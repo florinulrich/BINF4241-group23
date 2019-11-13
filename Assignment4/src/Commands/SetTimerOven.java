@@ -7,16 +7,16 @@ import java.util.Scanner;
 
 public class SetTimerOven implements Command {
 
+    private static final String NAME = "set timer";
     Oven oven;
-    public SetTimerOven(Oven oven) {
-        this.oven = oven;
-    }
+
+    public SetTimerOven(Oven oven) { this.oven = oven; }
 
     @Override
     public void execute() {
 
         Scanner myObj = new Scanner(System.in);
-        System.out.print("Enter timer [min] >> ");
+        System.out.print("enter timer [min] >> ");
         int timer = Integer.parseInt(myObj.next().trim());
 
         oven.setTimer(timer);
@@ -24,7 +24,5 @@ public class SetTimerOven implements Command {
     }
 
     @Override
-    public String getName() {
-        return null;
-    }
+    public String getName() { return NAME; }
 }
