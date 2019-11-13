@@ -5,22 +5,14 @@ import Interfaces.Command;
 
 public class SwitchOnOven implements Command {
 
-    private static final String NAME = "Switch on";
+    private static final String NAME = "switch on";
     private Oven oven;
 
-    public SwitchOnOven(Oven oven) {
-
-        this.oven = oven;
-    }
+    public SwitchOnOven(Oven oven) { this.oven = oven; }
 
     @Override
-    public void execute() {
-
-        oven.switchOn();
-    }
+    public void execute() { oven.switchOn(); }
 
     @Override
-    public String getName() {
-        return NAME;
-    }
+    public String getName() { return NAME; }
 }

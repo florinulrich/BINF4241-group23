@@ -40,14 +40,10 @@ public class Oven implements Commandable {
 
 
     //ON and OFF functionality
-    public void switchOn() {
-        switchedOn = true;
-    }
+    public void switchOn() { switchedOn = true; }
     public void switchOff() { switchedOn = false; }
 
-    public boolean isOn() {
-        return switchedOn;
-    }
+    public boolean isOn() { return switchedOn; }
 
     //Set Temperature
     public void setTemperature(int temperature) {
