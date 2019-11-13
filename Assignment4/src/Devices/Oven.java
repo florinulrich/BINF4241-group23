@@ -30,10 +30,13 @@ public class Oven implements Commandable {
         }
 
         if (isOn()) {
+
+            if (!isCooking) {
+                commands.add(new SwitchOffOven(this));
+            }
             commands.add(new SetTimerOven(this));
             commands.add(new SetTemperatureOven(this));
             commands.add(new SetProgramOven(this));
-            commands.add(new SwitchOffOven(this));
             commands.add(new CheckTimerOven(this));
 
             if (timerMinutes != 0 && temperature != 0 && !program.equals("")) {
@@ -41,16 +44,20 @@ public class Oven implements Commandable {
             }
         }
 
-
-
-
         return commands;
     }
 
 
     //ON and OFF functionality
     public void switchOn() { switchedOn = true; }
-    public void switchOff() { switchedOn = false; }
+
+    public void switchOff() {
+        switchedOn = false;
+        temperature = 0;
+        program = "";
+        isCooking = false;
+        timerMinutes = 0;
+    }
 
     public boolean isOn() { return switchedOn; }
 
@@ -84,5 +91,14 @@ public class Oven implements Commandable {
 
         startTimer();
         isCooking = true;
+
+        //TODO: What happens to isCooking when timer ends
     }
+
+    //Interrupt the program
+    public void interruptOperation() {
+        isCooking = false;
+        timer = null;
+    }
+
 }
