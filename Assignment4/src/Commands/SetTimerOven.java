@@ -5,10 +5,10 @@ import Interfaces.Command;
 
 import java.util.Scanner;
 
-public class SetTimerCommand implements Command {
+public class SetTimerOven implements Command {
 
     Oven oven;
-    public SetTimerCommand(Oven oven) {
+    public SetTimerOven(Oven oven) {
         this.oven = oven;
     }
 

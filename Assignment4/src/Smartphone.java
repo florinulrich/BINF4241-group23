@@ -1,6 +1,7 @@
 import Interfaces.Command;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Smartphone {
 
@@ -23,10 +24,22 @@ public class Smartphone {
             i++;
         }
 
-        //TODO: Get User input now
+        Scanner myObj = new Scanner(System.in);
+        System.out.print("Enter your wish, master >> ");
+        int command = Integer.parseInt(myObj.next().trim());
+
+        if (command <= commands.size() && command > 0) {
+            commands.get(command - 1).execute();
+        }
+        else {
+            System.out.println("This is not a valid option!");
+            display();
+        }
+
+
     }
 
-    void addSubmenu(Submenu submenu) {
-        commands.add(submenu);
+    void addCommand(Command command) {
+        commands.add(command);
     }
 }

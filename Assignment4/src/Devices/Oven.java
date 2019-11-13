@@ -22,15 +22,15 @@ public class Oven implements Commandable {
 
         ArrayList<Command> commands = new ArrayList<>();
 
-        commands.add(new SwitchOnOvenCommand(this));
+        commands.add(new SwitchOnOven(this));
 
         if (isOn()) {
-            commands.add(new SetTimerCommand(this));
-            commands.add(new SetTemperatureCommand(this));
-            commands.add(new SetProgramCommand(this));
+            commands.add(new SetTimerOven(this));
+            commands.add(new SetTemperatureOven(this));
+            commands.add(new SetProgramOven(this));
         }
 
-        commands.add(new SwitchOffOvenCommand(this));
+        commands.add(new SwitchOffOven(this));
 
         return commands;
     }

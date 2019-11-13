@@ -3,12 +3,12 @@ package Commands;
 import Devices.Oven;
 import Interfaces.Command;
 
-public class SwitchOffOvenCommand implements Command {
+public class SwitchOnOven implements Command {
 
-    private static final String NAME = "Switch off";
+    private static final String NAME = "Switch on";
     private Oven oven;
 
-    public SwitchOffOvenCommand(Oven oven) {
+    public SwitchOnOven(Oven oven) {
 
         this.oven = oven;
     }
@@ -16,7 +16,7 @@ public class SwitchOffOvenCommand implements Command {
     @Override
     public void execute() {
 
-        oven.switchOff();
+        oven.switchOn();
     }
 
     @Override

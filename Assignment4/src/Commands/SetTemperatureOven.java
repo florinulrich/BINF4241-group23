@@ -5,10 +5,10 @@ import Interfaces.Command;
 
 import java.util.Scanner;
 
-public class SetProgramCommand implements Command {
+public class SetTemperatureOven implements Command {
 
     Oven oven;
-    public SetProgramCommand(Oven oven) {
+    public SetTemperatureOven(Oven oven) {
         this.oven = oven;
     }
 
@@ -16,10 +16,10 @@ public class SetProgramCommand implements Command {
     public void execute() {
 
         Scanner myObj = new Scanner(System.in);
-        System.out.print("Enter program [ventilated, grill, etc.] >> ");
-        String program = myObj.next();
+        System.out.print("Enter temperature [celsius] >> ");
+        int temperature = Integer.parseInt(myObj.next().trim());
 
-        oven.setProgram(program);
+        oven.setTemperature(temperature);
 
     }
 
