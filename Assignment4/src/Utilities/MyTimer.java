@@ -8,8 +8,8 @@ public class MyTimer implements Runnable{
     private Thread timerThread = new Thread(this);
 
     //Constructor
-    public MyTimer(int minutes) {
-        remainingSeconds = minutes;
+    public MyTimer(int seconds) {
+        remainingSeconds = seconds;
     }
 
     //Methods
