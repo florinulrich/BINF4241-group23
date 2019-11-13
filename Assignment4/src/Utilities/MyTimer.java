@@ -1,4 +1,6 @@
-public class Timer implements Runnable{
+package Utilities;
+
+public class MyTimer implements Runnable{
 
     //Variables
     private int remainingMinutes;
@@ -6,7 +8,7 @@ public class Timer implements Runnable{
     private Thread timerThread = new Thread(this);
 
     //Constructor
-    public Timer(int minutes) {
+    public MyTimer(int minutes) {
         remainingMinutes = minutes;
     }
 
@@ -31,7 +33,7 @@ public class Timer implements Runnable{
         return remainingMinutes;
     }
 
-    void startTimer() {
+    public void start() {
         timerThread.start();
 
     }
