@@ -35,8 +35,12 @@ public class Oven implements Commandable {
             commands.add(new SetProgramOven(this));
             commands.add(new SwitchOffOven(this));
             commands.add(new CheckTimerOven(this));
-            commands.add(new StartCookingOven(this));
+
+            if (timerMinutes != 0 && temperature != 0 && !program.equals("")) {
+                commands.add(new StartCookingOven(this));
+            }
         }
+
 
 
 
