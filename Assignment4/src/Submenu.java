@@ -2,6 +2,7 @@ import Interfaces.Command;
 import Interfaces.Commandable;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 class Submenu implements Command {
 
@@ -11,8 +12,11 @@ class Submenu implements Command {
     private ArrayList<Command> commands;
 
     //Constructor
-    Submenu(String name) {
+    Submenu(String name, Commandable device) {
         this.name = name;
+        commands = new ArrayList<>();
+        this.device = device;
+        updateCommands();
     }
 
     //Methods
@@ -31,8 +35,23 @@ class Submenu implements Command {
             i++;
         }
 
-        //TODO: Get User Input now
-        //TODO: Return to main menu
+        Scanner myObj = new Scanner(System.in);
+        System.out.print("Enter your wish, master >> ");
+        int command = Integer.parseInt(myObj.next().trim());
+
+        if (command <= commands.size() && command > 0) {
+            commands.get(command - 1).execute();
+            updateCommands();
+        }
+        else if (command == 0) {
+            return;
+        }
+        else {
+            System.out.println("This is not a valid option!");
+        }
+
+        display();
+
     }
 
     @Override

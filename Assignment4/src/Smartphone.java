@@ -36,7 +36,7 @@ public class Smartphone {
             display();
         }
 
-
+        display();
     }
 
     void addCommand(Command command) {
