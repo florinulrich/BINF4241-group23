@@ -28,6 +28,8 @@
 
 ## PART 2
 
+for collaborative workflow reasons all graphs represent the state of the project at the beginning of assignment 3
+
 the corresponding sequence diagrams of the methods mentioned below are in the "DiagramPictures" folder in Assignment3
 
 considered methods:
@@ -45,7 +47,7 @@ considered methods:
 
 - addPromotedPiece (only considering Queen promotion for clarity reasons)
 
-![addPromotedPiece]()
+![addPromotedPiece](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment3/DiagramPictures/addPromotedPiece().png)
 
 - removeSuicideMoves
 
@@ -66,7 +68,7 @@ considered methods:
 
 ## PART 3
 
-3) Implement a Scoreboard using the Observer pattern
+option #3 Implement a Scoreboard using the Observer pattern
 
 for notation rules, consider the README.md file of this project
 
