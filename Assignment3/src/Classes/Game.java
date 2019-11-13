@@ -6,7 +6,6 @@ import Interfaces.IPiece;
 
 public class Game {
 
-
     static public void main(String[] args) {
 
         tester();
@@ -54,7 +53,6 @@ public class Game {
 //
 //        System.out.println(algebraicIdentifier);
     }
-
 
     private static void pieceSetup(Board board) {
         // WHITE Player
