@@ -5,10 +5,10 @@ import Interfaces.Command;
 
 import java.util.Scanner;
 
-public class SetTemperatureCommand implements Command {
+public class SetTimerCommand implements Command {
 
     Oven oven;
-    public SetTemperatureCommand(Oven oven) {
+    public SetTimerCommand(Oven oven) {
         this.oven = oven;
     }
 
@@ -17,9 +17,9 @@ public class SetTemperatureCommand implements Command {
 
         Scanner myObj = new Scanner(System.in);
         System.out.print("Enter timer [min] >> ");
-        int temp = Integer.parseInt(myObj.next().trim());
+        int timer = Integer.parseInt(myObj.next().trim());
 
-        oven.setTemperature(temp);
+        oven.setTimer(timer);
 
     }
 
