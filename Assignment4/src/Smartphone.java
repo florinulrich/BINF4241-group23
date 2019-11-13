@@ -33,7 +33,6 @@ public class Smartphone {
         }
         else {
             System.out.println("This is not a valid option!");
-            display();
         }
 
         display();
