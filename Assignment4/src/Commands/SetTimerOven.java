@@ -16,7 +16,7 @@ public class SetTimerOven implements Command {
     public void execute() {
 
         Scanner myObj = new Scanner(System.in);
-        System.out.print("enter timer [min] >> ");
+        System.out.print("enter timer [sec] >> ");
         int timer = Integer.parseInt(myObj.next().trim());
 
         oven.setTimerMinutes(timer);
