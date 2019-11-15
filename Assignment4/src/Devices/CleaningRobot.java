@@ -1,5 +1,6 @@
 package Devices;
 
+import Commands.setTimerRobot;
 import Interfaces.Command;
 import Interfaces.Commandable;
 import Utilities.MyTimer;
@@ -46,12 +47,10 @@ public class CleaningRobot implements Commandable {
     }
 
     //Set Timer
-    public void setTimer(int seconds) {
-        timerSeconds = seconds;
-    }
+    public void setTimerSeconds(int timerSeconds) { this.timerSeconds = timerSeconds; }
 
-    private void startTimer(int seconds) {
-        timer = new MyTimer(seconds);
+    public void startTimer() {
+        timer = new MyTimer(timerSeconds);
         timer.start();
 
     }
@@ -77,7 +76,7 @@ public class CleaningRobot implements Commandable {
 
     //Charging Status
     public int checkChargingStatus(){
-        chargingStatus =
+        chargingStatus = 0;
     }
 
 }
