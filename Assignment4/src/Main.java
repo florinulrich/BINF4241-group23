@@ -1,3 +1,5 @@
+import Devices.Dishwasher;
+import Devices.Microwave;
 import Devices.Oven;
 
 public class Main {
@@ -6,10 +8,15 @@ public class Main {
 
         Smartphone mySmartphone = new Smartphone();
 
-        //Add Oven
+        //Add Devices
         Oven myOven = new Oven();
         mySmartphone.addCommand(new Submenu("Oven", myOven));
 
+        Microwave myMicrowave = new Microwave();
+        mySmartphone.addCommand(new Submenu("Microwave", myMicrowave));
+
+        Dishwasher myDishwasher = new Dishwasher();
+        mySmartphone.addCommand(new Submenu("Dishwasher", myDishwasher));
 
         //Add more...
 

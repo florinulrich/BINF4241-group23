@@ -5,7 +5,7 @@ import Devices.Microwave;
 
 public class SwitchOnMicrowave implements Command {
 
-    private static final String NAME = "switched on";
+    private static final String NAME = "switch on";
     private Microwave microwave;
 
     public SwitchOnMicrowave(Microwave microwave) { this.microwave = microwave; }

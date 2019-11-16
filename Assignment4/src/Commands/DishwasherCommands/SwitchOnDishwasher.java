@@ -5,10 +5,10 @@ import Interfaces.Command;
 
 public class SwitchOnDishwasher implements Command {
 
-    private static final String NAME = "switched on";
+    private static final String NAME = "switch on";
     private Dishwasher dishwasher;
 
-    public SwitchOnDishwasher(Dishwasher Dishwasher) { this.dishwasher = dishwasher; }
+    public SwitchOnDishwasher(Dishwasher dishwasher) { this.dishwasher = dishwasher; }
 
     @Override
     public void execute() { dishwasher.switchOn(); }

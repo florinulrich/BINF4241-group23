@@ -14,6 +14,7 @@ public class Dishwasher implements Commandable {
     private int timerSeconds = 0;
     private MyTimer timer;
     private boolean isWashing = false;
+    private String program = "";
 
     //Methods
     @Override
@@ -32,7 +33,11 @@ public class Dishwasher implements Commandable {
             }
 
             commands.add(new CheckTimerDishwasher(this));
-            commands.add(new StartWashingDishwasher(this));
+            commands.add(new SetProgramDishwasher(this));
+
+            if (!program.equals("")){
+                commands.add(new StartWashingDishwasher(this));
+            }
 
             if (isWashing) {
                 commands.add(new InterruptOperationDishwasher(this));
@@ -49,6 +54,7 @@ public class Dishwasher implements Commandable {
         switchedOn = false;
         isWashing = false;
         timerSeconds = 0;
+        program = "";
     }
 
     private boolean isOn() { return switchedOn; }
@@ -68,6 +74,9 @@ public class Dishwasher implements Commandable {
         }
         return timerSeconds;
     }
+
+    //Set Program
+    public void setProgram(String program) { this.program = program; }
 
     //Start Washing
     public void startWashing() {
