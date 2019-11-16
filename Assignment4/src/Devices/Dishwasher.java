@@ -84,7 +84,7 @@ public class Dishwasher implements Commandable {
         startTimer();
         isWashing = true;
 
-        //TODO: actions when timer ends
+        //TODO: set isWashing = false if timer ends
 
     }
 

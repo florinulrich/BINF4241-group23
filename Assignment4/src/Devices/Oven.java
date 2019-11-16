@@ -95,7 +95,7 @@ public class Oven implements Commandable {
         startTimer();
         isCooking = true;
 
-        //TODO: What happens to isCooking when timer ends
+        //TODO: set isWashing = false if timer ends
     }
 
     //Interrupt program

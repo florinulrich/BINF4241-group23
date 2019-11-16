@@ -87,7 +87,7 @@ public class Microwave implements Commandable {
         startTimer();
         isBaking = true;
 
-        //TODO: actions when timer ends
+        //TODO: set isWashing = false if timer ends
 
     }
 
