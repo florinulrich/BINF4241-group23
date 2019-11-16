@@ -1,17 +1,17 @@
-package Commands.OvenCommands;
+package Commands.MicrowaveCommands;
 
-import Devices.Oven;
+import Devices.Microwave;
 import Interfaces.Command;
 
 import java.util.Scanner;
 
-public class SetTimerOven implements Command {
+public class SetTimerMicrowave implements Command {
 
     private static final String NAME = "set timer";
 
-    Oven oven;
+    Microwave microwave;
 
-    public SetTimerOven(Oven oven) { this.oven = oven; }
+    public SetTimerMicrowave(Microwave microwave) { this.microwave = microwave; }
 
     @Override
     public void execute() {
@@ -20,7 +20,7 @@ public class SetTimerOven implements Command {
         System.out.print("enter timer [sec] >> ");
         int timer = Integer.parseInt(myObj.next().trim());
 
-        oven.setTimerSeconds(timer);
+        microwave.setTimerSeconds(timer);
 
     }
 

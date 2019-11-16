@@ -1,21 +1,20 @@
 package Devices;
 
-import Commands.OvenCommands.*;
+import Commands.MicrowaveCommands.*;
 import Interfaces.Command;
 import Interfaces.Commandable;
 import Utilities.MyTimer;
 
 import java.util.ArrayList;
 
-public class Oven implements Commandable {
+public class Microwave implements Commandable {
 
     //Variables
     private boolean switchedOn = false;
     private int timerSeconds = 0;
     private MyTimer timer;
     private int temperature = 0;
-    private String program = "";
-    private boolean isCooking = false;
+    private boolean isBaking = false;
 
     //Constructors
 
@@ -26,31 +25,29 @@ public class Oven implements Commandable {
         ArrayList<Command> commands = new ArrayList<>();
 
         if (!isOn()) {
-            commands.add(new SwitchOnOven(this));
+            commands.add(new SwitchOnMicrowave(this));
         }
 
         if (isOn()) {
 
-            if (!isCooking) {
-                commands.add(new SwitchOffOven(this));
+            if (!isBaking) {
+                commands.add(new SwitchOffMicrowave(this));
             }
-            commands.add(new SetTimerOven(this));
-            commands.add(new SetTemperatureOven(this));
-            commands.add(new SetProgramOven(this));
-            commands.add(new CheckTimerOven(this));
+            commands.add(new SetTemperatureMicrowave(this));
+            commands.add(new SetTimerMicrowave(this));
+            commands.add(new CheckTimerMicrowave(this));
 
-            if (timerSeconds != 0 && temperature != 0 && !program.equals("") && !isCooking) {
-                commands.add(new StartCookingOven(this));
+            if (timerSeconds != 0 && temperature != 0 && !isBaking) {
+                commands.add(new StartBakingMicrowave(this));
             }
 
-            if (isCooking) {
-                commands.add(new InterruptOperationOven(this));
+            if (isBaking) {
+                commands.add(new InterruptOperationMicrowave(this));
             }
         }
 
         return commands;
     }
-
 
     //ON and OFF functionality
     public void switchOn() { switchedOn = true; }
@@ -58,12 +55,11 @@ public class Oven implements Commandable {
     public void switchOff() {
         switchedOn = false;
         temperature = 0;
-        program = "";
-        isCooking = false;
+        isBaking = false;
         timerSeconds = 0;
     }
 
-    public boolean isOn() { return switchedOn; }
+    private boolean isOn() { return switchedOn; }
 
     //Set Temperature
     public void setTemperature(int temperature) {
@@ -72,12 +68,12 @@ public class Oven implements Commandable {
 
     //Set Timer
     public void setTimerSeconds(int timerSeconds) { this.timerSeconds = timerSeconds; }
-
+   
     public void startTimer() {
         timer = new MyTimer(timerSeconds);
         timer.start();
     }
-
+    
     //CheckTimer
     public int checkTimer() {
         if (timer != null && timer.isRunning()) {
@@ -86,21 +82,19 @@ public class Oven implements Commandable {
         return timerSeconds;
     }
 
-    //Set Program
-    public void setProgram(String program) { this.program = program; }
-
-    //Start cooking
-    public void startCooking() {
+    //Start Baking
+    public void startBaking() {
 
         startTimer();
-        isCooking = true;
+        isBaking = true;
 
-        //TODO: What happens to isCooking when timer ends
+        //TODO: actions when timer ends
+
     }
 
     //Interrupt program
     public void interruptOperation() {
-        isCooking = false;
+        isBaking = false;
         timer = null;
     }
 

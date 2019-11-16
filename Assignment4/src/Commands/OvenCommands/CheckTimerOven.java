@@ -5,7 +5,7 @@ import Interfaces.Command;
 
 public class CheckTimerOven implements Command {
 
-    private static final String NAME = "Check Timer";
+    private static final String NAME = "check timer";
 
     private Oven oven;
 
@@ -17,12 +17,10 @@ public class CheckTimerOven implements Command {
     @Override
     public void execute() {
 
-        System.out.println("The Timer is currently at: " + oven.checkTimer() + " sec.");
+        System.out.println("The timer is currently at: " + oven.checkTimer() + " seconds");
 
     }
 
     @Override
-    public String getName() {
-        return NAME;
-    }
+    public String getName() { return NAME; }
 }
