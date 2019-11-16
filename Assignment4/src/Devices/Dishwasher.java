@@ -1,20 +1,19 @@
 package Devices;
 
-import Commands.MicrowaveCommands.*;
+import Commands.DishwasherCommands.*;
 import Interfaces.Command;
 import Interfaces.Commandable;
 import Utilities.MyTimer;
 
 import java.util.ArrayList;
 
-public class Microwave implements Commandable {
+public class Dishwasher implements Commandable {
 
     //Variables
     private boolean switchedOn = false;
     private int timerSeconds = 0;
     private MyTimer timer;
-    private int temperature = 0;
-    private boolean isBaking = false;
+    private boolean isWashing = false;
 
     //Methods
     @Override
@@ -23,25 +22,20 @@ public class Microwave implements Commandable {
         ArrayList<Command> commands = new ArrayList<>();
 
         if (!isOn()) {
-            commands.add(new SwitchOnMicrowave(this));
+            commands.add(new SwitchOnDishwasher(this));
         }
 
         if (isOn()) {
 
-            if (!isBaking) {
-                commands.add(new SwitchOffMicrowave(this));
+            if (!isWashing) {
+                commands.add(new SwitchOffDishwasher(this));
             }
 
-            commands.add(new SetTemperatureMicrowave(this));
-            commands.add(new SetTimerMicrowave(this));
-            commands.add(new CheckTimerMicrowave(this));
+            commands.add(new CheckTimerDishwasher(this));
+            commands.add(new StartWashingDishwasher(this));
 
-            if (timerSeconds != 0 && temperature != 0 && !isBaking) {
-                commands.add(new StartBakingMicrowave(this));
-            }
-
-            if (isBaking) {
-                commands.add(new InterruptOperationMicrowave(this));
+            if (isWashing) {
+                commands.add(new InterruptOperationDishwasher(this));
             }
         }
 
@@ -53,27 +47,21 @@ public class Microwave implements Commandable {
 
     public void switchOff() {
         switchedOn = false;
-        temperature = 0;
-        isBaking = false;
+        isWashing = false;
         timerSeconds = 0;
     }
 
     private boolean isOn() { return switchedOn; }
 
-    //Set Temperature
-    public void setTemperature(int temperature) {
-        this.temperature = temperature;
-    }
-
     //Set Timer
     public void setTimerSeconds(int timerSeconds) { this.timerSeconds = timerSeconds; }
-   
+
     public void startTimer() {
         timer = new MyTimer(timerSeconds);
         timer.start();
     }
-    
-    //CheckTimer
+
+    //Check Timer
     public int checkTimer() {
         if (timer != null && timer.isRunning()) {
             return timer.getRemainingSeconds();
@@ -81,11 +69,11 @@ public class Microwave implements Commandable {
         return timerSeconds;
     }
 
-    //Start Baking
-    public void startBaking() {
+    //Start Washing
+    public void startWashing() {
 
         startTimer();
-        isBaking = true;
+        isWashing = true;
 
         //TODO: actions when timer ends
 
@@ -93,7 +81,7 @@ public class Microwave implements Commandable {
 
     //Interrupt program
     public void interruptOperation() {
-        isBaking = false;
+        isWashing = false;
         timer = null;
     }
 

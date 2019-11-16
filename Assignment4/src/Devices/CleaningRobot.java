@@ -1,6 +1,6 @@
 package Devices;
 
-import Commands.setTimerRobot;
+import Commands.RobotCommands.setTimerRobot;
 import Interfaces.Command;
 import Interfaces.Commandable;
 import Utilities.MyTimer;
@@ -25,20 +25,20 @@ public class CleaningRobot implements Commandable {
 
         commands.add(new setTimerRobot(this));
 
-        if (atBase && batteryStatus == 100) {
-            commands.add(new startRobot(this));
-        }
+        //if (atBase && batteryStatus == 100) {
+        //    commands.add(new startRobot(this));
+        //}
 
         //Check Cleaning Status
-        commands.add(new checkCleaningStatusRobot(this));
+        //commands.add(new checkCleaningStatusRobot(this));
 
         //Check Battery Status
-        commands.add(new checkBatteryStatusRobot(this));
+        //commands.add(new checkBatteryStatusRobot(this));
 
         //Check Charging status
-        if (atBase) {
-            commands.add(new CheckChargingStatusRobots(this));
-        }
+        // if (atBase) {
+        //    commands.add(new CheckChargingStatusRobots(this));
+        //}
 
         //End cleaning
 
@@ -56,11 +56,11 @@ public class CleaningRobot implements Commandable {
     }
 
     //Start
-    public void start() {
-        startTimer(timerSeconds);
-        atBase = false;
-
-    }
+    //public void start() {
+    //    startTimer(timerSeconds);
+    //    atBase = false;
+    //
+    //}
 
     //Cleaning Status
     public int checkCleaningStatus() {
@@ -77,6 +77,7 @@ public class CleaningRobot implements Commandable {
     //Charging Status
     public int checkChargingStatus(){
         chargingStatus = 0;
+        return chargingStatus;
     }
 
 }
