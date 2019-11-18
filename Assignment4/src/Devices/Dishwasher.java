@@ -30,18 +30,17 @@ public class Dishwasher implements Commandable {
 
             if (!isWashing) {
                 commands.add(new SwitchOffDishwasher(this));
+                commands.add(new SetProgramDishwasher(this));
+            } else {
+                commands.add(new InterruptOperationDishwasher(this));
             }
 
             commands.add(new CheckTimerDishwasher(this));
-            commands.add(new SetProgramDishwasher(this));
 
-            if (!program.equals("")){
+            if (!program.equals("") && !isWashing){
                 commands.add(new StartWashingDishwasher(this));
             }
 
-            if (isWashing) {
-                commands.add(new InterruptOperationDishwasher(this));
-            }
         }
 
         return commands;

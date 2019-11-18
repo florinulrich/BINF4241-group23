@@ -1,4 +1,4 @@
-package Commands.Washer;
+package Commands.WasherCommands;
 
 import Devices.Washer;
 import Interfaces.Command;
