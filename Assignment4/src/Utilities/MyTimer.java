@@ -4,6 +4,7 @@ public class MyTimer implements Runnable{
 
     //Variables
     private int remainingSeconds;
+    private int elapsedSeconds = 0;
     private boolean timerIsRunning = false;
     private Thread timerThread = new Thread(this);
 
@@ -23,6 +24,7 @@ public class MyTimer implements Runnable{
                 e.printStackTrace();
             }
             remainingSeconds--;
+            elapsedSeconds++;
         }
 
         timerIsRunning = false;
@@ -31,6 +33,10 @@ public class MyTimer implements Runnable{
 
     public int getRemainingSeconds() {
         return remainingSeconds;
+    }
+
+    public int getElapsedSeconds() {
+        return elapsedSeconds;
     }
 
     public void start() {
