@@ -1,5 +1,6 @@
 package Devices;
 
+import Commands.RobotCommands.*;
 import Interfaces.Command;
 import Interfaces.Commandable;
 import Utilities.MyTimer;
@@ -102,6 +103,9 @@ public class CleaningRobot implements Commandable {
     //Charging Status
     public int checkChargingStatus(){
         return batteryStatus;
+    }
+
+    public void setTimerSeconds(int timer) {
     }
 
     private class CleaningThread implements Runnable {

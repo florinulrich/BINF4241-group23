@@ -2,6 +2,7 @@ package Commands.OvenCommands;
 
 import Devices.Oven;
 import Interfaces.Command;
+import Utilities.MyTimer;
 
 public class InterruptOperationOven implements Command {
 
@@ -11,7 +12,8 @@ public class InterruptOperationOven implements Command {
     public InterruptOperationOven(Oven oven) { this.oven = oven; }
 
     @Override
-    public void execute() { oven.interruptOperation(); }
+    public void execute() { oven.interruptOperation();
+    }
 
     @Override
     public String getName() { return NAME; }

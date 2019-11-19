@@ -1,10 +1,12 @@
+package Utilities;
+
 import Interfaces.Command;
 import Interfaces.Commandable;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Submenu implements Command {
+public class Submenu implements Command {
 
     //Variables
     private String name;
@@ -12,7 +14,7 @@ class Submenu implements Command {
     private ArrayList<Command> commands;
 
     //Constructor
-    Submenu(String name, Commandable device) {
+    public Submenu(String name, Commandable device) {
         this.name = name;
         commands = new ArrayList<>();
         this.device = device;
