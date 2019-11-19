@@ -29,6 +29,7 @@ class Submenu implements Command {
         System.out.println(name);
         System.out.println("--------------------");
 
+        System.out.println("0. return");
         int i = 1;
         for (Command command: commands) {
             System.out.println(i + ". " + command.getName());

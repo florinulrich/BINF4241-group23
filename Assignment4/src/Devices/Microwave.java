@@ -30,21 +30,18 @@ public class Microwave implements Commandable {
 
             if (!isBaking) {
                 commands.add(new SwitchOffMicrowave(this));
+                commands.add(new SetTemperatureMicrowave(this));
+                commands.add(new SetTimerMicrowave(this));
+            } else {
+                commands.add(new InterruptOperationMicrowave(this));
             }
 
-            commands.add(new SetTemperatureMicrowave(this));
-            commands.add(new SetTimerMicrowave(this));
             commands.add(new CheckTimerMicrowave(this));
 
             if (timerSeconds != 0 && temperature != 0 && !isBaking) {
                 commands.add(new StartBakingMicrowave(this));
             }
-
-            if (isBaking) {
-                commands.add(new InterruptOperationMicrowave(this));
-            }
         }
-
         return commands;
     }
 

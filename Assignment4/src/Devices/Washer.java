@@ -10,87 +10,95 @@ import java.util.ArrayList;
 
 public class Washer implements Commandable {
 
-        //Variables
-        private boolean switchedOn = false;
-        private int timerSeconds = 0;
-        private MyTimer timer;
-        private boolean isWashing = false;
-        private String program = "";
-        private int temperature = 0;
+    //Variables
+    private boolean switchedOn = false;
+    private int timerSeconds = 0;
+    private MyTimer timer;
+    private boolean isWashing = false;
+    private String program = "";
+    private int temperature = 0;
 
-        @Override
-        public ArrayList<Command> getCommands() {
+    @Override
+    public ArrayList<Command> getCommands() {
 
-                ArrayList<Command> commands = new ArrayList<>();
+        ArrayList<Command> commands = new ArrayList<>();
 
-                if (!isOn()) {
-                        commands.add(new SwitchOnWasher(this));
-                }
-
-                if (isOn()) {
-
-                        if (!isWashing) {
-                                commands.add(new SwitchOffWasher(this));
-                                commands.add(new SetTemperatureWasher(this));
-                                commands.add(new SetProgramWasher(this));
-                        }
-
-                        commands.add(new CheckTimerWasher(this));
-
-                        if (temperature != 0 && !program.equals("") && !isWashing) {
-                                commands.add(new StartWashingWasher(this));
-                        }
-                }
-
-                return commands;
-
+        if (!isOn()) {
+            commands.add(new SwitchOnWasher(this));
         }
 
-        //ON and OFF functionality
-        public void switchOn() { switchedOn = true; }
+        if (isOn()) {
 
-        public void switchOff() {
-                switchedOn = false;
-                isWashing = false;
-                timerSeconds = 0;
-                program = "";
-                }
+            if (!isWashing) {
+                commands.add(new SwitchOffWasher(this));
+                commands.add(new SetTemperatureWasher(this));
+                commands.add(new SetProgramWasher(this));
+            }
 
-        private boolean isOn() { return switchedOn; }
+            commands.add(new CheckTimerWasher(this));
 
-        //Set Timer
-        public void setTimerSeconds(int timerSeconds) { this.timerSeconds = timerSeconds; }
-
-        public void startTimer() {
-                timer = new MyTimer(timerSeconds);
-                timer.start();
+            if (temperature != 0 && !program.equals("") && !isWashing) {
+                commands.add(new StartWashingWasher(this));
+            }
         }
 
-        //Check Timer
-        public int checkTimer() {
-                if (timer != null && timer.isRunning()) {
-                        return timer.getRemainingSeconds();
-                        }
+        return commands;
 
-                return timerSeconds;
+    }
+
+    //ON and OFF functionality
+    public void switchOn() {
+        switchedOn = true;
+    }
+
+    public void switchOff() {
+        switchedOn = false;
+        isWashing = false;
+        timerSeconds = 0;
+        program = "";
+    }
+
+    private boolean isOn() {
+        return switchedOn;
+    }
+
+    //Set Timer
+    public void setTimerSeconds(int timerSeconds) {
+        this.timerSeconds = timerSeconds;
+    }
+
+    public void startTimer() {
+        timer = new MyTimer(timerSeconds);
+        timer.start();
+    }
+
+    //Check Timer
+    public int checkTimer() {
+        if (timer != null && timer.isRunning()) {
+            return timer.getRemainingSeconds();
         }
 
-        //Set Program
-        public void setProgram(String program) { this.program = program; }
+        return timerSeconds;
+    }
 
-        //Set Temperature
-        public void setTemperature(int temperature) {
-                this.temperature = temperature;
-        }
+    //Set Program
+    public void setProgram(String program) {
+        this.program = program;
+    }
 
-        //Start Washing
-        public void startWashing() {
+    //Set Temperature
+    public void setTemperature(int temperature) {
+        this.temperature = temperature;
+    }
 
-                startTimer();
-                isWashing = true;
+    //Start Washing
+    public void startWashing() {
 
-                //TODO: set isWashing = false if timer ends
+        startTimer();
+        isWashing = true;
 
-        }
+        //TODO: set isWashing = false if timer ends
+
+    }
 
 }
