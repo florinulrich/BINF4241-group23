@@ -71,8 +71,8 @@ public class Oven implements Commandable {
     //Set Timer
     public void setTimerSeconds(int timerSeconds) { this.timerSeconds = timerSeconds; }
 
-    public void startTimer() {
-        timer = new MyTimer(timerSeconds);
+    private void startTimer() {
+        timer = new MyTimer(timerSeconds, new SwitchOffOven(this));
         timer.start();
     }
 

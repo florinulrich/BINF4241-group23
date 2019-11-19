@@ -1,5 +1,7 @@
 package Utilities;
 
+import Interfaces.Command;
+
 public class MyTimer implements Runnable{
 
     //Variables
@@ -7,10 +9,16 @@ public class MyTimer implements Runnable{
     private int elapsedSeconds = 0;
     private boolean timerIsRunning = false;
     private Thread timerThread = new Thread(this);
+    private Command endCommand = null;
 
     //Constructor
     public MyTimer(int seconds) {
         remainingSeconds = seconds;
+    }
+
+    public MyTimer(int seconds, Command endCommand) {
+        remainingSeconds = seconds;
+        this.endCommand = endCommand;
     }
 
     //Methods
@@ -28,6 +36,10 @@ public class MyTimer implements Runnable{
         }
 
         timerIsRunning = false;
+
+        if (endCommand != null) {
+            endCommand.execute();
+        }
 
     }
 
@@ -47,4 +59,6 @@ public class MyTimer implements Runnable{
     public boolean isRunning() {
         return timerIsRunning;
     }
+
+
 }
