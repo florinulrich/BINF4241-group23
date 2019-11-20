@@ -50,6 +50,19 @@ public class Microwave implements Commandable {
         return false;
     }
 
+    @Override
+    public ArrayList<String> displayStatus() {
+
+        ArrayList<String> status = new ArrayList();
+
+        status.add("Switched on: " + String.valueOf(switchedOn));
+        status.add("Time Seconds: " + String.valueOf(timerSeconds));
+        status.add("Temperature: " + String.valueOf(temperature));
+        status.add("Is baking: " + String.valueOf(isBaking));
+
+        return status;
+    }
+
     //ON and OFF functionality
     public void switchOn() { switchedOn = true; }
 

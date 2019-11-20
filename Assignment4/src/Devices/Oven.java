@@ -64,11 +64,11 @@ public class Oven implements Commandable {
 
         ArrayList<String> status = new ArrayList();
 
-        status.add("Switched on:", String.valueOf(switchedOn));
-        status.add("Time Seconds:", String.valueOf(timerSeconds));
-        status.add("Temperature:", String.valueOf(temperature));
-        status.add("Program:", program);
-        status.add("Is cooking:", String.valueOf(isCooking));
+        status.add("Switched on: " + String.valueOf(switchedOn));
+        status.add("Time Seconds: " + String.valueOf(timerSeconds));
+        status.add("Temperature: " + String.valueOf(temperature));
+        status.add("Program: " + program);
+        status.add("Is cooking: " + String.valueOf(isCooking));
 
         return status;
     }
