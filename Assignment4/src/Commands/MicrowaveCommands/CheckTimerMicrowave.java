@@ -13,7 +13,7 @@ public class CheckTimerMicrowave implements Command {
 
     @Override
     public void execute() {
-
+        System.out.println();
         System.out.println("The timer is currently at: " + microwave.checkTimer() + " seconds");
 
     }

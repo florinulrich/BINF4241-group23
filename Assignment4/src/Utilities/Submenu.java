@@ -38,6 +38,7 @@ public class Submenu implements Command {
         observerThread.start();
 
         //Print and get Input
+        System.out.println();
         System.out.println("-------------------------");
         System.out.println("> " + name);
         System.out.println("-------------------------");
@@ -49,6 +50,7 @@ public class Submenu implements Command {
             i++;
         }
         System.out.println("(enter 0 to return)");
+        System.out.println("-------------------------");
 
         System.out.print("Enter your wish, master >> ");
         int command = Integer.parseInt(scanner.next().trim());
@@ -62,8 +64,6 @@ public class Submenu implements Command {
         else {
             System.out.println("This is not a valid option!");
         }
-
-        System.out.println();
 
         //Kill observerThread
         observerThread.interrupt();

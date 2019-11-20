@@ -21,7 +21,7 @@ public class SetTimerRobot implements Command {
     public void execute() {
 
         Scanner myObj = new Scanner(System.in);
-        System.out.print("enter timer [sec] >> ");
+        System.out.print("enter timer (sec) >> ");
         int timer = Integer.parseInt(myObj.next().trim());
 
         cleaningRobot.setTimerSeconds(timer);

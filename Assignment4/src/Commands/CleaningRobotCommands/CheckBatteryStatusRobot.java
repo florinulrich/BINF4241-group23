@@ -15,6 +15,7 @@ public class CheckBatteryStatusRobot implements Command {
 
     @Override
     public void execute() {
+        System.out.println();
         System.out.println("battery status: " + cleaningRobot.checkBatteryStatus() + "%");
     }
 

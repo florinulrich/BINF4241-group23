@@ -9,15 +9,19 @@ public class CheckTimerWasher implements Command {
 
     private Washer washer;
 
-    public CheckTimerWasher(Washer washer) { this.washer = washer; }
+    public CheckTimerWasher(Washer washer) {
+        this.washer = washer;
+    }
 
     @Override
     public void execute() {
-
+        System.out.println();
         System.out.println("The timer is currently at: " + washer.checkTimer() + " seconds");
 
     }
 
     @Override
-    public String getName() { return NAME; }
+    public String getName() {
+        return NAME;
+    }
 }

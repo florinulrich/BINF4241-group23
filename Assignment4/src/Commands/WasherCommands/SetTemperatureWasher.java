@@ -16,7 +16,7 @@ public class SetTemperatureWasher implements Command {
     public void execute() {
 
         Scanner myObj = new Scanner(System.in);
-        System.out.print("enter temperature [celsius] >> ");
+        System.out.print("enter temperature (celsius) >> ");
         int temperature = Integer.parseInt(myObj.next().trim());
 
         washer.setTemperature(temperature);

@@ -16,7 +16,7 @@ public class CheckTimerOven implements Command {
 
     @Override
     public void execute() {
-
+        System.out.println();
         System.out.println("The timer is currently at: " + oven.checkTimer() + " seconds");
 
     }

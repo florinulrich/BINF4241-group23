@@ -57,6 +57,11 @@ public class MyTimer implements Runnable{
     }
 
     public boolean isRunning() {
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return timerIsRunning;
     }
 

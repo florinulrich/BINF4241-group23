@@ -16,7 +16,7 @@ public class SetProgramOven implements Command {
     public void execute() {
 
         Scanner myObj = new Scanner(System.in);
-        System.out.print("enter program [ventilated, grill, etc.] >> ");
+        System.out.print("enter program (ventilated, grill, baking) >> ");
         String program = myObj.next();
 
         oven.setProgram(program);
