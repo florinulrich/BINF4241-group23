@@ -1,6 +1,6 @@
 package Devices;
 
-import Commands.RobotCommands.*;
+import Commands.CleaningRobotCommands.*;
 import Interfaces.Command;
 import Interfaces.Commandable;
 import Utilities.MyTimer;

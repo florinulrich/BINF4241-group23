@@ -1,10 +1,10 @@
-package Commands.RobotCommands;
+package Commands.CleaningRobotCommands;
 
 import Devices.CleaningRobot;
 import Interfaces.Command;
 
-public class CheckCleaningStatusRobot implements Command {
-    public CheckCleaningStatusRobot(CleaningRobot cleaningRobot) {
+public class CheckChargingStatusRobot implements Command {
+    public CheckChargingStatusRobot(CleaningRobot cleaningRobot) {
     }
 
     @Override

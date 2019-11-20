@@ -1,4 +1,4 @@
-package Commands.RobotCommands;
+package Commands.CleaningRobotCommands;
 
 import Devices.CleaningRobot;
 import Interfaces.Command;
