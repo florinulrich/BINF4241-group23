@@ -36,7 +36,7 @@ public class Washer implements Commandable {
 
             commands.add(new CheckTimerWasher(this));
 
-            if (temperature != 0 && !program.equals("") && !isWashing) {
+            if (timerSeconds != 0 && temperature != 0 && !program.equals("") && !isWashing) {
                 commands.add(new StartWashingWasher(this));
             }
         }
