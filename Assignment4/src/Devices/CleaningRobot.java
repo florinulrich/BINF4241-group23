@@ -97,13 +97,19 @@ public class CleaningRobot implements Commandable {
 
     //End Cleaning
     public void endCleaning() {
-        timerSeconds = 0;
         atBase = true;
+        timer = null;
+
+        ChargingThread chargingThread = new ChargingThread();
+        Thread charging = new Thread(chargingThread);
+        charging.start();
+
     }
 
     //Complete Cleaning
     public void completeOutstandingCleaning(){
-        cleaningStatus = 100;
+        completingCleaning = true;
+        endCleaning();
     }
 
     //Cleaning Status
@@ -121,7 +127,8 @@ public class CleaningRobot implements Commandable {
         return batteryStatus;
     }
 
-    public void setTimerSeconds(int timer) {
+    public void setTimerSeconds(int timerSeconds) {
+        this.timerSeconds = timerSeconds;
     }
 
     private class CleaningThread implements Runnable {

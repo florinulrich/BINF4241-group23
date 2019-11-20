@@ -5,7 +5,7 @@ import Interfaces.Command;
 
 public class EndCleaningRobot implements Command {
 
-    private static final String NAME = "switch off";
+    private static final String NAME = "end cleaning";
 
     private CleaningRobot cleaningRobot;
 

@@ -15,7 +15,7 @@ public class CheckChargingStatusRobot implements Command {
 
     @Override
     public void execute() {
-        cleaningRobot.checkChargingStatus();
+        System.out.println("charging status: " + cleaningRobot.checkChargingStatus() + "%");
     }
 
     @Override

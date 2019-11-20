@@ -1,7 +1,4 @@
-import Devices.Dishwasher;
-import Devices.Microwave;
-import Devices.Oven;
-import Devices.Washer;
+import Devices.*;
 import Utilities.Smartphone;
 import Utilities.Submenu;
 
@@ -23,6 +20,9 @@ public class Main {
 
         Washer myWasher = new Washer();
         mySmartphone.addCommand(new Submenu("Washer", myWasher));
+
+        CleaningRobot myCleaningRobot = new CleaningRobot();
+        mySmartphone.addCommand(new Submenu("Cleaning Robot", myCleaningRobot));
 
         //Add more...
 

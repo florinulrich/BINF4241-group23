@@ -63,6 +63,8 @@ public class Submenu implements Command {
             System.out.println("This is not a valid option!");
         }
 
+        System.out.println();
+
         //Kill observerThread
         observerThread.interrupt();
 
