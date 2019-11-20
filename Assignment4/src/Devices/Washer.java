@@ -1,16 +1,15 @@
 package Devices;
 
 
+import Commands.WasherCommands.*;
 import Interfaces.Command;
 import Interfaces.Commandable;
 import Utilities.MyTimer;
-import Commands.WasherCommands.*;
 
 import java.util.ArrayList;
 
 public class Washer implements Commandable {
 
-    //Variables
     private boolean switchedOn = false;
     private int timerSeconds = 0;
     private MyTimer timer;
@@ -44,6 +43,11 @@ public class Washer implements Commandable {
 
         return commands;
 
+    }
+
+    @Override
+    public boolean stateHasChanged() {
+        return false;
     }
 
     //ON and OFF functionality

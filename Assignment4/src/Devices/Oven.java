@@ -1,17 +1,15 @@
 package Devices;
 
 import Commands.OvenCommands.*;
-import Commands.RefreshMenuCommand;
 import Interfaces.Command;
 import Interfaces.Commandable;
 import Utilities.MyTimer;
-import Utilities.Submenu;
 
 import java.util.ArrayList;
 
 public class Oven implements Commandable {
 
-    //Variables
+    private boolean stateChanged = false;
     private boolean switchedOn = false;
     private int timerSeconds = 0;
     private MyTimer timer;
@@ -51,9 +49,21 @@ public class Oven implements Commandable {
         return commands;
     }
 
+    @Override
+    public boolean stateHasChanged() {
+        if (!stateChanged) {
+            return false;
+        } else {
+            stateChanged = false;
+            return true;
+        }
+    }
+
 
     //ON and OFF functionality
-    public void switchOn() { switchedOn = true; }
+    public void switchOn() {
+        switchedOn = true;
+    }
 
     public void switchOff() {
         switchedOn = false;
@@ -63,7 +73,9 @@ public class Oven implements Commandable {
         timerSeconds = 0;
     }
 
-    public boolean isOn() { return switchedOn; }
+    private boolean isOn() {
+        return switchedOn;
+    }
 
     //Set Temperature
     public void setTemperature(int temperature) {
@@ -74,7 +86,7 @@ public class Oven implements Commandable {
     public void setTimerSeconds(int timerSeconds) { this.timerSeconds = timerSeconds; }
 
     private void startTimer() {
-        timer = new MyTimer(timerSeconds, new SwitchOffOven(this));
+        timer = new MyTimer(timerSeconds, new InterruptOperationOven(this));
         timer.start();
     }
 
@@ -94,14 +106,13 @@ public class Oven implements Commandable {
 
         startTimer();
         isCooking = true;
-
-        //TODO: set isWashing = false if timer ends
     }
 
     //Interrupt program
     public void interruptOperation() {
         isCooking = false;
         timer = null;
+        stateChanged = true;
     }
 
 }

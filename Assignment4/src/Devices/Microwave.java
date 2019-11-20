@@ -45,6 +45,11 @@ public class Microwave implements Commandable {
         return commands;
     }
 
+    @Override
+    public boolean stateHasChanged() {
+        return false;
+    }
+
     //ON and OFF functionality
     public void switchOn() { switchedOn = true; }
 

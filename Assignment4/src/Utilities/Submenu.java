@@ -12,6 +12,7 @@ public class Submenu implements Command {
     private String name;
     private Commandable device;
     private ArrayList<Command> commands;
+    private Scanner scanner = new Scanner(System.in);
 
     //Constructor
     public Submenu(String name, Commandable device) {
@@ -27,6 +28,16 @@ public class Submenu implements Command {
     }
 
     void display() {
+
+        //Update Commands before new display
+        updateCommands();
+
+        //Observe Commandable for Change
+        ObserveCommandable observer = new ObserveCommandable();
+        Thread observerThread = new Thread(observer);
+        observerThread.start();
+
+        //Print and get Input
         System.out.println("--------------------");
         System.out.println(name);
         System.out.println("--------------------");
@@ -38,13 +49,11 @@ public class Submenu implements Command {
             i++;
         }
 
-        Scanner myObj = new Scanner(System.in);
         System.out.print("Enter your wish, master >> ");
-        int command = Integer.parseInt(myObj.next().trim());
+        int command = Integer.parseInt(scanner.next().trim());
 
         if (command <= commands.size() && command > 0) {
             commands.get(command - 1).execute();
-            updateCommands();
         }
         else if (command == 0) {
             return;
@@ -53,8 +62,10 @@ public class Submenu implements Command {
             System.out.println("This is not a valid option!");
         }
 
-        display();
+        //Kill observerThread
+        observerThread.interrupt();
 
+        display();
     }
 
     @Override
@@ -67,9 +78,18 @@ public class Submenu implements Command {
         return name;
     }
 
-    void setDevice(Commandable device) {
-        this.device = device;
-        updateCommands();
+    private class ObserveCommandable implements Runnable {
+
+        @Override
+        public void run() {
+            while (true) {
+                if (device.stateHasChanged()) {
+                    break;
+                }
+            }
+            updateCommands();
+            //TODO: Exit scanner safely
+        }
     }
 
 }

@@ -6,7 +6,11 @@ import Interfaces.Command;
 
 public class SetTimerRobot implements Command {
 
+    private CleaningRobot robot;
+
     public SetTimerRobot(CleaningRobot robot) {
+
+        this.robot = robot;
     }
 
     @Override

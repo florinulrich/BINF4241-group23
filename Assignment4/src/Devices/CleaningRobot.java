@@ -61,6 +61,11 @@ public class CleaningRobot implements Commandable {
         return commands;
     }
 
+    @Override
+    public boolean stateHasChanged() {
+        return false;
+    }
+
     //Set Timer
     public void setTimer(int timerSeconds) { this.timerSeconds = timerSeconds; }
 

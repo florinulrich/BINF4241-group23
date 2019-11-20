@@ -2,6 +2,7 @@ import Devices.Dishwasher;
 import Devices.Microwave;
 import Devices.Oven;
 import Devices.Washer;
+import Utilities.Smartphone;
 import Utilities.Submenu;
 
 public class Main {
@@ -26,6 +27,8 @@ public class Main {
         //Add more...
 
         //Run
-        mySmartphone.display();
+        while (!mySmartphone.quitProgram()) {
+            mySmartphone.display();
+        }
     }
 }

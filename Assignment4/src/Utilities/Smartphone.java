@@ -1,3 +1,5 @@
+package Utilities;
+
 import Interfaces.Command;
 
 import java.util.ArrayList;
@@ -7,6 +9,7 @@ public class Smartphone {
 
     //Variables
     private ArrayList<Command> commands;
+    private boolean quitProgram = false;
 
     //Constructors
     public Smartphone() {
@@ -14,7 +17,7 @@ public class Smartphone {
     }
 
     //Methods
-    void display() {
+    public void display() {
         System.out.println("--------------------");
         System.out.println("My Home");
         System.out.println("--------------------");
@@ -28,17 +31,23 @@ public class Smartphone {
         System.out.print("Enter your wish, master >> ");
         int command = Integer.parseInt(myObj.next().trim());
 
+        //TODO: Is this a desired feature, should it stay hidden or be removed?
+        if (command == 0) {
+            quitProgram = true;
+        }
+
         if (command <= commands.size() && command > 0) {
             commands.get(command - 1).execute();
-        }
-        else {
+        } else {
             System.out.println("This is not a valid option!");
         }
-
-        display();
     }
 
-    void addCommand(Command command) {
+    public void addCommand(Command command) {
         commands.add(command);
+    }
+
+    public boolean quitProgram() {
+        return quitProgram;
     }
 }
