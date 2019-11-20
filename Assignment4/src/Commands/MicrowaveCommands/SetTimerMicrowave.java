@@ -9,7 +9,7 @@ public class SetTimerMicrowave implements Command {
 
     private static final String NAME = "set timer";
 
-    Microwave microwave;
+    private Microwave microwave;
 
     public SetTimerMicrowave(Microwave microwave) { this.microwave = microwave; }
 

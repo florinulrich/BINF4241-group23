@@ -95,6 +95,16 @@ public class CleaningRobot implements Commandable {
         }
     }
 
+    //End Cleaning
+    public void endCleaning() {
+        timerSeconds = 0;
+        atBase = true;
+    }
+
+    //Complete Cleaning
+    public void completeOutstandingCleaning(){
+    }
+
     //Cleaning Status
     public int checkCleaningStatus() {
         return cleaningStatus;
