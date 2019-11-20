@@ -51,19 +51,6 @@ public class Dishwasher implements Commandable {
         return false;
     }
 
-    @Override
-    public ArrayList<String> displayStatus() {
-
-        ArrayList<String> status = new ArrayList();
-
-        status.add("Switched on: " + String.valueOf(switchedOn));
-        status.add("Time Seconds: " + String.valueOf(timerSeconds));
-        status.add("Is washing: " + String.valueOf(isWashing));
-        status.add("Program: " + program);
-
-        return status;
-    }
-
     //ON and OFF functionality
     public void switchOn() { switchedOn = true; }
 

@@ -55,21 +55,6 @@ public class CleaningRobot implements Commandable {
         timer.start();
     }
 
-    @Override
-    public ArrayList<String> displayStatus() {
-
-        ArrayList<String> status = new ArrayList();
-
-        status.add("Cleaning: " + String.valueOf(cleaning));
-        status.add("Time Seconds: " + String.valueOf(timerSeconds));
-        status.add("At Base: " + String.valueOf(atBase));
-        status.add("Battery status: " + String.valueOf((batteryStatus)));
-        status.add("Cleaning status: " + String.valueOf(cleaningStatus));
-        status.add("Completed cleaning: " + String.valueOf(completingCleaning));
-
-        return status;
-    }
-
     //Start Cleaning
     public void startCleaning() {
 

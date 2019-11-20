@@ -59,21 +59,6 @@ public class Oven implements Commandable {
         }
     }
 
-    @Override
-    public ArrayList<String> displayStatus() {
-
-        ArrayList<String> status = new ArrayList();
-
-        status.add("Switched on: " + String.valueOf(switchedOn));
-        status.add("Time Seconds: " + String.valueOf(timerSeconds));
-        status.add("Temperature: " + String.valueOf(temperature));
-        status.add("Program: " + program);
-        status.add("Is cooking: " + String.valueOf(isCooking));
-
-        return status;
-    }
-
-
     //ON and OFF functionality
     public void switchOn() {
         switchedOn = true;
