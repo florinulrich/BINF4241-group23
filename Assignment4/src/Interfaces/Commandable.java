@@ -9,4 +9,6 @@ public interface Commandable {
 
     boolean stateHasChanged();
 
+    ArrayList <String> displayStatus ();
+
 }
