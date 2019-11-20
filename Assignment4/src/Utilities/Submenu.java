@@ -38,16 +38,17 @@ public class Submenu implements Command {
         observerThread.start();
 
         //Print and get Input
-        System.out.println("--------------------");
-        System.out.println(name);
-        System.out.println("--------------------");
+        System.out.println("-------------------------");
+        System.out.println("> " + name);
+        System.out.println("-------------------------");
 
-        System.out.println("0. return");
+
         int i = 1;
         for (Command command: commands) {
-            System.out.println(i + ". " + command.getName());
+            System.out.println("("+ i + ") " + command.getName());
             i++;
         }
+        System.out.println("(enter 0 to return)");
 
         System.out.print("Enter your wish, master >> ");
         int command = Integer.parseInt(scanner.next().trim());

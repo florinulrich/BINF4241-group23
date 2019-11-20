@@ -18,9 +18,9 @@ public class Smartphone {
 
     //Methods
     public void display() {
-        System.out.println("--------------------");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("My Home");
-        System.out.println("--------------------");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~");
         int i = 1;
         for (Command command: commands) {
             System.out.println(i + ". " + command.getName());

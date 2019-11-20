@@ -103,6 +103,7 @@ public class CleaningRobot implements Commandable {
 
     //Complete Cleaning
     public void completeOutstandingCleaning(){
+        cleaningStatus = 100;
     }
 
     //Cleaning Status
