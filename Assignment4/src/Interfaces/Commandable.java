@@ -9,4 +9,5 @@ public interface Commandable {
 
     boolean stateHasChanged();
 
+    void acceptState();
 }

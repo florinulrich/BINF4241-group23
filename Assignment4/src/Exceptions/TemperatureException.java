@@ -4,7 +4,7 @@ package Exceptions;
 
 public class TemperatureException extends Exception {
 
-    public TemperatureException(String errorMessage) {
+    public TemperatureException() {
         super("You can only set a temperature between 0 and 300");
     }
 }

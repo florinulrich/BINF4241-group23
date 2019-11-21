@@ -16,6 +16,7 @@ public class Washer implements Commandable {
     private boolean isWashing = false;
     private String program = "";
     private int temperature = 0;
+    private boolean stateChanged = false;
 
     @Override
     public ArrayList<Command> getCommands() {
@@ -47,7 +48,12 @@ public class Washer implements Commandable {
 
     @Override
     public boolean stateHasChanged() {
-        return false;
+        return stateChanged;
+    }
+
+    @Override
+    public void acceptState() {
+        stateChanged = false;
     }
 
 
@@ -72,8 +78,8 @@ public class Washer implements Commandable {
         this.timerSeconds = timerSeconds;
     }
 
-    public void startTimer() {
-        timer = new MyTimer(timerSeconds);
+    private void startTimer() {
+        timer = new MyTimer(timerSeconds, new EndProgramWasher(this));
         timer.start();
     }
 
@@ -102,8 +108,14 @@ public class Washer implements Commandable {
         startTimer();
         isWashing = true;
 
-        //TODO: set isWashing = false if timer ends
+        //Timer gets interruptOperation as Timer ends command above
 
+    }
+
+    public void endProgram() {
+        isWashing = false;
+        timer = null;
+        stateChanged = true;
     }
 
 }

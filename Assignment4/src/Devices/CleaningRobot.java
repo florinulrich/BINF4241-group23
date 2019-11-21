@@ -11,13 +11,11 @@ public class CleaningRobot implements Commandable {
 
     private int timerSeconds = 0;
     private MyTimer timer;
-    private Thread cleaning = null;
-    private Thread charging = null;
     private boolean atBase = true;
     private int batteryStatus = 100;
     private int cleaningStatus = 0;
     private boolean completingCleaning = false;
-    private Thread workingThread;
+    private boolean stateChanged = false;
 
 
     @Override
@@ -28,7 +26,7 @@ public class CleaningRobot implements Commandable {
         if (atBase) {
             commands.add(new SetTimerRobot(this));
             commands.add(new CheckChargingStatusRobot(this));
-            if (batteryStatus == 100 && timerSeconds != 0){
+            if (batteryStatus >= 100 && timerSeconds != 0) {
                 commands.add(new StartCleaningRobot(this));
             }
         } else {
@@ -44,7 +42,12 @@ public class CleaningRobot implements Commandable {
 
     @Override
     public boolean stateHasChanged() {
-        return false;
+        return stateChanged;
+    }
+
+    @Override
+    public void acceptState() {
+        stateChanged = false;
     }
 
     //Set Timer
@@ -67,7 +70,7 @@ public class CleaningRobot implements Commandable {
         atBase = false;
 
         CleaningThread cleaningThread = new CleaningThread();
-        cleaning = new Thread(cleaningThread);
+        Thread cleaning = new Thread(cleaningThread);
         cleaning.start();
 
     }
@@ -131,6 +134,9 @@ public class CleaningRobot implements Commandable {
             //Set Robot as returned to base
             atBase = true;
 
+            //Tell that state has changed
+            stateChanged = true;
+
             //If everything is clean, cleaning status back to 0,
             // if robot is in completeOutstandingCleaningMode set completingCleaning to false
             if (cleaningStatus > 99) {
@@ -143,7 +149,7 @@ public class CleaningRobot implements Commandable {
 
             //StartCharging the Robot again
             ChargingThread chargingThread = new ChargingThread();
-            charging = new Thread(chargingThread);
+            Thread charging = new Thread(chargingThread);
             charging.start();
         }
     }
@@ -160,6 +166,9 @@ public class CleaningRobot implements Commandable {
             while (timer.isRunning() && batteryStatus < 100) {
                 batteryStatus = initialBatteryStatus + timer.getElapsedSeconds();
             }
+
+            //Tell that state has changed
+            stateChanged = true;
 
             //Kill remaining timer
             timer = null;

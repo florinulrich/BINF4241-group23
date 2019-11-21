@@ -2,7 +2,6 @@ package Commands.OvenCommands;
 
 import Devices.Oven;
 import Interfaces.Command;
-import Utilities.MyTimer;
 
 public class InterruptOperationOven implements Command {
 

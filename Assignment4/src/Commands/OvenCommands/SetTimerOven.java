@@ -9,7 +9,7 @@ public class SetTimerOven implements Command {
 
     private static final String NAME = "set timer";
 
-    Oven oven;
+    private Oven oven;
 
     public SetTimerOven(Oven oven) { this.oven = oven; }
 

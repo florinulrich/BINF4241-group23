@@ -11,7 +11,7 @@ public class MyTimer implements Runnable{
     private Thread timerThread = new Thread(this);
     private Command endCommand = null;
 
-    //Constructor
+    //Constructors
     public MyTimer(int seconds) {
         remainingSeconds = seconds;
     }

@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class SetProgramOven implements Command {
 
     private static final String NAME = "set program";
-    Oven oven;
+    private Oven oven;
 
     public SetProgramOven(Oven oven) { this.oven = oven; }
 

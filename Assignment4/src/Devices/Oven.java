@@ -51,12 +51,12 @@ public class Oven implements Commandable {
 
     @Override
     public boolean stateHasChanged() {
-        if (!stateChanged) {
-            return false;
-        } else {
-            stateChanged = false;
-            return true;
-        }
+        return stateChanged;
+    }
+
+    @Override
+    public void acceptState() {
+        stateChanged = false;
     }
 
     //ON and OFF functionality

@@ -15,6 +15,7 @@ public class Microwave implements Commandable {
     private MyTimer timer;
     private int temperature = 0;
     private boolean isBaking = false;
+    private boolean stateChanged = false;
 
     //Methods
     @Override
@@ -47,7 +48,12 @@ public class Microwave implements Commandable {
 
     @Override
     public boolean stateHasChanged() {
-        return false;
+        return stateChanged;
+    }
+
+    @Override
+    public void acceptState() {
+        stateChanged = false;
     }
 
     //ON and OFF functionality
@@ -69,9 +75,9 @@ public class Microwave implements Commandable {
 
     //Set Timer
     public void setTimerSeconds(int timerSeconds) { this.timerSeconds = timerSeconds; }
-   
-    public void startTimer() {
-        timer = new MyTimer(timerSeconds);
+
+    private void startTimer() {
+        timer = new MyTimer(timerSeconds, new InterruptOperationMicrowave(this));
         timer.start();
     }
     
@@ -89,7 +95,7 @@ public class Microwave implements Commandable {
         startTimer();
         isBaking = true;
 
-        //TODO: set isWashing = false if timer ends
+        //Timer gets interruptOperation as Timer ends command above
 
     }
 
@@ -97,6 +103,7 @@ public class Microwave implements Commandable {
     public void interruptOperation() {
         isBaking = false;
         timer = null;
+        stateChanged = true;
     }
 
 }

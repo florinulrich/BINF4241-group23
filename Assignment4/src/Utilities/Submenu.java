@@ -23,11 +23,15 @@ public class Submenu implements Command {
     }
 
     //Methods
-    void updateCommands() {
+    private void updateCommands() {
         commands = device.getCommands();
     }
 
-    void display() {
+    private void display() {
+
+        //Because the display is being refreshed, it takes the newest state of the device
+        // therefore its state is accepted
+        device.acceptState();
 
         //Update Commands before new display
         updateCommands();
@@ -38,6 +42,26 @@ public class Submenu implements Command {
         observerThread.start();
 
         //Print and get Input
+        print();
+
+        int command = Integer.parseInt(scanner.next().trim());
+
+        if (command <= commands.size() && command > 0) {
+            commands.get(command - 1).execute();
+        } else if (command == 0) {
+            observer.stop();
+            return;
+        } else {
+            System.out.println("This is not a valid option!");
+        }
+
+        //Kill observerThread
+        observer.stop();
+
+        display();
+    }
+
+    private void print() {
         System.out.println();
         System.out.println("-------------------------");
         System.out.println("> " + name);
@@ -49,26 +73,10 @@ public class Submenu implements Command {
             System.out.println("("+ i + ") " + command.getName());
             i++;
         }
+
         System.out.println("(enter 0 to return)");
         System.out.println("-------------------------");
-
         System.out.print("Enter your wish, master >> ");
-        int command = Integer.parseInt(scanner.next().trim());
-
-        if (command <= commands.size() && command > 0) {
-            commands.get(command - 1).execute();
-        }
-        else if (command == 0) {
-            return;
-        }
-        else {
-            System.out.println("This is not a valid option!");
-        }
-
-        //Kill observerThread
-        observerThread.interrupt();
-
-        display();
     }
 
     @Override
@@ -83,15 +91,29 @@ public class Submenu implements Command {
 
     private class ObserveCommandable implements Runnable {
 
+        private boolean stop = false;
+
         @Override
         public void run() {
-            while (true) {
+            while (!stop) {
+                while (!device.stateHasChanged() && !stop) {
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
                 if (device.stateHasChanged()) {
-                    break;
+                    updateCommands();
+                    print();
+                    device.acceptState();
                 }
             }
-            updateCommands();
-            //TODO: Exit scanner safely
+        }
+
+        void stop() {
+            stop = true;
         }
     }
 

@@ -31,7 +31,6 @@ public class Smartphone {
         System.out.print("Enter your wish, master >> ");
         int command = Integer.parseInt(myObj.next().trim());
 
-        //TODO: Is this a desired feature, should it stay hidden or be removed?
         if (command == 0) {
             quitProgram = true;
         }

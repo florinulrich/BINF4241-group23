@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class SetTemperatureMicrowave implements Command {
 
     private static final String NAME = "set temperature";
-    Microwave microwave;
+    private Microwave microwave;
 
     public SetTemperatureMicrowave(Microwave microwave) { this.microwave = microwave; }
 
@@ -22,7 +22,7 @@ public class SetTemperatureMicrowave implements Command {
 
         try{
             if(temperature <= 0 ^ temperature >= 300)
-                throw new TemperatureException("You can only set a temperature between 0 and 300");
+                throw new TemperatureException();
         }
         catch (TemperatureException exception){
             System.out.println(exception + "The temperature you entered is not available");

@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class SetTemperatureWasher implements Command {
 
     private static final String NAME = "set temperature";
-    Washer washer;
+    private Washer washer;
 
     public SetTemperatureWasher(Washer washer) { this.washer = washer; }
 
