@@ -21,6 +21,8 @@ public class CleaningRobot implements Commandable {
     @Override
     public ArrayList<Command> getCommands() {
 
+        //TODO: Which options should be available if the robot is completing outstanding cleaning?
+
         ArrayList<Command> commands = new ArrayList<>();
 
         if (atBase) {
