@@ -21,17 +21,17 @@ public class CleaningRobot implements Commandable {
     @Override
     public ArrayList<Command> getCommands() {
 
-        //TODO: Which options should be available if the robot is completing outstanding cleaning?
-
         ArrayList<Command> commands = new ArrayList<>();
 
-        if (atBase) {
+        if (atBase && !completingCleaning) {
             commands.add(new SetTimerRobot(this));
             commands.add(new CheckChargingStatusRobot(this));
             if (batteryStatus >= 100 && timerSeconds != 0) {
                 commands.add(new StartCleaningRobot(this));
             }
-        } else {
+        } else if (atBase && completingCleaning) {
+            commands.add(new CheckChargingStatusRobot(this));
+        } else  {
             commands.add(new CheckBatteryStatusRobot(this));
         }
 
@@ -81,17 +81,19 @@ public class CleaningRobot implements Commandable {
     public void endCleaning() {
         atBase = true;
         timer = null;
+        completingCleaning = false;
 
-        ChargingThread chargingThread = new ChargingThread();
-        Thread charging = new Thread(chargingThread);
-        charging.start();
+        startCharging();
 
     }
 
     //Complete Cleaning
     public void completeOutstandingCleaning(){
         completingCleaning = true;
-        endCleaning();
+        if (atBase && batteryStatus > 99) {
+            startCleaning();
+        }
+
     }
 
     //Cleaning Status
@@ -123,7 +125,7 @@ public class CleaningRobot implements Commandable {
 
             startTimer();
 
-            while (timer.isRunning() && batteryStatus > 0 && cleaningStatus < 100) {
+            while (!atBase && (timer != null || timer.isRunning()) && batteryStatus > 0 && cleaningStatus < 100) {
                 batteryStatus = 100 - timer.getElapsedSeconds();
                 cleaningStatus = initialCleaningStatus + timer.getElapsedSeconds();
                 try {
@@ -150,10 +152,14 @@ public class CleaningRobot implements Commandable {
             timer = null;
 
             //StartCharging the Robot again
-            ChargingThread chargingThread = new ChargingThread();
-            Thread charging = new Thread(chargingThread);
-            charging.start();
+            startCharging();
         }
+    }
+
+    private void startCharging() {
+        ChargingThread chargingThread = new ChargingThread();
+        Thread charging = new Thread(chargingThread);
+        charging.start();
     }
 
     private class ChargingThread implements Runnable {

@@ -21,14 +21,15 @@ public class SetTemperatureOven implements Command {
         int temperature = Integer.parseInt(myObj.next().trim());
 
         try{
-            if(temperature <= 0 ^ temperature >= 300)
+            if(temperature <= 0 ^ temperature >= 300){
                 throw new TemperatureException();
+            } else {
+                oven.setTemperature(temperature);
+            }
         }
         catch (TemperatureException exception){
-            System.out.println(exception + "The temperature you entered is not available");
+            System.out.println("The temperature you entered is not available");
         }
-
-        oven.setTemperature(temperature);
 
     }
 

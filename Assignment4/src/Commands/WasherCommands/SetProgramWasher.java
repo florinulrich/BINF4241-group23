@@ -19,6 +19,7 @@ public class SetProgramWasher implements Command {
         Scanner myObj = new Scanner(System.in);
         System.out.print("enter program (double, rinse, intense, quick or spin) >> ");
         String program = myObj.next();
+        boolean programAvailable = true;
 
         int timer = 0;
         switch (program.toLowerCase()) {
@@ -38,11 +39,16 @@ public class SetProgramWasher implements Command {
                 timer = 75;
                 break;
             default:
+                System.out.println("This program is not available");
+                programAvailable = false;
                 break;
         }
 
         washer.setTimerSeconds(timer);
-        washer.setProgram(program);
+
+        if (programAvailable) {
+            washer.setProgram(program);
+        }
 
     }
 

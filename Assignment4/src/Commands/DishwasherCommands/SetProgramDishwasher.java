@@ -21,6 +21,7 @@ public class SetProgramDishwasher implements Command {
         String program = myObj.next();
 
         int timer = 0;
+        boolean programAvailable = true;
         switch (program.toLowerCase()) {
             case "glasses":
                 timer = 100;
@@ -35,11 +36,15 @@ public class SetProgramDishwasher implements Command {
                 timer = 125;
                 break;
             default:
+                System.out.println("This program is not available");
+                programAvailable = false;
                 break;
         }
 
         dishwasher.setTimerSeconds(timer);
-        dishwasher.setProgram(program);
+        if (programAvailable) {
+            dishwasher.setProgram(program);
+        }
 
     }
 

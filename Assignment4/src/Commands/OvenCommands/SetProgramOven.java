@@ -18,9 +18,22 @@ public class SetProgramOven implements Command {
         Scanner myObj = new Scanner(System.in);
         System.out.print("enter program (ventilated, grill, baking) >> ");
         String program = myObj.next();
+        boolean programAvailable = true;
 
-        oven.setProgram(program);
+        switch (program.toLowerCase()){
+            case "ventilated":
+            case "grill":
+            case "baking":
+                break;
+            default:
+                System.out.println("This program is not available");
+                programAvailable = false;
+                break;
+        }
 
+        if (programAvailable) {
+            oven.setProgram(program);
+        }
     }
 
     @Override
