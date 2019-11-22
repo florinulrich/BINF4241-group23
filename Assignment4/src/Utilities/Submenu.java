@@ -43,8 +43,13 @@ public class Submenu implements Command {
 
         //Print and get Input
         print();
+        int command;
+        try {
+            command = Integer.parseInt(scanner.next().trim());
+        } catch (Exception e) {
+            command = -1;
+        }
 
-        int command = Integer.parseInt(scanner.next().trim());
 
         if (command <= commands.size() && command > 0) {
             commands.get(command - 1).execute();

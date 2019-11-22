@@ -29,7 +29,13 @@ public class Smartphone {
 
         Scanner myObj = new Scanner(System.in);
         System.out.print("Enter your wish, master >> ");
-        int command = Integer.parseInt(myObj.next().trim());
+
+        int command;
+        try {
+            command = Integer.parseInt(myObj.next().trim());
+        } catch (Exception e) {
+            command = -1;
+        }
 
         if (command == 0) {
             quitProgram = true;
