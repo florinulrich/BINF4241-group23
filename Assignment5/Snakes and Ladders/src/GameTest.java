@@ -5,23 +5,23 @@ import static org.junit.Assert.*;
 
 public class GameTest {
 
-    static Game testGame;
+    Game testGame;
 
-    @Before  static void setUp() {
+    @Before public void setUp() {
         testGame = new Game(10);
     }
 
-    @Test static void testMovePlayer() {
+    @Test public void testMovePlayer() {
 
 
     }
 
-    @Test static void testFindSquare() {
+    @Test public void testFindSquare() {
 
 
     }
 
-    @Test static void testGameOver() {
+    @Test public void testGameOver() {
 
         assertTrue("GameOver returns false value", !testGame.gameOver());
 
