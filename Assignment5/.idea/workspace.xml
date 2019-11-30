@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24528fb6-f5b4-496f-b31c-a9b1d2297fa6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+    <list default="true" id="16b37096-d336-442c-9f54-1edaa1f10cfd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +11,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1UKSmAi7jKhsRIU5lqulrVUcPXU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -21,15 +20,15 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -63,7 +62,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -72,5 +73,15 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add Assignment 5" />
     <option name="LAST_COMMIT_MESSAGE" value="Add Assignment 5" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="385" y="76" key="MultipleFileMergeDialog" timestamp="1575106629277">
+      <screen x="62" y="0" width="1218" height="720" />
+    </state>
+    <state x="385" y="76" key="MultipleFileMergeDialog/62.0.1218.720@62.0.1218.720" timestamp="1575106629277" />
+    <state x="481" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1575106616071">
+      <screen x="62" y="0" width="1218" height="720" />
+    </state>
+    <state x="481" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/62.0.1218.720@62.0.1218.720" timestamp="1575106616071" />
   </component>
 </project>
