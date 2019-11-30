@@ -9,6 +9,9 @@ public class GameTest {
 
     @Before public void setUp() {
         testGame = new Game(10);
+        ISquare startSquare = testGame.firstSquare();
+        testGame.addNewPlayer(new Player("Player1", startSquare));
+        testGame.addNewPlayer(new Player("Player2", startSquare));
     }
 
     @Test public void testMovePlayer() {
@@ -21,6 +24,10 @@ public class GameTest {
 
     }
 
+    /**
+     * At the beginning gameOver == false
+     * After a player reaches the last square gameOver == true
+     */
     @Test public void testGameOver() {
 
         assertTrue("GameOver returns false value", !testGame.gameOver());

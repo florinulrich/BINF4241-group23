@@ -47,7 +47,7 @@ public class Square implements ISquare {
 
   }
 
-  private boolean isOccupied() {
+   boolean isOccupied() {
 
     return isOccupied;
 
