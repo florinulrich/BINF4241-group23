@@ -1,8 +1,6 @@
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -50,8 +48,15 @@ public class SquareTest {
         assertTrue("First Square should not be empty at beginning of the Game",
                 !firstSquare.getPlayerOnSquare().isEmpty() && !(firstSquare.getPlayerOnSquare() == null));
 
-        parentGame.movePlayer(1); //Move first player
-        parentGame.movePlayer(2); //Move second player
+        ArrayList<Player> players = new ArrayList<>();
+        for (Player player : firstSquare.getPlayerOnSquare()) {
+            players.add(player);
+        }
+        for (Player player: players) {
+
+            firstSquare.leave(player);
+
+        }
 
         assertTrue("First square should be empty!", firstSquare.getPlayerOnSquare().isEmpty());
 
