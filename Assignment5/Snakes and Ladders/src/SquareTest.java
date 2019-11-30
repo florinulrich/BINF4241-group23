@@ -98,10 +98,10 @@ public class SquareTest {
      */
     @Test public void testIsOccupied() {
 
-        //assertTrue("First Square is occupied at beginning of the game", firstSquare.isOccupied());
+        assertTrue("First Square is occupied at beginning of the game", firstSquare.isOccupied());
 
         Square lastSquare = (Square) testSquares.get(testSquares.size()-1);
-        //assertTrue("Last Square should not be occupied", lastSquare.isOccupied());
+        assertFalse("Last Square should not be occupied", lastSquare.isOccupied());
     }
 
     /**

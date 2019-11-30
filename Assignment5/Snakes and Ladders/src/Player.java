@@ -7,6 +7,9 @@ public class Player{
     public Player(String playerName, ISquare startingSquare) {
         this.name = playerName;
         this.currentSquare = startingSquare;
+        currentSquare.enter(this);
+
+        //TODO; Document the bugfix! After player is created on a square, it enters
     }
 
     void moveFwd(int numberOfSquares){
