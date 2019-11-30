@@ -64,8 +64,8 @@ public class PlayerQueueTest {
 
     @After public void tearDown() {
 
-        PlayerQueue testQueue = null;
-        Player testPlayer1 = null;
-        Player testPlayer2 = null;
+        testQueue = null;
+        testPlayer1 = null;
+        testPlayer2 = null;
     }
 }

@@ -29,6 +29,13 @@ public class Player{
     }
 
     void setCurrentSquare(ISquare square) {
+
+        if (square == null) {
+            throw new NullPointerException("Square should never be set to null!");
+        }
+
+        //TODO: Document the bugfix! Null as parameter throws now an exception
+
         currentSquare = square;
     }
 
