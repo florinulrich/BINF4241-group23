@@ -1,5 +1,7 @@
 public class Tester {
 
+    //TODO: Exclude Tester (Delete?) And document in Answers.MD
+
     public static void main(String[] args) throws Exception {
 
         testGameClass();

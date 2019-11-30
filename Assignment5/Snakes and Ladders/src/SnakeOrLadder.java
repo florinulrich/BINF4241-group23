@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+//TODO: IS THERE A TEST???
+
 public class SnakeOrLadder implements ISquare {
 
     //Variables

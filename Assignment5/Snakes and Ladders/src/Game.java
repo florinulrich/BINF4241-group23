@@ -75,7 +75,8 @@ public class Game {
     }
 
     void addNewPlayer(Player newPlayer) {
-        squares.get(0).addPlayer(newPlayer);
+
+        //TODO: Document the bugfix! The player now enters the square during its initialization
         players.add(newPlayer);
     }
 
