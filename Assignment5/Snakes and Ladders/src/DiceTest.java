@@ -11,5 +11,7 @@ public class DiceTest {
            int roll = Dice.roll();
            assertTrue("Dice doesn't roll in correct range", roll < 7 && roll > 0);
        }
+
+       //TODO: what happens for 1, 2, 3, 4, 5, or 6
    }
 }
