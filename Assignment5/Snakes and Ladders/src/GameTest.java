@@ -1,4 +1,5 @@
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -116,17 +117,27 @@ public class GameTest {
 
         try {
             testGame.getLastSquaresPlayer();
-            exceptionCaught = true;
-        } catch (Exception e) {
             exceptionCaught = false;
+        } catch (Exception e) {
+            exceptionCaught = true;
         }
 
-        assertTrue("If the method tries to access an empty array, the method fails", exceptionCaught);
+        assertTrue("The method should throw an exception if it is called before a player" +
+                " is on the last square,i.e. the game is over", exceptionCaught);
 
         ISquare lastSquare = testGame.getSquares().get(testGame.getSquares().size()-1);
         lastSquare.addPlayer(testPlayer1);
 
         assertEquals(testPlayer1, testGame.getLastSquaresPlayer());
+
+    }
+
+    @After public void tearDown() {
+        testGame = null;
+        testSquares = null;
+        startSquare = null;
+        testPlayer1 = null;
+        testPlayer2 = null;
 
     }
 

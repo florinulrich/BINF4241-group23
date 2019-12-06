@@ -16,7 +16,7 @@ public class GameRunner{
         setUpGame();
     }
 
-    private static void getSetupInputs() {
+    static void getSetupInputs() {
         Scanner input = new Scanner(System.in);
         askForPlayerNumber(input);
 
@@ -35,7 +35,7 @@ public class GameRunner{
         boardSize = input.nextInt();
     }
 
-    private static void askForPlayerNumber(Scanner input) {
+     static void askForPlayerNumber(Scanner input) {
         //ask for the number of players:
         System.out.print("How many players >>> ");
         numberOfPlayers = input.nextInt();
@@ -45,7 +45,7 @@ public class GameRunner{
         }
     }
 
-    private static void setUpGame() {
+    static void setUpGame() {
         Game gameBoard = new Game(boardSize);
 
         for (Object playerName: playerNames) {
@@ -78,7 +78,7 @@ public class GameRunner{
         System.out.println(Winner +" wins!");
     }
 
-    private static Game addSnakesAndLadders(Game game) {
+    static Game addSnakesAndLadders(Game game) {
 
         ArrayList<ISquare> squares = game.getSquares();
 
