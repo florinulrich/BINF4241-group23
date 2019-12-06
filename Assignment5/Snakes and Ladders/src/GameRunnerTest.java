@@ -1,5 +1,4 @@
 
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,24 +6,19 @@ import org.junit.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
 public class GameRunnerTest {
 
-    //TODO: Implement Test
-
     Game testGame;
-
 
     @Before public void setUp(){
 
         testGame = new Game(10);
 
     }
-
 
     /**
      * Test checks for the three possible player counts, weather it works to set them.
@@ -42,7 +36,6 @@ public class GameRunnerTest {
 
             assertEquals(Integer.parseInt(string), GameRunner.numberOfPlayers);
         }
-
 
     }
 
@@ -92,8 +85,6 @@ public class GameRunnerTest {
         }
 
     }
-
-
 
     /**
      *Tests that after adding the snakes and ladders, the first and last square are still normal squares

@@ -1,4 +1,4 @@
-public class Player{
+public class Player {
 
     //Variables
     private ISquare currentSquare;
@@ -9,10 +9,9 @@ public class Player{
         this.currentSquare = startingSquare;
         currentSquare.enter(this);
 
-        //TODO; Document the bugfix! After player is created on a square, it enters
     }
 
-    void moveFwd(int numberOfSquares){
+    void moveFwd(int numberOfSquares) {
 
         currentSquare.leave(this);
         ISquare newSquare = currentSquare.moveAndLand(numberOfSquares);
@@ -33,8 +32,6 @@ public class Player{
         if (square == null) {
             throw new NullPointerException("Square should never be set to null!");
         }
-
-        //TODO: Document the bugfix! Null as parameter throws now an exception
 
         currentSquare = square;
     }

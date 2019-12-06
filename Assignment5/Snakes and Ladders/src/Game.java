@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 public class Game {
 
     //Variables
@@ -75,8 +74,6 @@ public class Game {
     }
 
     void addNewPlayer(Player newPlayer) {
-
-        //TODO: Document the bugfix! The player now enters the square during its initialization
         players.add(newPlayer);
     }
 
@@ -88,5 +85,4 @@ public class Game {
         return squares;
     }
 
-    //TODO: Document the deletion of an unused method (setSquares)
 }

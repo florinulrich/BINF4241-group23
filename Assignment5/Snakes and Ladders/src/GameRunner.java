@@ -26,13 +26,10 @@ public class GameRunner{
         playerNames = new LinkedList();
         getPlayerNames(input);
 
-        //TODO: Document refactoring! For testability the getplayernames method is its own method now, get setup input is untested, because it only calls three tested input methods
-
         //ask for size of board:
         System.out.print("Board size >>> ");
         askForBoardSize(input);
 
-        // TODO: document bug fix
     }
 
     static void getPlayerNames(Scanner input) {
