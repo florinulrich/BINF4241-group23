@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 
-//TODO: Document that all tests of square will also apply to snake or ladder, the only difference is the print method
-
 public class SnakeOrLadder implements ISquare {
 
     //Variables
@@ -18,6 +16,10 @@ public class SnakeOrLadder implements ISquare {
 
     //Initializer
     SnakeOrLadder(Game parentGame, int position, SquareType setSquareType, ISquare targetSquare) {
+
+        if (this.finalSquare == null){
+            throw new NullPointerException();
+        }
         this.myGame = parentGame;
         this.position = position;
         this.squareType = setSquareType;
