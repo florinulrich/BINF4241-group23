@@ -32,7 +32,20 @@ public class GameRunner{
 
         //ask for size of board:
         System.out.print("Board size >>> ");
+        askForBoardSize(input);
+
+        // TODO: document bug fix
+    }
+
+    static void askForBoardSize(Scanner input) {
+
+        System.out.print("Board size >>> ");
         boardSize = input.nextInt();
+
+        if (boardSize < 3) {
+            askForBoardSize(input);
+        }
+
     }
 
      static void askForPlayerNumber(Scanner input) {
