@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 import static org.junit.Assert.*;
@@ -25,7 +27,7 @@ public class GameRunnerTest {
 
 
     /**
-     *
+     * Test checks for the three possible player counts, weather it works to set them.
      */
     @Test public void TestAskForPlayerNumber(){
 
@@ -44,31 +46,57 @@ public class GameRunnerTest {
 
     }
 
+    /**
+     * Tests if the askforboardsize method checks the board size is at least 3
+     */
     @Test public void testAskForBoardSize() {
 
         String[] strings = {"3", "4"};
 
         for (String string : strings) {
+
+            String input = "2\n" + string;
+
             InputStream stdin = System.in;
-            System.setIn(new ByteArrayInputStream(string.getBytes()));
+            System.setIn(new ByteArrayInputStream(input.getBytes()));
             Scanner scanner = new Scanner(System.in);
             System.setIn(stdin);
-            GameRunner.askForPlayerNumber(scanner);
+            GameRunner.askForBoardSize(scanner);
 
-            assertEquals(Integer.parseInt(string), GameRunner.askForBoardSize());
+            assertEquals(Integer.parseInt(string), GameRunner.boardSize);
         }
 
     }
 
     /**
-     *
+     * Tests if the names of the players are added correctly
      */
-    @Test public void TestSetUpGame(){
+    @Test public void testGetPlayerNames() {
+
+        String[] strings = {"George" + "\n" + "Paul"};
+        LinkedList names = new LinkedList();
+        names.add("George");
+        names.add("Paul");
+        GameRunner.numberOfPlayers = 2;
+        GameRunner.playerNames = new LinkedList();
+
+        for (String string : strings) {
+
+            InputStream stdin = System.in;
+            System.setIn(new ByteArrayInputStream(string.getBytes()));
+            Scanner scanner = new Scanner(System.in);
+            System.setIn(stdin);
+            GameRunner.getPlayerNames(scanner);
+
+            assertEquals(names, GameRunner.playerNames);
+        }
 
     }
 
+
+
     /**
-     *
+     *Tests that after adding the snakes and ladders, the first and last square are still normal squares
      */
     @Test public void TestAddSnakesAndLadders(){
         GameRunner.addSnakesAndLadders(testGame);

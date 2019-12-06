@@ -24,17 +24,23 @@ public class GameRunner{
         //ask for the names of the players:
         System.out.print("Player names: \n");
         playerNames = new LinkedList();
-        for (int i = 1; i <= numberOfPlayers; i++){
-            System.out.print("Player " + i + " >>> ");
-            String name = input.next();
-            playerNames.add(name);
-        }
+        getPlayerNames(input);
+
+        //TODO: Document refactoring! For testability the getplayernames method is its own method now, get setup input is untested, because it only calls three tested input methods
 
         //ask for size of board:
         System.out.print("Board size >>> ");
         askForBoardSize(input);
 
         // TODO: document bug fix
+    }
+
+    static void getPlayerNames(Scanner input) {
+        for (int i = 1; i <= numberOfPlayers; i++){
+            System.out.print("Player " + i + " >>> ");
+            String name = input.next();
+            playerNames.add(name);
+        }
     }
 
     static void askForBoardSize(Scanner input) {

@@ -62,6 +62,22 @@ public class GameTest {
 
         assertTrue("The game should be game over", testGame.gameOver());
 
+
+        //For each possible dice roll
+        for (int i = 1; i < 7; i++) {
+            tearDown();
+            setUp();
+            boolean worked = false;
+            try {
+                testGame.movePlayer(i);
+                worked = true;
+            } catch (Exception ignored) {
+
+            }
+            assertTrue("The program doesn't work for a dice roll of " + i, worked);
+
+        }
+
     }
 
     /**
