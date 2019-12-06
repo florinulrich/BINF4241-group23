@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16b37096-d336-442c-9f54-1edaa1f10cfd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,16 +21,17 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
+  <component name="RunDashboard">
+    <option name="ruleStates">
       <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
       </list>
     </option>
   </component>
@@ -37,12 +40,14 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="24528fb6-f5b4-496f-b31c-a9b1d2297fa6" name="Default Changelist" comment="" />
+      <changelist id="16b37096-d336-442c-9f54-1edaa1f10cfd" name="Default Changelist" comment="" />
       <created>1575103950288</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575103950288</updated>
       <workItem from="1575103954309" duration="169000" />
+      <workItem from="1575625223284" duration="283000" />
+      <workItem from="1575625983699" duration="47000" />
     </task>
     <task id="LOCAL-00001" summary="Add Assignment 5">
       <created>1575104063867</created>
@@ -51,7 +56,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575104063867</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add TictacToeEvaluator&#10;Uptade AnswersMD">
+      <created>1575625294192</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1575625294192</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -71,8 +83,12 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/assignment5-Part2--tictactoe" />
+    </ignored-roots>
     <MESSAGE value="Add Assignment 5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Assignment 5" />
+    <MESSAGE value="Add TictacToeEvaluator&#10;Uptade AnswersMD" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add TictacToeEvaluator&#10;Uptade AnswersMD" />
   </component>
   <component name="WindowStateProjectService">
     <state x="385" y="76" key="MultipleFileMergeDialog" timestamp="1575106629277">
