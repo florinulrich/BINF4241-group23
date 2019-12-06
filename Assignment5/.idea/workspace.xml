@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="16b37096-d336-442c-9f54-1edaa1f10cfd" name="Default Changelist" comment="Add TictacToeEvaluator" />
+    <list default="true" id="16b37096-d336-442c-9f54-1edaa1f10cfd" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +46,7 @@
       <workItem from="1575625223284" duration="283000" />
       <workItem from="1575625983699" duration="47000" />
       <workItem from="1575626345897" duration="123000" />
+      <workItem from="1575646853564" duration="95000" />
     </task>
     <task id="LOCAL-00001" summary="Add Assignment 5">
       <created>1575104063867</created>
@@ -75,7 +76,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575626404057</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add finished tictactoe">
+      <created>1575646874733</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1575646874734</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,7 +109,8 @@
     <MESSAGE value="Add Assignment 5" />
     <MESSAGE value="Add TictacToeEvaluator&#10;Uptade AnswersMD" />
     <MESSAGE value="Add TictacToeEvaluator" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add TictacToeEvaluator" />
+    <MESSAGE value="Add finished tictactoe" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add finished tictactoe" />
   </component>
   <component name="WindowStateProjectService">
     <state x="385" y="76" key="MultipleFileMergeDialog" timestamp="1575106629277">
