@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-//TODO: IS THERE A TEST???
+//TODO: Document that all tests of square will also apply to snake or ladder, the only difference is the print method
 
 public class SnakeOrLadder implements ISquare {
 

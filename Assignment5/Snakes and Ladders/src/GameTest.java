@@ -8,15 +8,14 @@ import static org.junit.Assert.*;
 
 public class GameTest {
 
-    //TODO: Finish implementing tests
 
     private Game testGame;
-    Player testPlayer1;
-    Player testPlayer2;
-    Square middleSquare;
-    ArrayList<ISquare> testSquares;
-    Square startSquare;
-    int stepsToMiddleSquare;
+    private Player testPlayer1;
+    private Player testPlayer2;
+    private Square middleSquare;
+    private ArrayList<ISquare> testSquares;
+    private Square startSquare;
+    private int stepsToMiddleSquare;
 
 
     @Before public void setUp() {
@@ -92,6 +91,42 @@ public class GameTest {
         testGame.movePlayer(9);
 
         assertTrue("Player reached last square but game is not game Over!", testGame.gameOver());
+
+    }
+
+    /**
+     * Tests if there is a new player that was added to the playerqueue
+     */
+    @Test public void testAddNewPlayer() {
+         testGame.players = new PlayerQueue();
+         testGame.players.add(testPlayer1);
+
+         //Test fails if the queue is empty after adding a Player
+         assertNotNull("Player Queue should not be empty", testGame.players.remove());
+
+    }
+
+    /**
+     * Tests if the method returns the player from the last square,
+     * and also what happens if the array is empty
+     */
+    @Test public void testGetLastSquaresPlayer() {
+
+        boolean exceptionCaught;
+
+        try {
+            testGame.getLastSquaresPlayer();
+            exceptionCaught = true;
+        } catch (Exception e) {
+            exceptionCaught = false;
+        }
+
+        assertTrue("If the method tries to access an empty array, the method fails", exceptionCaught);
+
+        ISquare lastSquare = testGame.getSquares().get(testGame.getSquares().size()-1);
+        lastSquare.addPlayer(testPlayer1);
+
+        assertEquals(testPlayer1, testGame.getLastSquaresPlayer());
 
     }
 

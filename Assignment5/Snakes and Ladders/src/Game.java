@@ -88,7 +88,5 @@ public class Game {
         return squares;
     }
 
-    public void setSquares(ArrayList<ISquare> squares) {
-        this.squares = squares;
-    }
+    //TODO: Document the deletion of an unused method (setSquares)
 }
