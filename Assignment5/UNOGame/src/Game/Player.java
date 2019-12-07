@@ -12,13 +12,15 @@ public class Player {
     public ArrayList<ICard> hand;
     public int score;
     DiscardPile currentDiscardPile;
+    public boolean forgotUno;
+    public boolean wildCardIllegal;
 
     /**
      * @return the card the player wants to play, can be null if player cannot play
      *
      * The player is asked to make its move
      */
-    ICard yourTurn() {
+    public ICard yourTurn() {
         return null;
     }
 
@@ -26,14 +28,14 @@ public class Player {
     /**
      * The player challenges that the last player did not say UNO
      */
-    void challengeUNO() {
+    public void challengeUNO(Player player) {
 
     }
 
     /**
      * The player challenges the legality of the last wildcard
      */
-    void challengeWildCard() {
+    public void challengeWildCard(Player player) {
 
     }
 
@@ -42,14 +44,14 @@ public class Player {
      *
      * This method can be called on the player if he needs to draw extra cards
      */
-    void takeCards(int cardsToTake) {
+    public void takeCards(int cardsToTake) {
 
     }
 
     /**
      * Called if the player can choose the next legal color
      */
-    void chooseColor() {
+    public void chooseColor() {
 
     }
 
