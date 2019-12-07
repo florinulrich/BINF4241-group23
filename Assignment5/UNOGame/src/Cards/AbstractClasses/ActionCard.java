@@ -1,4 +1,4 @@
-package Cards;
+package Cards.AbstractClasses;
 
 import Cards.Interfaces.ICard;
 import Enumerations.CardColor;
@@ -6,10 +6,11 @@ import Enumerations.CardNumber;
 import Game.DiscardPile;
 
 /**
- * Only ActionCards can be decorated with additional functionality
+ * Only ActionCards can have additional functionality
  * ActionCards do never have a number, only a Color
+ * The Action Card Class encapsulates all base functionality, which the different decorators can extend
  */
-public class ActionCard implements ICard {
+public abstract class ActionCard implements ICard {
 
     CardColor color;
 
@@ -17,7 +18,7 @@ public class ActionCard implements ICard {
     /**
      * @param currentGame the Discard Pile of the current game
      */
-    void executeAction(DiscardPile currentGame) {
+    public void executeAction(DiscardPile currentGame) {
 
     }
 

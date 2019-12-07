@@ -39,7 +39,7 @@ public class DiscardPile {
      *
      * tell the next player to draw
      */
-    void tellNextPlayerToDraw(int cardsToDraw) {
+    public void tellNextPlayerToDraw(int cardsToDraw) {
 
     }
 

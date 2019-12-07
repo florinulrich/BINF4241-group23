@@ -10,10 +10,14 @@ import Enumerations.CardNumber;
  */
 public class NumberCard implements ICard {
 
+    public NumberCard(CardColor cardColor, CardNumber number) {
+
+    }
+
     CardColor color;
     CardNumber number;
 
-    CardNumber getNumber() {
+    public CardNumber getNumber() {
 
         return null;
     }
