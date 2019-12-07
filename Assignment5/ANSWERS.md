@@ -37,5 +37,5 @@
       * (GamePlay) played card (e.g. "blue, 8") / draw (if available) / say "UNO" / challange a player that he illegally played a wild four card / choose color if wild card is played / the system should check and/or store the inputs and ask for new input, if it was enterd in the wrong form (e.g. illegal syntax, or a player does not have a card that he states to play)
     * The system should only display the top card of the pile, which player is next, the cards of the current player, status updates (e.g. "player 2 has to draw 2 cards") and if a move has to be repeated (because of illegal input).
 2) Our class diagram of the system:
-  ![classDiagram]
+  ![classDiagram](https://github.com/florinulrich/BINF4241-group23/blob/master/Assignment5/UNOGame/UNOClassDiagram.png)
 
