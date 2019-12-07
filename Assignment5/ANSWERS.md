@@ -22,7 +22,7 @@
 ## Part 2
 
 1) We succesfully copied the source code to our repository
-2) The following list shows each bug we found and how we fixed it:
+2) (and 3.) The following list shows each bug we found and how we fixed it:
 * (GameBoard, line 41) change Javadoc "board" to "other" to match the parameter
 * (GameBoard, line 76 - 92) change return statements (switch true and false) so true is returned when a field in the game is still available (and vice versa)
 * (GameBoard, line 115 - 126) fixed the for loop to start with 0 instead of 1, so the method considers all columns
