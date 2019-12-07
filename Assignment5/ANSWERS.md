@@ -21,4 +21,13 @@
 
 ## Part 2
 
+1) We succesfully copied the source code to our repository
+2), 3) The following list shows each bug we found and how we fixed it:
+* (GameBoard, line 41) change Javadoc "board" to "other" to match the parameter
+* (GameBoard, line 76 - 92) change return statements (switch true and false) so true is returned when a field in the game is still available (and vice versa)
+* (GameBoard, line 115 - 126) fixed the for loop to start with 0 instead of 1, so the method considers all columns
+* (TicTacToeGameState, line 74 - 80) remove the randomPlayer variable so the method retunrs the true current player
+* (TicTacToeGameState, line 101- 109) change return value from false to true so the method returns true when a player completes a colum or row
+* (TicTacToeGameState, line 161 - 167) changed to consider the mark (2,2) instead of (1,2) so that the method can check the diagonals correctly
+
 ## Part 3
