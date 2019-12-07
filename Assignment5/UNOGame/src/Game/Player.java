@@ -1,6 +1,7 @@
 package Game;
 
 import Cards.Interfaces.ICard;
+import Enumerations.CardColor;
 
 import java.util.ArrayList;
 
@@ -51,8 +52,8 @@ public class Player {
     /**
      * Called if the player can choose the next legal color
      */
-    public void chooseColor() {
-
+    public CardColor chooseColor() {
+        return null;
     }
 
     /**
