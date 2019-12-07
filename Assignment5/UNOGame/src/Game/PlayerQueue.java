@@ -10,14 +10,14 @@ public class PlayerQueue {
     /**
      * Skip one player in the queue
      */
-    void skipOne() {
+    public void skipOne() {
 
     }
 
     /**
      * reverse the player order
      */
-    void reverse() {
+    public void reverse() {
 
     }
 
@@ -32,7 +32,7 @@ public class PlayerQueue {
     /**
      * @param dealer is the player that distributes the cards. This and the next card indicates who starts
      */
-    void setDealer(Player dealer) {
+    public void setDealer(Player dealer) {
 
     }
 
