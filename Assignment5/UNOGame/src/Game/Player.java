@@ -19,7 +19,6 @@ public class Player {
      * The player is asked to make its move
      */
     ICard yourTurn() {
-
         return null;
     }
 

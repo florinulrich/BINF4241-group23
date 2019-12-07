@@ -2,7 +2,6 @@ package Cards.AbstractClasses;
 
 import Cards.Interfaces.ICard;
 import Enumerations.CardColor;
-import Enumerations.CardNumber;
 import Game.DiscardPile;
 
 /**
@@ -13,7 +12,6 @@ import Game.DiscardPile;
 public abstract class ActionCard implements ICard {
 
     CardColor color;
-
 
     /**
      * @param currentGame the Discard Pile of the current game
