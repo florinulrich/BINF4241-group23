@@ -18,7 +18,6 @@ public class NumberCard implements ICard {
     CardNumber number;
 
     public CardNumber getNumber() {
-
         return null;
     }
 

@@ -37,9 +37,7 @@ public class DrawPile {
      * for testing only
      */
     public ICard peek() {
-
         return null;
     }
-
 
 }

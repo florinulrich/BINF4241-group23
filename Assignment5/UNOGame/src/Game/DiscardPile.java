@@ -3,7 +3,6 @@ package Game;
 import Cards.Interfaces.ICard;
 import Enumerations.CardColor;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 /**
@@ -28,8 +27,8 @@ public class DiscardPile {
 
     /**
      * @param color the color the next card must be legal on top of.
-     *
-     * Method gets called if a player wishes for a new color
+     *              <p>
+     *              Method gets called if a player wishes for a new color
      */
     void setLegalNextColor(CardColor color) {
 
@@ -37,8 +36,8 @@ public class DiscardPile {
 
     /**
      * @param cardsToDraw numbers of cards the next player has to draw
-     *
-     * tell the next player to draw
+     *                    <p>
+     *                    tell the next player to draw
      */
     public void tellNextPlayerToDraw(int cardsToDraw) {
 
@@ -62,7 +61,6 @@ public class DiscardPile {
      * @return the cards that have been played, excluding the top one
      */
     public ArrayList<ICard> getUsedCards() {
-
         return null;
     }
 
