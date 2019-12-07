@@ -40,7 +40,7 @@ public class GameBoard {
      *
      * @param other the board to copy
      */
-    //TODO: Document Javadoc fix: change "param" board to "other"
+    // Document Javadoc fix: change param "board" to "other"
     public GameBoard(GameBoard other) {
         board = new TicTacToeGameState.Player[ROWS][COLS];
         for (int row = 0; row < ROWS; row++) {
@@ -73,13 +73,13 @@ public class GameBoard {
             throw new IllegalArgumentException("cannot mark null player");
         }
 
-        //TODO: Document Bugfix: Switched return statements
+        //Document Bugfix: Switched return statements
         //Original Code:
 //    if (board[row][col] != null) {
-//      return false;
+//      return true;
 //    } else {
 //      board[row][col] = player;
-//      return true;
+//      return false;
 //    }
 
         if (board[row][col] != null) {
@@ -112,7 +112,7 @@ public class GameBoard {
         ArrayList<Position> positions = new ArrayList<Position>();
         for (int row = 0; row < ROWS; row++) {
 
-            //TODO: Document Bugfix: Change int col = 1 to int col = 0;
+            //Document Bugfix: Change int col = 1 to int col = 0;
             //Original Code
             //for (int col = 1; col < COLS; col++) {
 

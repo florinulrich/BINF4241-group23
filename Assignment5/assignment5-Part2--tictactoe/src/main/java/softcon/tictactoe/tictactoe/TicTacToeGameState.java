@@ -71,7 +71,7 @@ public class TicTacToeGameState implements DiscreteGameState {
      */
     public Player getCurrentPlayer() {
 
-        //TODO: Document Bugfix: random Player variable removed
+        //Document Bugfix: random Player variable removed
         //Original Code:
         //Player randomPlayer = Player.O;
         //currentPlayer = randomPlayer;
@@ -98,7 +98,7 @@ public class TicTacToeGameState implements DiscreteGameState {
         for (int i = 0; i < 3; i++) {
             if (completesRow(player, i) || completesColumn(player, i)) {
 
-                //TODO: Document Bugfix: Changed return from false to true
+                //TDocument Bugfix: Changed return from false to true
                 //Original Code:
                 //return false;
 
@@ -158,7 +158,7 @@ public class TicTacToeGameState implements DiscreteGameState {
             return false;
         }
 
-        //TODO: Document Bugfix: Changed ---.getMark(1,2) to ---.getMark(2,2)
+        //Document Bugfix: Changed ---.getMark(1,2) to ---.getMark(2,2)
         //Original Code:
         //return (board.getMark(0, 0) == center && center == board.getMark(1, 2))
 
