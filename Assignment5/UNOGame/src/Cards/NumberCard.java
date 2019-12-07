@@ -28,6 +28,6 @@ public class NumberCard implements ICard {
 
     @Override
     public boolean hasActions() {
-        return false;
+        return true;
     }
 }

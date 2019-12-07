@@ -23,15 +23,6 @@ class PlayerTest {
         testPlayer = null;
     }
 
-    /**
-     * your turn must return a Icard or null
-     */
-    @Test
-    void yourTurn() {
-
-        assertTrue(testPlayer.yourTurn() == null || testPlayer.yourTurn() instanceof ICard);
-
-    }
 
     /**
      * Check if the player forgot to say uno, if so he gets more cards,
