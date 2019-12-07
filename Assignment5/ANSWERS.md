@@ -31,3 +31,11 @@
 * (TicTacToeGameState, line 161 - 167) changed to consider the mark (2,2) instead of (1,2) so that the method can check the diagonals correctly
 
 ## Part 3
+
+1)  a. the system should only accept strings and no other inputs
+    b. the string inputs should state the following: 
+    * (Setup) age, number of players 
+    * (GamePlay) played card (e.g. "blue, 8"), draw (if available), say "UNO", challange a player that he/she illegaly played a wild four card, choose color if wild card is played
+    the system should check/store the inputs and ask for new input, if it was enterd in the wrong form (e.g. illegal syntax, or a player does not have a card that he/she states to play)
+    c. the system should only display the top card of the pile, which player is next, the cards of the current player, status updates (e.g. "player 2 has to draw 2 cards") and if a move has to be repeated (because of illegal input).
+2) the class diagram of the system:
