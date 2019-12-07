@@ -9,7 +9,8 @@ import java.util.ArrayList;
  */
 public class Player {
 
-    private ArrayList<ICard> hand;
+    public ArrayList<ICard> hand;
+    public int score;
     DiscardPile currentDiscardPile;
 
     /**
@@ -51,5 +52,12 @@ public class Player {
      */
     void chooseColor() {
 
+    }
+
+    /**
+     * @return tells if the player is dealer in current round
+     */
+    public boolean isDealer() {
+        return false;
     }
 }

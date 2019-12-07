@@ -24,7 +24,7 @@ public class PlayerQueue {
     /**
      * @return the next player in the queue
      */
-    Player next() {
+    public Player next() {
 
         return null;
     }
@@ -39,16 +39,25 @@ public class PlayerQueue {
     /**
      * @return a boolean that indicates if the pile is empty
      */
-    boolean isEmpty() {
+    public boolean isEmpty() {
 
         return false;
     }
 
-    /**
-     * @param player to be added to the queue
-     */
-    void addPlayer(Player player) {
 
+    /**
+     * @param player is added to queue
+     */
+    public void add(Player player) {
+
+    }
+
+    /**
+     * @return the next player in line without removing it
+     * For testing only
+     */
+    public Player peek() {
+        return null;
     }
 
 }

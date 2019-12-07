@@ -9,27 +9,36 @@ import java.util.ArrayList;
  */
 public class DrawPile {
 
-    private ArrayList<ICard> cards;
+    public ArrayList<ICard> cards;
 
     /**
      * shuffles the draw pile
      */
-    void shuffle() {
+    public void shuffle() {
 
     }
 
     /**
      * @return the top card of the pile
      */
-    ICard draw() {
+    public ICard draw() {
         return null;
     }
 
     /**
      * @param discardPile a discard pile the draw pile gets is cards back from
      */
-    void getPlayedCardBack(DiscardPile discardPile) {
+     public void getPlayedCardsBack(DiscardPile discardPile) {
 
+    }
+
+    /**
+     * @return card at the top of the deck without removing it
+     * for testing only
+     */
+    public ICard peek() {
+
+        return null;
     }
 
 

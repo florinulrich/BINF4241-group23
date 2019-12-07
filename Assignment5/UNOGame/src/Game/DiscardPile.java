@@ -15,13 +15,14 @@ public class DiscardPile {
     private ArrayList<ICard> cards;
     private ICard topCard;
     CardColor wishedColor;
+    boolean roundOver;
     private PlayerQueue playerQueue;
 
     /**
      * @param card is any card that would liked to be placed on the pile
      * @return is a boolean that indicates if a card can be put on the pile
      */
-    boolean isLegalNextCard(ICard card) {
+    public boolean isLegalNextCard(ICard card) {
         return true;
     }
 
@@ -60,8 +61,23 @@ public class DiscardPile {
     /**
      * @return the cards that have been played, excluding the top one
      */
-    ArrayList<ICard> getUsedCards() {
+    public ArrayList<ICard> getUsedCards() {
 
         return null;
+    }
+
+    /**
+     * Asks the next player to play
+     */
+    public void getNextCard() {
+
+    }
+
+    public boolean isRoundOver() {
+        return roundOver;
+    }
+
+    public void setTopCard(ICard card) {
+
     }
 }

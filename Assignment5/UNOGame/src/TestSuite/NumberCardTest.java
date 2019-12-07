@@ -23,18 +23,27 @@ class NumberCardTest {
         testCard = null;
     }
 
+    /**
+     * the getNumber method returns the number of the card
+     */
     @Test
     void getNumber() {
         assertNotNull(testCard.getNumber());
         assertEquals(CardNumber.FOUR, testCard.getNumber());
     }
 
+    /**
+     * the getColor method returns the color of the card
+     */
     @Test
     void getColor() {
         assertNotNull(testCard.getColor());
         assertEquals(CardColor.RED, testCard.getColor());
     }
 
+    /**
+     * Numbercards never have an action
+     */
     @Test
     void hasActions() {
         assertFalse(testCard.hasActions());
